@@ -1,0 +1,21 @@
+# Godot-generated cache and translations (at any depth)
+.godot/
+*.translation
+
+# Local game exports
+builds/
+dist/
+
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editor backup and swap files (Linux, macOS, Windows)
+*~
+*.swp
+*.swo
