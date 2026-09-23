@@ -31,4 +31,4 @@ func die() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position.x -= delta * speed
-	_takeDamage(0.1)
+	_takeDamage(10 * delta)
