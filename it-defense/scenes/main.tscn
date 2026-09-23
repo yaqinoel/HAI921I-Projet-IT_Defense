@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://towwfj0pptu4" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c0ttujardv8bp" path="res://scenes/entities/dangers/virus.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bkrsxxvvf5lsl" path="res://scenes/entities/dangers/phising.tscn" id="3_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://cam4g6e2r86n1" path="res://Map/vert.png" id="3_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bsw4f0mps0mos" path="res://Map/rouge.png" id="4_o6xl0"]
 
@@ -706,6 +707,7 @@ sources/1 = SubResource("TileSetAtlasSource_272bh")
 [node name="Main" type="Node2D" unique_id=694191892]
 script = ExtResource("1_jyhfs")
 virus = ExtResource("2_tbgi4")
+phising = ExtResource("3_tbgi4")
 
 [node name="Scene" type="Node" parent="." unique_id=2138363239]
 

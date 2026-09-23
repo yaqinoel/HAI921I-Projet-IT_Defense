@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bkrsxxvvf5lsl"]
+
+[ext_resource type="Script" uid="uid://c1cmholta56rw" path="res://scenes/entities/dangers/phising.gd" id="1_fsc8q"]
+[ext_resource type="Texture2D" uid="uid://c6s5dekdudqic" path="res://Assets/phishing.png" id="2_pebhc"]
+
+[node name="Phising" type="Node2D" unique_id=242679715]
+script = ExtResource("1_fsc8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=198869797]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_pebhc")
