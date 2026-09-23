@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0ttujardv8bp"]
+
+[ext_resource type="Script" uid="uid://c131xfa04l3bd" path="res://scenes/entities/dangers/virus.gd" id="1_ifgnm"]
+[ext_resource type="Texture2D" uid="uid://bx44hl5sjkuy5" path="res://icon.svg" id="2_8v58v"]
+
+[node name="Virus" type="Node2D" unique_id=1243605385]
+script = ExtResource("1_ifgnm")
+
+[node name="Virus" type="Sprite2D" parent="." unique_id=1118407109]
+texture = ExtResource("2_8v58v")
