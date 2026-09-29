@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cam4g6e2r86n1"
-path="res://.godot/imported/vert.png-7932b5f4b71e31ef4782fd72f7c88ef4.ctex"
+uid="uid://bsbcbxv8fwkpg"
+path="res://.godot/imported/placeholder.svg-0ee264266ab5177c1312c47696b36999.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/vert.png"
-dest_files=["res://.godot/imported/vert.png-7932b5f4b71e31ef4782fd72f7c88ef4.ctex"]
+source_file="res://assets/sprites/threats/placeholder.svg"
+dest_files=["res://.godot/imported/placeholder.svg-0ee264266ab5177c1312c47696b36999.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

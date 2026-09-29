@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsw4f0mps0mos"
-path="res://.godot/imported/rouge.png-f698541417c091e0657240e912cf5b7e.ctex"
+path="res://.godot/imported/rouge.png-1dadef93ca34ae001611dd24183c6873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/rouge.png"
-dest_files=["res://.godot/imported/rouge.png-f698541417c091e0657240e912cf5b7e.ctex"]
+source_file="res://assets/tiles/rouge.png"
+dest_files=["res://.godot/imported/rouge.png-1dadef93ca34ae001611dd24183c6873.ctex"]
 
 [params]
 

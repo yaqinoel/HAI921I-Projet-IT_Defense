@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 @export var virus: PackedScene
-@export var phising: PackedScene
+@export var phishing: PackedScene
 @export var intervalle := 2.0
 
 @onready var timer: Timer = $Timer
@@ -19,7 +19,7 @@ func spawn_objet():
 	if (rand == 0) :
 		nouvel_objet = virus.instantiate()
 	if (rand == 1) :
-		nouvel_objet = phising.instantiate()
+		nouvel_objet = phishing.instantiate()
 	add_child(nouvel_objet)
 	
 	#nouvel_objet.position = Vector2(500, 300)
