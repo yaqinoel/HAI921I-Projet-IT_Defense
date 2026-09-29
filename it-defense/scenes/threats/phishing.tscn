@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c1cmholta56rw" path="res://scripts/threats/phishing.gd" id="1_fsc8q"]
 [ext_resource type="Texture2D" uid="uid://c6s5dekdudqic" path="res://assets/sprites/threats/phishing.png" id="2_pebhc"]
+[ext_resource type="Resource" uid="uid://dt2g3xiwq7q0r" path="res://data/threats/phishing.tres" id="2_yjakv"]
 
 [node name="Phishing" type="Node2D" unique_id=242679715]
 script = ExtResource("1_fsc8q")
+data = ExtResource("2_yjakv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=198869797]
 scale = Vector2(0.25, 0.25)

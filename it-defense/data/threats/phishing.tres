@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://dt2g3xiwq7q0r"]
+
+[ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/threats/danger_data.gd" id="1_j1pig"]
+
+[resource]
+script = ExtResource("1_j1pig")
+type = &"phishing"
+display_name = "phishing"
+speed = 50.0
+max_health = 50.0
+damage = 5.0
+metadata/_custom_type_script = "uid://cka7rctsu8kr6"

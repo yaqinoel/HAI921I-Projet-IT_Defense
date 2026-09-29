@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://towwfj0pptu4" path="res://scripts/gameplay/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c0ttujardv8bp" path="res://scenes/threats/virus.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bkrsxxvvf5lsl" path="res://scenes/threats/phishing.tscn" id="3_tbgi4"]
-[ext_resource type="PackedScene" path="res://scenes/levels/level_01.tscn" id="4_office"]
+[ext_resource type="PackedScene" uid="uid://dejfob7vlc4f0" path="res://scenes/levels/level_01.tscn" id="4_office"]
 
 [node name="Main" type="Node2D" unique_id=694191892]
 script = ExtResource("1_sugp2")
 virus = ExtResource("2_tbgi4")
 phishing = ExtResource("3_tbgi4")
 
-[node name="Office01" parent="." unique_id=2138363239 instance=ExtResource("4_office")]
+[node name="Level01" parent="." unique_id=2138363239 instance=ExtResource("4_office")]
 
 [node name="Timer" type="Timer" parent="." unique_id=1873701732]

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b214muah077ch"]
-
-[ext_resource type="Script" uid="uid://cn0rqa7g6eejm" path="res://scripts/threats/danger.gd" id="1_4kddn"]
-
-[node name="Danger" type="Node2D" unique_id=287251546]
-script = ExtResource("1_4kddn")

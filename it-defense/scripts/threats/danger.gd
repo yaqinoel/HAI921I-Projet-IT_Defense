@@ -1,15 +1,14 @@
 class_name Danger
 extends Node2D
-@export var speed = 100.0
-@export var max_health = 50
-@export var damage = 20
+
+@export var data: DangerData
 
 var health
 var lane
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = max_health
+	health = data.max_health
 	lane = randi_range(0,2)
 	_startPos(lane)
 	pass # Replace with function body.
@@ -27,8 +26,7 @@ func die() -> void:
 	queue_free()
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.x -= delta * speed
+	position.x -= delta * data.speed
 	_takeDamage(10 * delta)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://bf72mw8ynqk0v"]
+
+[ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/threats/danger_data.gd" id="1_3up2e"]
+
+[resource]
+script = ExtResource("1_3up2e")
+type = &"virus"
+display_name = "virus"
+metadata/_custom_type_script = "uid://cka7rctsu8kr6"
