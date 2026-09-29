@@ -9,13 +9,13 @@ var lane
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health = data.max_health
-	lane = randi_range(0,2)
-	_startPos(lane)
+	#lane = randi_range(0,2)
+	#_startPos(lane)
 	pass # Replace with function body.
 
-func _startPos(lane) -> void:
-	position.x = 900
-	position.y = 100 + 200 * lane
+#func _startPos(lane) -> void:
+	#position.x = 900
+	#position.y = 100 + 200 * lane
 	 
 func _takeDamage(damage) -> void:
 	health -= damage
