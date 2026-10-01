@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c6bdebpiquduo"]
+
+[ext_resource type="Texture2D" uid="uid://bd1mtma0wk7t" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_icon.png" id="1_akjbv"]
+
+[node name="DefenseCard" type="Control" unique_id=1324209655]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="." unique_id=397603779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1966558508]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_akjbv")
+expand_mode = 1
+stretch_mode = 5

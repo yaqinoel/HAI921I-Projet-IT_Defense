@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ybm5qu3fabf"
-path="res://.godot/imported/placeholder.svg-99bfb2e5679abc5854d42570a672688c.ctex"
+uid="uid://bd1mtma0wk7t"
+path="res://.godot/imported/cyber_robot_icon.png-1c328075631b7c8022cde33744ded64e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/defenses/placeholder.svg"
-dest_files=["res://.godot/imported/placeholder.svg-99bfb2e5679abc5854d42570a672688c.ctex"]
+source_file="res://assets/sprites/defenses/cyber_robot/cyber_robot_icon.png"
+dest_files=["res://.godot/imported/cyber_robot_icon.png-1c328075631b7c8022cde33744ded64e.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

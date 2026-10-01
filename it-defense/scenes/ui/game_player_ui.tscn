@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dkd2wx1sr13f2"]
+
+[ext_resource type="PackedScene" uid="uid://c6bdebpiquduo" path="res://scenes/ui/defense_card.tscn" id="1_hx5p6"]
+
+[node name="GamePlayUI" type="CanvasLayer" unique_id=1279547943]
+
+[node name="Root" type="Control" parent="." unique_id=227829600]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root" unique_id=831190217]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="DefensePanelContainer" type="PanelContainer" parent="Root/MarginContainer" unique_id=17745970]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/MarginContainer/DefensePanelContainer" unique_id=1656456512]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="DefenseCard" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1324209655 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+
+[node name="DefenseCard2" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1729419029 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+
+[node name="DefenseCard3" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1854444345 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+
+[node name="DefenseCard4" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1241415719 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+
+[node name="DefenseCard5" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1025514447 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+
+[node name="DefenseCard6" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1613372276 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
