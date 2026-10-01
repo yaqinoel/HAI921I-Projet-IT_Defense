@@ -2,12 +2,17 @@
 
 [ext_resource type="PackedScene" path="res://scenes/environment/ground.tscn" id="1_ground"]
 [ext_resource type="Script" uid="uid://bf6agh6vgawhg" path="res://scripts/gameplay/danger_spawner.gd" id="2_i2aat"]
+[ext_resource type="PackedScene" uid="uid://bpfydthb4plcn" path="res://scenes/defenses/defense01.tscn" id="2_qdh5e"]
 [ext_resource type="PackedScene" uid="uid://bkrsxxvvf5lsl" path="res://scenes/threats/phishing.tscn" id="3_uvc87"]
 [ext_resource type="PackedScene" uid="uid://c0ttujardv8bp" path="res://scenes/threats/virus.tscn" id="4_qdh5e"]
 
 [node name="Level01" type="Node2D" unique_id=2138363239]
 
 [node name="Ground" parent="." unique_id=1003998107 instance=ExtResource("1_ground")]
+position = Vector2(0, 50)
+
+[node name="Defense01" parent="." unique_id=194257191 instance=ExtResource("2_qdh5e")]
+position = Vector2(308, 245)
 
 [node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
 script = ExtResource("2_i2aat")
@@ -18,12 +23,12 @@ dangers = Array[PackedScene]([ExtResource("3_uvc87"), ExtResource("4_qdh5e")])
 [node name="SpawnPoints" type="Node2D" parent="DangerSpawner" unique_id=1305147989]
 
 [node name="Lane0" type="Marker2D" parent="DangerSpawner/SpawnPoints" unique_id=1514748491]
-position = Vector2(1100, 125)
+position = Vector2(1100, 175)
 
 [node name="Lane1" type="Marker2D" parent="DangerSpawner/SpawnPoints" unique_id=240132942]
-position = Vector2(1100, 285)
+position = Vector2(1100, 335)
 
 [node name="Lane2" type="Marker2D" parent="DangerSpawner/SpawnPoints" unique_id=406140004]
-position = Vector2(1100, 445)
+position = Vector2(1100, 495)
 
 [node name="Dangers" type="Node2D" parent="." unique_id=121298440]

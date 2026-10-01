@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://drhkvyd2lp24i"]
 
 [ext_resource type="Script" uid="uid://towwfj0pptu4" path="res://scripts/gameplay/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dkd2wx1sr13f2" path="res://scenes/ui/game_player_ui.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dejfob7vlc4f0" path="res://scenes/levels/level_01.tscn" id="4_office"]
 
 [node name="Main" type="Node2D" unique_id=694191892]
 script = ExtResource("1_sugp2")
 
 [node name="Level01" parent="." unique_id=2138363239 instance=ExtResource("4_office")]
+
+[node name="GamePlayUI" parent="." unique_id=1279547943 instance=ExtResource("3_sugp2")]

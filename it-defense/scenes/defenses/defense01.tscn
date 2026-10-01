@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bpfydthb4plcn"]
+
+[ext_resource type="Script" uid="uid://ba6mwd544bql4" path="res://scripts/defenses/defense01.gd" id="1_p0xip"]
+[ext_resource type="Texture2D" uid="uid://cna3lsq8y0xs" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_shooting/cyber_robot_shooting_02.png" id="1_q3rwj"]
+[ext_resource type="Texture2D" uid="uid://ceurqjiw4n4o8" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_shooting/cyber_robot_shooting_01.png" id="2_p0xip"]
+[ext_resource type="Texture2D" uid="uid://bqcuakshd04ge" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_shooting/cyber_robot_shooting_03.png" id="3_qtyxm"]
+[ext_resource type="Texture2D" uid="uid://bqxq5b8cdwjyr" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_stand/player-stand-1.png" id="4_dnrto"]
+[ext_resource type="Texture2D" uid="uid://dcqflah4c14sw" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_stand/player-stand-2.png" id="5_5o0r3"]
+[ext_resource type="Texture2D" uid="uid://dcf4ytswjec6o" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_stand/player-stand-3.png" id="6_incjo"]
+[ext_resource type="Texture2D" uid="uid://bopf4fgaxqv10" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_stand/player-stand-4.png" id="7_mddkr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugck8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q3rwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p0xip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qtyxm")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dnrto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5o0r3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_incjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mddkr")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[node name="Defense01" type="Node2D" unique_id=194257191]
+script = ExtResource("1_p0xip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216515902]
+sprite_frames = SubResource("SpriteFrames_ugck8")
+animation = &"attack"
+frame = 2
+frame_progress = 1.0
