@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var timer: Timer = $Timer
 @onready var spawn_points: Node2D = $SpawnPoints
-@onready var danger_container: Node2D = $"../Dangers"
+@onready var danger_container: Node2D = $"../DangerContainer"
 
 func _ready() -> void:
 	timer.wait_time = interval

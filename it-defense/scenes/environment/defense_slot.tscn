@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://dr6ily3qxficb"]
 
 [ext_resource type="Texture2D" uid="uid://ddladal25sprx" path="res://assets/tiles/tileset_defense_slot.png" id="1_d4uuu"]
+[ext_resource type="Script" uid="uid://c22hrb8rtvtlw" path="res://scripts/gameplay/defense_slot.gd" id="1_w8onj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
 size = Vector2(64, 64)
 
 [node name="DefenseSlot" type="Node2D" unique_id=1649401231]
 z_index = -1
+script = ExtResource("1_w8onj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=336862572]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2121406561]
 shape = SubResource("RectangleShape2D_ugck8")

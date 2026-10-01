@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://dkd2wx1sr13f2"]
 
+[ext_resource type="Script" uid="uid://2abooqdm4ofs" path="res://scripts/ui/game_play_ui.gd" id="1_2pab2"]
 [ext_resource type="PackedScene" uid="uid://c6bdebpiquduo" path="res://scenes/ui/defense_card.tscn" id="1_hx5p6"]
+[ext_resource type="Resource" uid="uid://dbnlrm4is5enn" path="res://data/defenses/defense01.tres" id="2_byol3"]
 
 [node name="GamePlayUI" type="CanvasLayer" unique_id=1279547943]
+script = ExtResource("1_2pab2")
+test_defense = ExtResource("2_byol3")
 
 [node name="Root" type="Control" parent="." unique_id=227829600]
 layout_mode = 3
