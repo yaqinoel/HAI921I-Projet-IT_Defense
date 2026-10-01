@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://dbnlrm4is5enn"]
+
+[ext_resource type="Texture2D" uid="uid://bd1mtma0wk7t" path="res://assets/sprites/defenses/cyber_robot/cyber_robot_icon.png" id="1_4devl"]
+[ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_sqyod"]
+[ext_resource type="PackedScene" uid="uid://bpfydthb4plcn" path="res://scenes/defenses/defense01.tscn" id="2_fpn5h"]
+
+[resource]
+script = ExtResource("1_sqyod")
+display_name = "Defense01"
+icon = ExtResource("1_4devl")
+scene = ExtResource("2_fpn5h")
+metadata/_custom_type_script = "uid://b6117p70l0j5n"

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bpfydthb4plcn" path="res://scenes/defenses/defense01.tscn" id="2_qdh5e"]
 [ext_resource type="PackedScene" uid="uid://bkrsxxvvf5lsl" path="res://scenes/threats/phishing.tscn" id="3_uvc87"]
 [ext_resource type="PackedScene" uid="uid://c0ttujardv8bp" path="res://scenes/threats/virus.tscn" id="4_qdh5e"]
+[ext_resource type="PackedScene" uid="uid://dr6ily3qxficb" path="res://scenes/environment/defense_slot.tscn" id="6_50wog"]
 
 [node name="Level01" type="Node2D" unique_id=2138363239]
 
@@ -12,7 +13,7 @@
 position = Vector2(0, 50)
 
 [node name="Defense01" parent="." unique_id=194257191 instance=ExtResource("2_qdh5e")]
-position = Vector2(308, 245)
+position = Vector2(300, 253)
 
 [node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
 script = ExtResource("2_i2aat")
@@ -32,3 +33,33 @@ position = Vector2(1100, 335)
 position = Vector2(1100, 495)
 
 [node name="Dangers" type="Node2D" parent="." unique_id=121298440]
+
+[node name="Defenses" type="Node2D" parent="." unique_id=962935301]
+
+[node name="DefenseSlots" type="Node2D" parent="." unique_id=1706624547]
+
+[node name="DefenseSlot0" parent="DefenseSlots" unique_id=1649401231 instance=ExtResource("6_50wog")]
+position = Vector2(300, 250)
+
+[node name="DefenseSlot2" parent="DefenseSlots" unique_id=805175272 instance=ExtResource("6_50wog")]
+position = Vector2(500, 250)
+
+[node name="DefenseSlot3" parent="DefenseSlots" unique_id=788522775 instance=ExtResource("6_50wog")]
+position = Vector2(700, 250)
+
+[node name="DefenseSlot4" parent="DefenseSlots" unique_id=2003675483 instance=ExtResource("6_50wog")]
+position = Vector2(900, 250)
+
+[node name="DefenseSlot5" parent="DefenseSlots" unique_id=806125279 instance=ExtResource("6_50wog")]
+position = Vector2(300, 410)
+
+[node name="DefenseSlot6" parent="DefenseSlots" unique_id=223609960 instance=ExtResource("6_50wog")]
+position = Vector2(500, 410)
+
+[node name="DefenseSlot7" parent="DefenseSlots" unique_id=1365296245 instance=ExtResource("6_50wog")]
+position = Vector2(700, 410)
+
+[node name="DefenseSlot8" parent="DefenseSlots" unique_id=1811419403 instance=ExtResource("6_50wog")]
+position = Vector2(900, 410)
+
+[node name="DefensePlacementManager" type="Node2D" parent="." unique_id=1762674715]

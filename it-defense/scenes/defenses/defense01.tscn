@@ -47,6 +47,8 @@ animations = [{
 script = ExtResource("1_p0xip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216515902]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ugck8")
 animation = &"attack"
 frame = 2

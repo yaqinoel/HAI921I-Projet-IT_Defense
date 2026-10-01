@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dr6ily3qxficb"]
+
+[ext_resource type="Texture2D" uid="uid://ddladal25sprx" path="res://assets/tiles/tileset_defense_slot.png" id="1_d4uuu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(64, 64)
+
+[node name="DefenseSlot" type="Node2D" unique_id=1649401231]
+z_index = -1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=336862572]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2121406561]
+shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=657675096]
+scale = Vector2(4, 4)
+texture = ExtResource("1_d4uuu")
+region_enabled = true
+region_rect = Rect2(32, 32, 16, 16)
+
+[node name="Border" type="Node2D" parent="." unique_id=805139869]
