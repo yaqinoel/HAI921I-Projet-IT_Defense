@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://uvt3rkv4rl7h"]
+
+[ext_resource type="Texture2D" uid="uid://ba7jckr2fy14u" path="res://assets/sprites/office/desk.png" id="1_nvwbs"]
+[ext_resource type="Texture2D" uid="uid://cfu62uwwergac" path="res://assets/sprites/office/PC1.png" id="2_f4ywn"]
+[ext_resource type="Texture2D" uid="uid://dbak743v2brhs" path="res://assets/sprites/office/Chair.png" id="3_k5fra"]
+[ext_resource type="Texture2D" uid="uid://dk3r1ecryeb5a" path="res://assets/sprites/office/Julia_walk_Up.png" id="4_k5fra"]
+[ext_resource type="Script" uid="uid://dkhd86lvachet" path="res://scripts/office/work_station.gd" id="5_krihi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krihi"]
+atlas = ExtResource("4_k5fra")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl530"]
+atlas = ExtResource("4_k5fra")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga0rp"]
+atlas = ExtResource("4_k5fra")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6afem"]
+atlas = ExtResource("4_k5fra")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uelu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krihi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl530")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga0rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6afem")
+}],
+"loop": 1,
+"name": &"work",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(50, 50)
+
+[node name="work_station" type="Node2D" unique_id=588220065]
+scale = Vector2(3, 3)
+script = ExtResource("5_krihi")
+
+[node name="table" type="Sprite2D" parent="." unique_id=50044430]
+z_index = 1
+texture = ExtResource("1_nvwbs")
+
+[node name="pc" type="Sprite2D" parent="." unique_id=895732131]
+z_index = 2
+position = Vector2(0, -10)
+texture = ExtResource("2_f4ywn")
+
+[node name="chair" type="Sprite2D" parent="." unique_id=866345072]
+z_index = 4
+position = Vector2(0, 17)
+texture = ExtResource("3_k5fra")
+
+[node name="employee" type="AnimatedSprite2D" parent="." unique_id=803218768]
+z_index = 3
+position = Vector2(5.684342e-14, 8)
+scale = Vector2(0.8, 0.757)
+sprite_frames = SubResource("SpriteFrames_uelu8")
+animation = &"work"
+frame_progress = 0.02180752
+
+[node name="IntrusionArea" type="Area2D" parent="." unique_id=352596298]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IntrusionArea" unique_id=1757922165]
+shape = SubResource("RectangleShape2D_ugck8")
