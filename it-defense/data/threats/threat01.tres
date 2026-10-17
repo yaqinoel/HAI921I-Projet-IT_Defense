@@ -6,5 +6,5 @@
 script = ExtResource("1_uouu7")
 type = &"threat01"
 display_name = "threat01"
-speed = 20.0
+speed = 40.0
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

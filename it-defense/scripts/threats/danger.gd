@@ -49,4 +49,5 @@ func _process(delta: float) -> void:
 		return
 	
 	position.x -= delta * data.speed
-	_takeDamage(10 * delta)
+	if position.x < 0.0:
+		destory()

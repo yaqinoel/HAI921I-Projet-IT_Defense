@@ -192,6 +192,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(41, 41)
+
 [node name="Threat01" type="Node2D" unique_id=259263018]
 script = ExtResource("1_4qk0m")
 data = ExtResource("2_nyp0y")
@@ -200,4 +203,12 @@ data = ExtResource("2_nyp0y")
 position = Vector2(0, -7)
 scale = Vector2(-3, 3)
 sprite_frames = SubResource("SpriteFrames_p0730")
-animation = &"invading"
+animation = &"walk"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=456181282]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1321212337]
+shape = SubResource("RectangleShape2D_ugck8")

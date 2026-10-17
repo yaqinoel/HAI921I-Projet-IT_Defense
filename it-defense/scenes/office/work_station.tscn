@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
-size = Vector2(50, 50)
+size = Vector2(38.666668, 47.666668)
 
 [node name="work_station" type="Node2D" unique_id=588220065]
 scale = Vector2(3, 3)
@@ -69,9 +69,13 @@ position = Vector2(5.684342e-14, 8)
 scale = Vector2(0.8, 0.757)
 sprite_frames = SubResource("SpriteFrames_uelu8")
 animation = &"work"
-frame_progress = 0.02180752
+frame_progress = 0.32713473
 
 [node name="IntrusionArea" type="Area2D" parent="." unique_id=352596298]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IntrusionArea" unique_id=1757922165]
+position = Vector2(9.536743e-07, 1.166666)
 shape = SubResource("RectangleShape2D_ugck8")
