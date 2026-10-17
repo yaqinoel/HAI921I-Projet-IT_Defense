@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbak743v2brhs" path="res://assets/sprites/office/Chair.png" id="3_k5fra"]
 [ext_resource type="Texture2D" uid="uid://dk3r1ecryeb5a" path="res://assets/sprites/office/Julia_walk_Up.png" id="4_k5fra"]
 [ext_resource type="Script" uid="uid://dkhd86lvachet" path="res://scripts/office/work_station.gd" id="5_krihi"]
+[ext_resource type="Texture2D" uid="uid://bduccmffwxq14" path="res://assets/sprites/office/PC2.png" id="6_tl530"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krihi"]
 atlas = ExtResource("4_k5fra")
@@ -53,11 +54,6 @@ script = ExtResource("5_krihi")
 z_index = 1
 texture = ExtResource("1_nvwbs")
 
-[node name="pc" type="Sprite2D" parent="." unique_id=895732131]
-z_index = 2
-position = Vector2(0, -10)
-texture = ExtResource("2_f4ywn")
-
 [node name="chair" type="Sprite2D" parent="." unique_id=866345072]
 z_index = 4
 position = Vector2(0, 17)
@@ -69,7 +65,7 @@ position = Vector2(5.684342e-14, 8)
 scale = Vector2(0.8, 0.757)
 sprite_frames = SubResource("SpriteFrames_uelu8")
 animation = &"work"
-frame_progress = 0.32713473
+frame_progress = 0.026221452
 
 [node name="IntrusionArea" type="Area2D" parent="." unique_id=352596298]
 collision_layer = 0
@@ -79,3 +75,16 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IntrusionArea" unique_id=1757922165]
 position = Vector2(9.536743e-07, 1.166666)
 shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="Computer" type="Node2D" parent="." unique_id=153823897]
+
+[node name="pc_on" type="Sprite2D" parent="Computer" unique_id=895732131]
+z_index = 2
+position = Vector2(0, -10)
+texture = ExtResource("2_f4ywn")
+
+[node name="pc_off" type="Sprite2D" parent="Computer" unique_id=1006297258]
+visible = false
+z_index = 2
+position = Vector2(0, -10)
+texture = ExtResource("6_tl530")
