@@ -3,30 +3,50 @@ extends Node2D
 
 @export var data: DangerData
 
-var health
-var lane
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
+var health: float
+var lane: int
+
+var is_invading: bool = false
+var is_dying: bool = false
+
 func _ready() -> void:
 	health = data.max_health
-	#lane = randi_range(0,2)
-	#_startPos(lane)
-	pass # Replace with function body.
+	animated_sprite.play("walk")
+	animated_sprite.animation_finished.connect(_on_animation_finished)
 
-#func _startPos(lane) -> void:
-	#position.x = 900
-	#position.y = 100 + 200 * lane
-	 
+
+func _on_animation_finished() -> void:
+	if animated_sprite.animation == &"die":
+		destory()
+	if animated_sprite.animation == &"invading":
+		destory()
+
+
 func _takeDamage(damage) -> void:
 	health -= damage
 	if (health <= 0):
 		die()
-		
+
+
 func die() -> void:
+	is_dying = true
+	animated_sprite.play("die")
+
+
+func invade() -> void:
+	is_invading = true
+	animated_sprite.play("invading")
+
+
+func destory() -> void:
 	queue_free()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_dying or is_invading:
+		return
+	
 	position.x -= delta * data.speed
 	_takeDamage(10 * delta)
