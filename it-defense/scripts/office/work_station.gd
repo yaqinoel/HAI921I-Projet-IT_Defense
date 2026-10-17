@@ -23,7 +23,7 @@ func _on_intrusion_area_entered(area: Area2D) -> void:
 	if danger.is_dying or danger.is_invading:
 		return
 
-	danger.die()
+	danger.invade()
 	
 	set_work_status(false)
 
