@@ -14,7 +14,10 @@ var lane: int
 var is_invading: bool = false
 var is_dying: bool = false
 
+var type: StringName
+
 func _ready() -> void:
+	type = data.type
 	health = data.max_health
 	animated_sprite.play("walk")
 	animated_sprite.animation_finished.connect(_on_animation_finished)

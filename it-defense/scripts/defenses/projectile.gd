@@ -4,6 +4,7 @@ class_name Projectile extends Area2D
 @export var damage: float = 30
 
 var defense_type: StringName
+var object_type: StringName
 var target: Danger = null
 var old_direction: Vector2 = Vector2.RIGHT
 
@@ -14,20 +15,18 @@ func _ready() -> void:
 
 func lunch(type: StringName, new_target: Danger) -> void:
 	defense_type = type
+	object_type = new_target.type
 	target = new_target
 
 
 func _on_area_entered(area: Area2D) -> void:
 	var danger := area.get_parent() as Danger
-	if danger == null or target == null:
+	if danger == null:
 		return
 	
-	if target != danger:
-		return
-	
-	danger._takeDamage(damage)
-	
-	destory()
+	if target == danger or AttackRules.can_damage(defense_type, object_type):
+		danger._takeDamage(damage)
+		destory()
 
 
 func destory() -> void:

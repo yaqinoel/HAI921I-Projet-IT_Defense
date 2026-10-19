@@ -45,12 +45,6 @@ func lunch_projectile_to_target(target: Danger) -> void:
 	new_projecticle.lunch(data.type, target)
 
 
-func is_attackable(danger: Danger) -> bool:
-#	TODO
-#	to see if a danger is attackable according our rules
-	return true
-
-
 func find_target() -> Danger:
 	var target: Danger = null
 
@@ -60,7 +54,7 @@ func find_target() -> Danger:
 
 		for danger in detection_area.get_targets():
 			if target == null or danger.global_position.x < target.global_position.x and danger.global_position.x > global_position.x:
-				if is_attackable(danger):
+				if AttackRules.can_damage(data.type, danger.type):
 					target = danger
 				else: continue
 

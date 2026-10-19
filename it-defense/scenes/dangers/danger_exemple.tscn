@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cixg14hghplmw"]
 
 [ext_resource type="Script" uid="uid://c0qxao7dpbthf" path="res://scripts/dangers/danger_exemple.gd" id="1_j3tbo"]
-[ext_resource type="Resource" uid="uid://bi07p27o8h0si" path="res://data/threats/threat01.tres" id="2_ik0p0"]
+[ext_resource type="Resource" uid="uid://bi07p27o8h0si" path="res://data/dangers/danger_exemple.tres" id="2_j3tbo"]
 [ext_resource type="Texture2D" uid="uid://0e3fai6kjbsn" path="res://assets/sprites/effets/particles_sprite.png" id="3_80tph"]
 [ext_resource type="Texture2D" uid="uid://cd4mngrkfq0vo" path="res://assets/sprites/effets/orb_spritesheet.png" id="4_38mf4"]
 [ext_resource type="Texture2D" uid="uid://cl53vic626qob" path="res://assets/sprites/threats/devil_guy/devil_guy_spritesheet_walk.png" id="5_s5k00"]
@@ -195,9 +195,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
 size = Vector2(30, 30)
 
-[node name="Threat01" type="Node2D" unique_id=259263018]
+[node name="DangerExemple" type="Node2D" unique_id=259263018]
 script = ExtResource("1_j3tbo")
-data = ExtResource("2_ik0p0")
+data = ExtResource("2_j3tbo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1359514599]
 position = Vector2(0, -7)
