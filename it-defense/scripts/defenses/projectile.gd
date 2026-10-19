@@ -2,7 +2,7 @@ class_name Projectile extends Area2D
 
 var speed: float = 50
 var target: Danger = null
-var damage: float = 50
+var damage: float = 30
 var old_direction: Vector2 = Vector2.RIGHT
 
 
