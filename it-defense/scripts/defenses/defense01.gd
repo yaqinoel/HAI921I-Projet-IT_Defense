@@ -1,7 +1,7 @@
 class_name Defense extends Node2D
 
 @export var projectile: PackedScene = null
-@export var attack_interval: float = 1.0
+@export var attack_interval: float = 3.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
@@ -37,9 +37,12 @@ func _on_animation_finished() -> void:
 func lunch_projectile_to_target(target: Danger) -> void:
 	if projectile == null:
 		return
+		
 	var new_projecticle = projectile.instantiate() as Node2D
 	projectile_container.add_child(new_projecticle)
+	
 	new_projecticle.global_position = muzzle.global_position
+	new_projecticle.lunch(target)
 
 
 func is_attackable(danger: Danger) -> bool:
@@ -54,7 +57,7 @@ func find_target() -> Danger:
 			continue
 
 		for danger in detection_area.get_targets():
-			if target == null or danger.global_position.x < target.global_position.x:
+			if target == null or danger.global_position.x < target.global_position.x and danger.global_position.x > global_position.x:
 				if is_attackable(danger):
 					target = danger
 				else: continue
