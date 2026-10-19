@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://diwtdl4wmk8hr"]
 
-[ext_resource type="Script" uid="uid://dfin4xou8bsiw" path="res://scripts/defenses/projectile.gd" id="1_3bm8s"]
-[ext_resource type="Texture2D" uid="uid://cxh6ud0a6umrb" path="res://assets/sprites/defenses/projectiles/blowdart_spritesheet.png" id="1_niwtp"]
+[ext_resource type="Script" uid="uid://dfin4xou8bsiw" path="res://scripts/defenses/projectile.gd" id="1_7gjsy"]
+[ext_resource type="Texture2D" uid="uid://cxh6ud0a6umrb" path="res://assets/sprites/defenses/projectiles/blowdart_spritesheet.png" id="2_2tn4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
-size = Vector2(22, 12)
+size = Vector2(17, 8)
 
 [node name="ProjectileDefense01" type="Area2D" unique_id=406636964]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_3bm8s")
+script = ExtResource("1_7gjsy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1806411531]
 z_index = 2
 scale = Vector2(2, 2)
-texture = ExtResource("1_niwtp")
+texture = ExtResource("2_2tn4n")
 region_enabled = true
 region_rect = Rect2(0, 0, 15, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=630841898]
-position = Vector2(1, 0)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_ugck8")

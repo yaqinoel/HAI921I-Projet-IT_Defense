@@ -120,7 +120,10 @@ func place_defense(slot: DefenseSlot) -> void:
 		instance.free()
 		return
 	
-	var defense := instance as Node2D
+	var defense := instance as Defense
+	
+	defense.data = dragged_data
+	
 	defense.set("detection_areas", slot.detection_areas.duplicate())
 	defense_container.add_child(defense)
 	defense.global_position = slot.global_position

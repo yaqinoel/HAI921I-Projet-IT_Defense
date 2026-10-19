@@ -44,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
-size = Vector2(38.666668, 47.666668)
+size = Vector2(30, 40)
 
 [node name="work_station" type="Node2D" unique_id=588220065]
 scale = Vector2(3, 3)
@@ -73,7 +73,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IntrusionArea" unique_id=1757922165]
-position = Vector2(9.536743e-07, 1.166666)
+position = Vector2(0, 2.166667)
 shape = SubResource("RectangleShape2D_ugck8")
 
 [node name="Computer" type="Node2D" parent="." unique_id=153823897]

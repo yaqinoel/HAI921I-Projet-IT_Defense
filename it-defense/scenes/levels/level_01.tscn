@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://oyhdlec15hp" path="res://scenes/environment/ground.tscn" id="1_ground"]
 [ext_resource type="Script" uid="uid://bf6agh6vgawhg" path="res://scripts/gameplay/danger_spawner.gd" id="2_i2aat"]
-[ext_resource type="PackedScene" uid="uid://cixg14hghplmw" path="res://scenes/threats/threat01.tscn" id="5_50wog"]
+[ext_resource type="PackedScene" uid="uid://cixg14hghplmw" path="res://scenes/dangers/danger_exemple.tscn" id="5_50wog"]
 [ext_resource type="PackedScene" uid="uid://uvt3rkv4rl7h" path="res://scenes/office/work_station.tscn" id="5_qdh5e"]
 [ext_resource type="Script" uid="uid://p72dmpsriq4q" path="res://scripts/gameplay/danger_detection_area.gd" id="6_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://dr6ily3qxficb" path="res://scenes/environment/defense_slot.tscn" id="6_50wog"]
