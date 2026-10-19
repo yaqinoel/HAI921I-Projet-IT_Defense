@@ -121,6 +121,7 @@ func place_defense(slot: DefenseSlot) -> void:
 		return
 	
 	var defense := instance as Node2D
+	defense.set("detection_areas", slot.detection_areas.duplicate())
 	defense_container.add_child(defense)
 	defense.global_position = slot.global_position
 	

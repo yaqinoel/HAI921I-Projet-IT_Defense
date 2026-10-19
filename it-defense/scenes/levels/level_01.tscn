@@ -4,7 +4,17 @@
 [ext_resource type="Script" uid="uid://bf6agh6vgawhg" path="res://scripts/gameplay/danger_spawner.gd" id="2_i2aat"]
 [ext_resource type="PackedScene" uid="uid://cixg14hghplmw" path="res://scenes/threats/threat01.tscn" id="5_50wog"]
 [ext_resource type="PackedScene" uid="uid://uvt3rkv4rl7h" path="res://scenes/office/work_station.tscn" id="5_qdh5e"]
+[ext_resource type="Script" uid="uid://p72dmpsriq4q" path="res://scripts/gameplay/danger_detection_area.gd" id="6_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://dr6ily3qxficb" path="res://scenes/environment/defense_slot.tscn" id="6_50wog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(780, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uelu8"]
+size = Vector2(780, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vpop"]
+size = Vector2(780, 80)
 
 [node name="Level01" type="Node2D" unique_id=2138363239]
 
@@ -34,29 +44,37 @@ position = Vector2(1100, 495)
 
 [node name="DefenseSlotContainer" type="Node2D" parent="." unique_id=1706624547]
 
-[node name="DefenseSlot0" parent="DefenseSlotContainer" unique_id=1649401231 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot0" parent="DefenseSlotContainer" unique_id=1649401231 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(300, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
 
-[node name="DefenseSlot2" parent="DefenseSlotContainer" unique_id=805175272 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot2" parent="DefenseSlotContainer" unique_id=805175272 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(500, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
 
-[node name="DefenseSlot3" parent="DefenseSlotContainer" unique_id=788522775 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot3" parent="DefenseSlotContainer" unique_id=788522775 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(700, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
 
-[node name="DefenseSlot4" parent="DefenseSlotContainer" unique_id=2003675483 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot4" parent="DefenseSlotContainer" unique_id=2003675483 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(900, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
 
-[node name="DefenseSlot5" parent="DefenseSlotContainer" unique_id=806125279 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot5" parent="DefenseSlotContainer" unique_id=806125279 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(300, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
 
-[node name="DefenseSlot6" parent="DefenseSlotContainer" unique_id=223609960 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot6" parent="DefenseSlotContainer" unique_id=223609960 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(500, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
 
-[node name="DefenseSlot7" parent="DefenseSlotContainer" unique_id=1365296245 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot7" parent="DefenseSlotContainer" unique_id=1365296245 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(700, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
 
-[node name="DefenseSlot8" parent="DefenseSlotContainer" unique_id=1811419403 instance=ExtResource("6_50wog")]
+[node name="DefenseSlot8" parent="DefenseSlotContainer" unique_id=1811419403 node_paths=PackedStringArray("detection_areas") instance=ExtResource("6_50wog")]
 position = Vector2(900, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
 
 [node name="WorkStations" type="Node2D" parent="." unique_id=1590089799]
 
@@ -68,3 +86,42 @@ position = Vector2(201, 329)
 
 [node name="work_station3" parent="WorkStations" unique_id=1293477030 instance=ExtResource("5_qdh5e")]
 position = Vector2(203, 490)
+
+[node name="Lanes" type="Node2D" parent="." unique_id=2020641110]
+
+[node name="Lane0" type="Node2D" parent="Lanes" unique_id=548938103]
+
+[node name="Lane0DetectionArea" type="Area2D" parent="Lanes/Lane0" unique_id=197892120]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_1ey3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/Lane0/Lane0DetectionArea" unique_id=1819723510]
+position = Vector2(650, 170)
+shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="Lane1" type="Node2D" parent="Lanes" unique_id=1365462117]
+
+[node name="Lane1DetectionArea" type="Area2D" parent="Lanes/Lane1" unique_id=513718085]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_1ey3t")
+lane_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/Lane1/Lane1DetectionArea" unique_id=1398689035]
+position = Vector2(650, 330)
+shape = SubResource("RectangleShape2D_uelu8")
+
+[node name="Lane2" type="Node2D" parent="Lanes" unique_id=1014810101]
+
+[node name="Lane2DetectionArea" type="Area2D" parent="Lanes/Lane2" unique_id=974265865]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_1ey3t")
+lane_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/Lane2/Lane2DetectionArea" unique_id=1838399309]
+position = Vector2(650, 490)
+shape = SubResource("RectangleShape2D_0vpop")
+
+[node name="ProjectileContainer" type="Node2D" parent="." unique_id=1378252906]
