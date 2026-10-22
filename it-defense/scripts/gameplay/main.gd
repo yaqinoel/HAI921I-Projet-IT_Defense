@@ -9,6 +9,10 @@ var current_level: Node2D
 
 
 func _ready():
+	$GameSession.money_changed.connect($GamePlayUI.update_money)
+
+	$GamePlayUI.update_money($GameSession.money)
+
 	if first_level != null:
 		change_level(first_level)
 	
@@ -45,3 +49,6 @@ func change_level(scene: PackedScene) -> void:
 	
 	# pass defense deplacement slot container and defenses container to  defense_placement_manager
 	defense_placement_manager.setup_container(slots, defenses)
+	
+	var stations := current_level.get_node("WorkStations") as Node2D
+	$GameSession.setup_workstations(stations)

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bom0foheywnp" path="res://scripts/gameplay/defense_placement_manager.gd" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dkd2wx1sr13f2" path="res://scenes/ui/game_player_ui.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dejfob7vlc4f0" path="res://scenes/levels/level_01.tscn" id="4_office"]
+[ext_resource type="Script" uid="uid://u0p6634ia7s1" path="res://scripts/gameplay/game_session.gd" id="5_tbgi4"]
 
 [node name="Main" type="Node2D" unique_id=694191892]
 script = ExtResource("1_sugp2")
@@ -15,3 +16,6 @@ first_level = ExtResource("4_office")
 script = ExtResource("3_jyhfs")
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=1160373104]
+
+[node name="GameSession" type="Node2D" parent="." unique_id=841434974]
+script = ExtResource("5_tbgi4")

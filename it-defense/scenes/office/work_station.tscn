@@ -88,3 +88,5 @@ visible = false
 z_index = 2
 position = Vector2(0, -10)
 texture = ExtResource("6_tl530")
+
+[node name="IncomeTimer" type="Timer" parent="." unique_id=2069438257]

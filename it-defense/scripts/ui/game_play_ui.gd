@@ -3,6 +3,8 @@ extends CanvasLayer
 @export var test_defense: DefenseData
 
 @onready var grid: GridContainer = ($Root/MarginContainer/DefensePanelContainer/GridContainer)
+@onready var money_label: Label = $Root/MoneyLabel
+
 
 signal defense_drag_started(card: DefenseCard)
 
@@ -44,3 +46,7 @@ func add_test_card() -> void:
 		return
 
 	card.set_card(test_defense)
+
+
+func update_money(value: int) -> void:
+	money_label.text = str(value) + " €"

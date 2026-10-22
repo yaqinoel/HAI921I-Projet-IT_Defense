@@ -52,3 +52,11 @@ layout_mode = 2
 
 [node name="DefenseCard6" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1613372276 instance=ExtResource("1_hx5p6")]
 layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="Root" unique_id=1960485517]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 40.0
+offset_right = 1053.0
+offset_bottom = 63.0
+text = "0€"

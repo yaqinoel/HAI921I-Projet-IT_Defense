@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://blmtkprkuueiv"]
+
+[ext_resource type="Texture2D" uid="uid://cl53vic626qob" path="res://assets/sprites/threats/devil_guy/devil_guy_spritesheet_walk.png" id="1_4nh17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p2kd"]
+atlas = ExtResource("1_4nh17")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c7kv"]
+atlas = ExtResource("1_4nh17")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7n0k"]
+atlas = ExtResource("1_4nh17")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ocmm"]
+atlas = ExtResource("1_4nh17")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sollc"]
+atlas = ExtResource("1_4nh17")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugck8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p2kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c7kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7n0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ocmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sollc")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="DangerNew" type="Node2D" unique_id=659986257]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1449348525]
+sprite_frames = SubResource("SpriteFrames_ugck8")
+animation = &"walk"
+frame_progress = 0.659351
