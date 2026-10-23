@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sovs3dgcyul1"
-path="res://.godot/imported/placeholder.svg-e69534533dc44a624b0bc38974d0b406.ctex"
+uid="uid://bjvrdyp8ecexd"
+path="res://.godot/imported/UI_TravelBook_GamepadRT01a.png-ec238590d2cd8972d480effa9479a9f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/placeholder.svg"
-dest_files=["res://.godot/imported/placeholder.svg-e69534533dc44a624b0bc38974d0b406.ctex"]
+source_file="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_GamepadRT01a.png"
+dest_files=["res://.godot/imported/UI_TravelBook_GamepadRT01a.png-ec238590d2cd8972d480effa9479a9f4.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

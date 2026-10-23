@@ -4,6 +4,7 @@ extends CanvasLayer
 
 @onready var grid: GridContainer = ($Root/MarginContainer/DefensePanelContainer/GridContainer)
 @onready var money_label: Label = $Root/MoneyLabel
+@onready var shop_panel: Control = $Root/ShopPanel
 
 
 signal defense_drag_started(card: DefenseCard)
@@ -13,6 +14,8 @@ func _ready() -> void:
 		var card := child as DefenseCard
 		if card != null:
 			card.drag_started.connect(_on_card_drag_started)
+	
+	shop_panel.hide()
 
 
 func _on_card_drag_started(card: DefenseCard) -> void:
@@ -28,11 +31,25 @@ func find_empty_card() -> DefenseCard:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.pressed and not event.echo:
-			if event.physical_keycode == KEY_P:
-				add_test_card()
+	if not event is InputEventKey:
+		return
+
+	if not event.pressed or event.echo:
+		return
+
+	match event.physical_keycode:
+		KEY_B:
+			shop_panel.visible = not shop_panel.visible
+			get_viewport().set_input_as_handled()
+
+		KEY_ESCAPE:
+			if shop_panel.visible:
+				shop_panel.hide()
 				get_viewport().set_input_as_handled()
+
+		KEY_P:
+			add_test_card()
+			get_viewport().set_input_as_handled()
 
 
 func add_test_card() -> void:

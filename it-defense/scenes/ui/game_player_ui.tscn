@@ -3,11 +3,8 @@
 [ext_resource type="Script" uid="uid://2abooqdm4ofs" path="res://scripts/ui/game_play_ui.gd" id="1_2pab2"]
 [ext_resource type="PackedScene" uid="uid://c6bdebpiquduo" path="res://scenes/ui/defense_card.tscn" id="1_hx5p6"]
 [ext_resource type="Resource" uid="uid://dbnlrm4is5enn" path="res://data/defenses/defense_exemple.tres" id="2_byol3"]
-[ext_resource type="FontFile" uid="uid://bk0kb4ivbriyk" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_r0hcq"]
-
-[sub_resource type="Theme" id="Theme_byol3"]
-default_font = ExtResource("3_r0hcq")
-default_font_size = 24
+[ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="3_76rks"]
+[ext_resource type="PackedScene" uid="uid://dhwd2qlyhnyhj" path="res://scenes/ui/shop_panel.tscn" id="4_76rks"]
 
 [node name="GamePlayUI" type="CanvasLayer" unique_id=1279547943]
 script = ExtResource("1_2pab2")
@@ -22,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_byol3")
+theme = ExtResource("3_76rks")
 
 [node name="MarginContainer" type="MarginContainer" parent="Root" unique_id=831190217]
 layout_mode = 0
@@ -67,3 +64,6 @@ offset_top = 40.0
 offset_right = 1053.0
 offset_bottom = 63.0
 text = "0€"
+
+[node name="ShopPanel" parent="Root" unique_id=1906245074 instance=ExtResource("4_76rks")]
+layout_mode = 1

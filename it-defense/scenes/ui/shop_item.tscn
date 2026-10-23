@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dca84hd2gce1x"]
+
+[ext_resource type="Texture2D" uid="uid://cf1slrn1op06q" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01a.png" id="1_strbt"]
+[ext_resource type="Texture2D" uid="uid://ds4afmf08qi8u" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01b.png" id="2_obnp4"]
+[ext_resource type="Script" uid="uid://b04s5srniwtt1" path="res://scripts/ui/shop_item.gd" id="3_aty2n"]
+[ext_resource type="Texture2D" uid="uid://ds6ojsvabtcyf" path="res://assets/ui/TravelBookLite/Sprites Animated/UI_TravelBook_SlotCursor01a_1.png" id="3_jol1k"]
+[ext_resource type="Texture2D" uid="uid://dibqn4nl2s0o4" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01c.png" id="3_p512t"]
+[ext_resource type="Resource" uid="uid://dbnlrm4is5enn" path="res://data/defenses/defense_exemple.tres" id="5_b8nro"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vb38a"]
+texture = ExtResource("1_strbt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obnp4"]
+texture = ExtResource("2_obnp4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jf5in"]
+texture = ExtResource("2_obnp4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qeixu"]
+texture = ExtResource("3_p512t")
+
+[node name="ShopItem" type="Button" unique_id=351042847]
+custom_minimum_size = Vector2(80, 80)
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_vb38a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_obnp4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jf5in")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qeixu")
+toggle_mode = true
+script = ExtResource("3_aty2n")
+defense_data = ExtResource("5_b8nro")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1543821225]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectionFrame" type="TextureRect" parent="." unique_id=277012687]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_jol1k")
+expand_mode = 1

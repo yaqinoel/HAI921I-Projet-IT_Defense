@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://dhwd2qlyhnyhj"]
+
+[ext_resource type="Texture2D" uid="uid://dm0rt6livockj" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookCover01a.png" id="1_3b8rw"]
+[ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="1_sjk1b"]
+[ext_resource type="Texture2D" uid="uid://bhlprto3q5fke" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookPageLeft01a.png" id="2_jr3vq"]
+[ext_resource type="Texture2D" uid="uid://b55pcu3h2vom6" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookPageRight01a.png" id="3_qecyp"]
+[ext_resource type="FontFile" uid="uid://c4bssk6o3nkdu" path="res://assets/fonts/PixelifySans-Bold.ttf" id="4_j21la"]
+[ext_resource type="PackedScene" uid="uid://dca84hd2gce1x" path="res://scenes/ui/shop_item.tscn" id="5_qeixu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugck8"]
+texture = ExtResource("1_3b8rw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3b8rw"]
+texture = ExtResource("2_jr3vq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qecyp"]
+texture = ExtResource("3_qecyp")
+
+[node name="ShopPanel" type="Control" unique_id=1906245074]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sjk1b")
+
+[node name="Backgroud" type="ColorRect" parent="." unique_id=1671395804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=85760939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer" unique_id=54945644]
+custom_minimum_size = Vector2(720, 460)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ugck8")
+
+[node name="BookPadding" type="MarginContainer" parent="CenterContainer/WindowPanel" unique_id=105227811]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/WindowPanel/BookPadding" unique_id=339780945]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPage" type="PanelContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer" unique_id=1462588224]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_3b8rw")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage" unique_id=1516412030]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 32
+
+[node name="Content" type="VBoxContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer" unique_id=1349247396]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=797118046]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68267375, 0.53505844, 0.53407544, 1)
+theme_override_fonts/font = ExtResource("4_j21la")
+theme_override_font_sizes/font_size = 32
+text = "Defenses"
+horizontal_alignment = 1
+
+[node name="ProductScroll" type="ScrollContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=1501989225]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ContentPadding" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll" unique_id=1028585158]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ProductGrid" type="GridContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding" unique_id=1709276008]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="ShopItem" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=351042847 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem2" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=971292989 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem3" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1452129947 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem4" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1353458428 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem5" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=2144798718 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem6" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1172462852 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem7" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1572123348 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem8" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1298613057 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem9" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=849073093 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem10" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1646268320 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem11" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=857217744 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="ShopItem12" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=477066832 instance=ExtResource("5_qeixu")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=1057172089]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68267375, 0.53505844, 0.53407544, 1)
+theme_override_fonts/font = ExtResource("4_j21la")
+theme_override_font_sizes/font_size = 32
+text = "Place: 6/6"
+horizontal_alignment = 1
+
+[node name="RightPage" type="PanelContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer" unique_id=1997853978]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_qecyp")
