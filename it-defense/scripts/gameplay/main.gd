@@ -5,18 +5,22 @@ extends Node2D
 @onready var level_container: Node2D = $LevelContainer
 @onready var defense_placement_manager = $DefensePlacementManager
 
+@onready var game_session: GameSession = $GameSession
+@onready var gameplay_ui: GamePlayUI = $GamePlayUI
+
 var current_level: Node2D
 
 
 func _ready():
-	$GameSession.money_changed.connect($GamePlayUI.update_money)
+	game_session.money_changed.connect(gameplay_ui.update_money)
 
-	$GamePlayUI.update_money($GameSession.money)
+	gameplay_ui.update_money(game_session.money)
 
 	if first_level != null:
 		change_level(first_level)
 	
-	$GamePlayUI.defense_drag_started.connect(defense_placement_manager.start_drag)
+	gameplay_ui.defense_drag_started.connect(defense_placement_manager.start_drag)
+	gameplay_ui.purchase_requested.connect(_on_purchase_requested)
 
 
 func _process(delta: float) -> void:
@@ -52,3 +56,22 @@ func change_level(scene: PackedScene) -> void:
 	
 	var stations := current_level.get_node("WorkStations") as Node2D
 	$GameSession.setup_workstations(stations)
+
+
+func _on_purchase_requested(defense_data: DefenseData) -> void:
+	if defense_data == null:
+		return
+
+	var card := gameplay_ui.find_empty_card()
+
+	if card == null:
+		print("purchase failed: no place")
+		return
+
+	if not game_session.try_spend_money(defense_data.cost):
+		print("purchase failed: not enough money")
+		return
+
+	card.set_card(defense_data)
+
+	print("purchase successed", defense_data.display_name)

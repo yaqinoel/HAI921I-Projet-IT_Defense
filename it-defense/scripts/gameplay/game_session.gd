@@ -28,6 +28,15 @@ func add_money(amount: int) -> void:
 	money_changed.emit(money)
 
 
+func try_spend_money(amount: int) -> bool:
+	if (money - amount) < 0:
+		return false
+	else:
+		money -= amount
+		money_changed.emit(money)
+		return true
+
+
 func reset_session() -> void:
 	money = 0
 	survival_time = 0

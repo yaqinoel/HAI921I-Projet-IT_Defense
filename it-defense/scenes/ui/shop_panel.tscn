@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://du8se5qd0o6bu" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconCross01a.png" id="7_4i0u3"]
 [ext_resource type="Script" uid="uid://bmldnr4aq87bq" path="res://scripts/ui/shop_panel.gd" id="7_qjhny"]
 [ext_resource type="Texture2D" uid="uid://uk7n4vpscrex" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Toggle03a.png" id="7_udh10"]
+[ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="8_g0um3"]
+[ext_resource type="Texture2D" uid="uid://cf1slrn1op06q" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01a.png" id="9_8bgle"]
+[ext_resource type="Texture2D" uid="uid://ds4afmf08qi8u" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01b.png" id="10_vxuka"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugck8"]
 texture = ExtResource("1_3b8rw")
@@ -18,6 +21,15 @@ texture = ExtResource("2_jr3vq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qecyp"]
 texture = ExtResource("3_qecyp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g0um3"]
+texture = ExtResource("9_8bgle")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hpsf"]
+texture = ExtResource("10_vxuka")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bgle"]
+texture = ExtResource("10_vxuka")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udh10"]
 
@@ -167,6 +179,81 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_qecyp")
 
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage" unique_id=797510759]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 32
+
+[node name="Details" type="VBoxContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer" unique_id=1771035234]
+layout_mode = 2
+
+[node name="DetailsLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details" unique_id=611728654]
+layout_mode = 2
+theme = ExtResource("8_g0um3")
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68235296, 0.53333336, 0.53333336, 1)
+text = "Details"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details" unique_id=1916179093]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="DescriptionPadding" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer" unique_id=783211325]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding" unique_id=1780516208]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NameLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=464973485]
+layout_mode = 2
+theme = ExtResource("8_g0um3")
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68235296, 0.53333336, 0.53333336, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="ProductIcon" type="TextureRect" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=1178098478]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DescriptionLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=117778710]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="PriceLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=778375970]
+layout_mode = 2
+theme = ExtResource("8_g0um3")
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68235296, 0.53333336, 0.53333336, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="BuyButton" type="Button" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details" unique_id=22006050]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("8_g0um3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g0um3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0hpsf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8bgle")
+text = "Buy"
+
 [node name="ButtonLayer" type="Control" parent="CenterContainer/WindowPanel" unique_id=369991508]
 layout_mode = 2
 mouse_filter = 2
@@ -198,8 +285,8 @@ texture = ExtResource("7_udh10")
 [node name="TextureRect2" type="TextureRect" parent="CenterContainer/WindowPanel/ButtonLayer/CloseButton" unique_id=602954398]
 texture_filter = 1
 layout_mode = 0
-offset_left = 9.0
-offset_top = 9.0
-offset_right = 49.0
-offset_bottom = 49.0
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 45.0
+offset_bottom = 46.0
 texture = ExtResource("7_4i0u3")

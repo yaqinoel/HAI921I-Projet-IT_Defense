@@ -8,3 +8,4 @@ extends Resource
 @export var projectile_scene: PackedScene
 @export var cost: int = 100
 @export_range(0.05, 10.0, 0.05) var attack_interval: float = 3.0
+@export_multiline var description: String = ""

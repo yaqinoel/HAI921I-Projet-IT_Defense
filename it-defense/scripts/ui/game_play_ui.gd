@@ -1,14 +1,15 @@
-extends CanvasLayer
+class_name GamePlayUI extends CanvasLayer
 
 @export var test_defense: DefenseData
 
 @onready var grid: GridContainer = ($Root/MarginContainer/DefensePanelContainer/GridContainer)
 @onready var money_label: Label = $Root/MoneyLabel
-@onready var shop_panel: Control = $Root/ShopPanel
+@onready var shop_panel: ShopPanel = $Root/ShopPanel
 @onready var shop_button: Button = $Root/ShopButton
 
 
 signal defense_drag_started(card: DefenseCard)
+signal purchase_requested(defense_data: DefenseData)
 
 func _ready() -> void:
 	for child in grid.get_children():
@@ -19,6 +20,7 @@ func _ready() -> void:
 	shop_panel.hide()
 	
 	shop_button.pressed.connect(_on_shop_button_pressed)
+	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)	
 
 
 func _on_card_drag_started(card: DefenseCard) -> void:
@@ -68,9 +70,26 @@ func add_test_card() -> void:
 	card.set_card(test_defense)
 
 
+func add_defense_card(defense_data: DefenseData) -> void:
+	if defense_data == null:
+		print("defense_data is null")
+		return
+	
+	var card := find_empty_card()
+	if card == null:
+		print("No place for new card")
+		return
+
+	card.set_card(defense_data)
+
+
 func update_money(value: int) -> void:
 	money_label.text = str(value) + " €"
 
 
 func _on_shop_button_pressed() -> void:
 	shop_panel.visible = not shop_panel.visible
+
+
+func _on_shop_purchase_requested(defense_data: DefenseData) -> void:
+	purchase_requested.emit(defense_data)
