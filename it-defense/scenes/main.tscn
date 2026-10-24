@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://towwfj0pptu4" path="res://scripts/gameplay/main.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://bom0foheywnp" path="res://scripts/gameplay/defense_placement_manager.gd" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://dkd2wx1sr13f2" path="res://scenes/ui/game_player_ui.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dkd2wx1sr13f2" path="res://scenes/ui/game_play_ui.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dejfob7vlc4f0" path="res://scenes/levels/level_01.tscn" id="4_office"]
 [ext_resource type="Script" uid="uid://u0p6634ia7s1" path="res://scripts/gameplay/game_session.gd" id="5_tbgi4"]
 

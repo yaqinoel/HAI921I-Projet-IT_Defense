@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://c6bdebpiquduo"]
 
 [ext_resource type="Script" uid="uid://dq026rx1jcpg6" path="res://scripts/ui/defense_card.gd" id="1_g8ntf"]
+[ext_resource type="Texture2D" uid="uid://cf1slrn1op06q" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01a.png" id="2_uf40u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uf40u"]
+texture = ExtResource("2_uf40u")
 
 [node name="DefenseCard" type="Control" unique_id=1324209655]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("1_g8ntf")
 
 [node name="Background" type="Panel" parent="." unique_id=397603779]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_uf40u")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1966558508]
 visible = false

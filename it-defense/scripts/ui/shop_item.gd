@@ -1,4 +1,4 @@
-extends Button
+class_name ShopItem extends Button
 
 @export var defense_data: DefenseData
 

@@ -5,6 +5,30 @@
 [ext_resource type="Resource" uid="uid://dbnlrm4is5enn" path="res://data/defenses/defense_exemple.tres" id="2_byol3"]
 [ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="3_76rks"]
 [ext_resource type="PackedScene" uid="uid://dhwd2qlyhnyhj" path="res://scenes/ui/shop_panel.tscn" id="4_76rks"]
+[ext_resource type="Texture2D" uid="uid://bb6qhtu373ofv" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Frame01a.png" id="4_oeqqt"]
+[ext_resource type="Texture2D" uid="uid://b1tjj47dfi7te" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_FrameSelect01b.png" id="6_dtttb"]
+[ext_resource type="Texture2D" uid="uid://c1pskctx5cgrl" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_FrameSelect01a.png" id="7_c7wi6"]
+[ext_resource type="Texture2D" uid="uid://d0i5wof5axa34" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Point01a.png" id="8_c7wi6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8t1nb"]
+texture = ExtResource("4_oeqqt")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugck8"]
+texture = ExtResource("6_dtttb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uelu8"]
+texture = ExtResource("7_c7wi6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtttb"]
+texture = ExtResource("6_dtttb")
 
 [node name="GamePlayUI" type="CanvasLayer" unique_id=1279547943]
 script = ExtResource("1_2pab2")
@@ -32,12 +56,13 @@ theme_override_constants/margin_bottom = 16
 
 [node name="DefensePanelContainer" type="PanelContainer" parent="Root/MarginContainer" unique_id=17745970]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8t1nb")
 
 [node name="GridContainer" type="GridContainer" parent="Root/MarginContainer/DefensePanelContainer" unique_id=1656456512]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
-columns = 3
+columns = 6
 
 [node name="DefenseCard" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1324209655 instance=ExtResource("1_hx5p6")]
 layout_mode = 2
@@ -56,14 +81,48 @@ layout_mode = 2
 
 [node name="DefenseCard6" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1613372276 instance=ExtResource("1_hx5p6")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="MoneyLabel" type="Label" parent="Root" unique_id=1960485517]
 layout_mode = 0
-offset_left = 1013.0
+offset_left = 1065.0
 offset_top = 40.0
-offset_right = 1053.0
-offset_bottom = 63.0
+offset_right = 1105.0
+offset_bottom = 70.0
 text = "0€"
 
 [node name="ShopPanel" parent="Root" unique_id=1906245074 instance=ExtResource("4_76rks")]
+visible = false
 layout_mode = 1
+
+[node name="ShopButton" type="Button" parent="Root" unique_id=1149380294]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 0
+offset_left = 871.0
+offset_top = 20.0
+offset_right = 1031.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ugck8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uelu8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dtttb")
+text = "Defense 
+Boutique"
+
+[node name="TextureRect2" type="TextureRect" parent="Root/ShopButton" unique_id=1951612861]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 35.0
+offset_bottom = 35.0
+scale = Vector2(-1, -1)
+texture = ExtResource("8_c7wi6")
+
+[node name="TextureRect" type="TextureRect" parent="Root/ShopButton" unique_id=1931773233]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 63.0
+offset_right = 163.0
+offset_bottom = 83.0
+texture = ExtResource("8_c7wi6")

@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var grid: GridContainer = ($Root/MarginContainer/DefensePanelContainer/GridContainer)
 @onready var money_label: Label = $Root/MoneyLabel
 @onready var shop_panel: Control = $Root/ShopPanel
+@onready var shop_button: Button = $Root/ShopButton
 
 
 signal defense_drag_started(card: DefenseCard)
@@ -16,6 +17,8 @@ func _ready() -> void:
 			card.drag_started.connect(_on_card_drag_started)
 	
 	shop_panel.hide()
+	
+	shop_button.pressed.connect(_on_shop_button_pressed)
 
 
 func _on_card_drag_started(card: DefenseCard) -> void:
@@ -67,3 +70,7 @@ func add_test_card() -> void:
 
 func update_money(value: int) -> void:
 	money_label.text = str(value) + " €"
+
+
+func _on_shop_button_pressed() -> void:
+	shop_panel.visible = not shop_panel.visible
