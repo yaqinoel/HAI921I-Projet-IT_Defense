@@ -1,0 +1,163 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/message_popup.gd" id="1_script"]
+[ext_resource type="Theme" path="res://assets/ui/UI_Theme.tres" id="2_theme"]
+[ext_resource type="FontFile" path="res://assets/fonts/PixelifySans-Bold.ttf" id="3_font"]
+[ext_resource type="Texture2D" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookCover01a.png" id="4_cover"]
+[ext_resource type="Texture2D" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookPageLeft01a.png" id="5_page"]
+[ext_resource type="Texture2D" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_FrameSelect01a.png" id="6_button"]
+[ext_resource type="Texture2D" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_FrameSelect01b.png" id="7_button_selected"]
+
+[sub_resource type="StyleBoxTexture" id="Style_cover"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("4_cover")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="Style_page"]
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource("5_page")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="Style_button"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 20.0
+content_margin_bottom = 8.0
+texture = ExtResource("6_button")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="Style_button_hover"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 20.0
+content_margin_bottom = 8.0
+texture = ExtResource("7_button_selected")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(1.08, 1.08, 1.08, 1)
+
+[sub_resource type="StyleBoxTexture" id="Style_button_pressed"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 20.0
+content_margin_bottom = 8.0
+texture = ExtResource("7_button_selected")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.9, 0.9, 0.9, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.45, 0.24, 0.18, 1)
+
+[node name="MessagePopup" type="CanvasLayer"]
+process_mode = 3
+layer = 20
+script = ExtResource("1_script")
+
+[node name="Overlay" type="Control" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12, 0.07, 0.09, 0.65)
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="WindowPanel" type="PanelContainer" parent="Overlay/CenterContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_cover")
+
+[node name="Page" type="PanelContainer" parent="Overlay/CenterContainer/WindowPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_page")
+
+[node name="Content" type="VBoxContainer" parent="Overlay/CenterContainer/WindowPanel/Page"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Overlay/CenterContainer/WindowPanel/Page/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.29, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 28
+text = "Information"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MessageScroll" type="ScrollContainer" parent="Overlay/CenterContainer/WindowPanel/Page/Content"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MessageLabel" type="Label" parent="Overlay/CenterContainer/WindowPanel/Page/Content/MessageScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.29, 0.2, 0.2, 1)
+text = "Le message s'affiche ici."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ConfirmButton" type="Button" parent="Overlay/CenterContainer/WindowPanel/Page/Content"]
+custom_minimum_size = Vector2(144, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.29, 0.2, 0.2, 1)
+theme_override_colors/font_hover_color = Color(0.29, 0.2, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(0.29, 0.2, 0.2, 1)
+theme_override_colors/font_focus_color = Color(0.29, 0.2, 0.2, 1)
+theme_override_styles/normal = SubResource("Style_button")
+theme_override_styles/hover = SubResource("Style_button_hover")
+theme_override_styles/pressed = SubResource("Style_button_pressed")
+theme_override_styles/focus = SubResource("Style_focus")
+text = "OK"

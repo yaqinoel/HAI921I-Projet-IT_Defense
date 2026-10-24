@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b1tjj47dfi7te" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_FrameSelect01b.png" id="6_dtttb"]
 [ext_resource type="Texture2D" uid="uid://c1pskctx5cgrl" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_FrameSelect01a.png" id="7_c7wi6"]
 [ext_resource type="Texture2D" uid="uid://d0i5wof5axa34" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Point01a.png" id="8_c7wi6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/message_popup.tscn" id="10_message"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8t1nb"]
 texture = ExtResource("4_oeqqt")
@@ -126,3 +127,5 @@ offset_top = 63.0
 offset_right = 163.0
 offset_bottom = 83.0
 texture = ExtResource("8_c7wi6")
+
+[node name="MessagePopup" parent="." instance=ExtResource("10_message")]

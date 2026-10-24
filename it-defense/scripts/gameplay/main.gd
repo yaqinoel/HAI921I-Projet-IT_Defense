@@ -55,7 +55,7 @@ func change_level(scene: PackedScene) -> void:
 	defense_placement_manager.setup_container(slots, defenses)
 	
 	var stations := current_level.get_node("WorkStations") as Node2D
-	$GameSession.setup_workstations(stations)
+	game_session.setup_workstations(stations)
 
 
 func _on_purchase_requested(defense_data: DefenseData) -> void:
@@ -65,11 +65,17 @@ func _on_purchase_requested(defense_data: DefenseData) -> void:
 	var card := gameplay_ui.find_empty_card()
 
 	if card == null:
-		print("purchase failed: no place")
+		gameplay_ui.show_message(
+			"No place for new defense.",
+			"Purchase failed"
+		)
 		return
 
 	if not game_session.try_spend_money(defense_data.cost):
-		print("purchase failed: not enough money")
+		gameplay_ui.show_message(
+			"Not engouh money.\nPrice : %d €\nSolde : %d €" % [defense_data.cost, game_session.money],
+			"Purchase failed"
+		)
 		return
 
 	card.set_card(defense_data)

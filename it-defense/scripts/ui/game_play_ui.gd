@@ -6,6 +6,7 @@ class_name GamePlayUI extends CanvasLayer
 @onready var money_label: Label = $Root/MoneyLabel
 @onready var shop_panel: ShopPanel = $Root/ShopPanel
 @onready var shop_button: Button = $Root/ShopButton
+@onready var message_popup: MessagePopup = $MessagePopup
 
 
 signal defense_drag_started(card: DefenseCard)
@@ -36,6 +37,9 @@ func find_empty_card() -> DefenseCard:
 
 
 func _input(event: InputEvent) -> void:
+	if message_popup.is_open():
+		return
+
 	if not event is InputEventKey:
 		return
 
@@ -85,6 +89,10 @@ func add_defense_card(defense_data: DefenseData) -> void:
 
 func update_money(value: int) -> void:
 	money_label.text = str(value) + " €"
+
+
+func show_message(message: String, title: String = "Information") -> void:
+	message_popup.show_message(message, title)
 
 
 func _on_shop_button_pressed() -> void:

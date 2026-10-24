@@ -12,6 +12,7 @@ display_name = "DefenseExemple"
 icon = ExtResource("1_4devl")
 scene = ExtResource("2_fpn5h")
 projectile_scene = ExtResource("2_dciuj")
+cost = 10
 description = "This is a small description about defense exemple!
 Attack the dangers bt projecting small rocket.
 Very efficient to danger_exemple!
