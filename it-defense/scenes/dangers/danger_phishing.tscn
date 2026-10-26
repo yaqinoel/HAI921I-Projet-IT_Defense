@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8w01wgwol0wh"]
 
 [ext_resource type="Script" uid="uid://c0qxao7dpbthf" path="res://scripts/dangers/danger_exemple.gd" id="1_8wu10"]
-[ext_resource type="Resource" uid="uid://bi07p27o8h0si" path="res://data/dangers/danger_exemple.tres" id="2_k81v7"]
+[ext_resource type="Resource" uid="uid://eep66jq3nmq8" path="res://data/dangers/danger_phishing.tres" id="2_8wu10"]
 [ext_resource type="Texture2D" uid="uid://0e3fai6kjbsn" path="res://assets/sprites/effets/particles_sprite.png" id="3_rp2qg"]
 [ext_resource type="Texture2D" uid="uid://cd4mngrkfq0vo" path="res://assets/sprites/effets/orb_spritesheet.png" id="4_4tlux"]
 [ext_resource type="Texture2D" uid="uid://kbf2t2wae55b" path="res://assets/sprites/threats/envelope_sealed.png" id="5_k81v7"]
@@ -158,7 +158,7 @@ size = Vector2(30, 30)
 
 [node name="DangerExemple" type="Node2D" unique_id=259263018]
 script = ExtResource("1_8wu10")
-data = ExtResource("2_k81v7")
+data = ExtResource("2_8wu10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1359514599]
 position = Vector2(0, -7)

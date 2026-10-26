@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_rpwmw")
+type = &"DangerPhishing"
+display_name = "DangerPhishing"
 speed = 55.0
 max_health = 50.0
 attack_damage = 5.0
