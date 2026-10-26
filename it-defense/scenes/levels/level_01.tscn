@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://oyhdlec15hp" path="res://scenes/environment/ground.tscn" id="1_ground"]
 [ext_resource type="Script" uid="uid://bf6agh6vgawhg" path="res://scripts/gameplay/danger_spawner.gd" id="2_i2aat"]
+[ext_resource type="PackedScene" uid="uid://j5rpncy6pqah" path="res://scenes/dangers/danger_virus.tscn" id="4_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://cixg14hghplmw" path="res://scenes/dangers/danger_exemple.tscn" id="5_50wog"]
 [ext_resource type="PackedScene" uid="uid://uvt3rkv4rl7h" path="res://scenes/office/work_station.tscn" id="5_qdh5e"]
+[ext_resource type="PackedScene" uid="uid://b8w01wgwol0wh" path="res://scenes/dangers/danger_phishing.tscn" id="5_t0hvh"]
 [ext_resource type="Script" uid="uid://p72dmpsriq4q" path="res://scripts/gameplay/danger_detection_area.gd" id="6_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://dr6ily3qxficb" path="res://scenes/environment/defense_slot.tscn" id="6_50wog"]
 
@@ -23,7 +25,7 @@ position = Vector2(0, 50)
 
 [node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
 script = ExtResource("2_i2aat")
-dangers = Array[PackedScene]([ExtResource("5_50wog")])
+dangers = Array[PackedScene]([ExtResource("5_50wog"), ExtResource("4_1ey3t"), ExtResource("5_t0hvh")])
 
 [node name="Timer" type="Timer" parent="DangerSpawner" unique_id=472311108]
 

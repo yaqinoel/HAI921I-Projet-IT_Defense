@@ -18,6 +18,9 @@ var is_dying: bool = false
 var type: StringName
 
 func _ready() -> void:
+	if data == null:
+		push_error("Aucune ressource DangerData assignée !")
+		return
 	type = data.type
 	health = data.max_health
 	health_bar.max_value = data.max_health
@@ -50,6 +53,7 @@ func _takeDamage(damage) -> void:
 
 func die() -> void:
 	is_dying = true
+	health_bar.visible = false
 	animated_sprite.play("die")
 
 
