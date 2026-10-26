@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var normal_color: Color = animated_sprite.modulate
+@onready var health_bar: ProgressBar = $HealthBar
 
 var hit_tween: Tween
 
@@ -19,6 +20,9 @@ var type: StringName
 func _ready() -> void:
 	type = data.type
 	health = data.max_health
+	health_bar.max_value = data.max_health
+	health_bar.value = health
+	health_bar.visible = false
 	animated_sprite.play("walk")
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 
@@ -35,7 +39,9 @@ func _takeDamage(damage) -> void:
 		return
 		
 	health -= damage
-	
+	health_bar.visible = true
+	health_bar.value = health
+	_update_health_bar()
 	flash_red()
 	
 	if (health <= 0):
@@ -49,6 +55,7 @@ func die() -> void:
 
 func invade() -> void:
 	is_invading = true
+	health_bar.visible = false
 	animated_sprite.play("invading")
 
 
@@ -74,3 +81,15 @@ func _process(delta: float) -> void:
 	position.x -= delta * data.speed
 	if position.x < 0.0:
 		destory()
+		
+func _update_health_bar() -> void:
+	health_bar.value = health
+	
+	var ratio := health / data.max_health
+	
+	if ratio > 0.6:
+		health_bar.modulate = Color.GREEN
+	elif ratio > 0.3:
+		health_bar.modulate = Color.YELLOW
+	else:
+		health_bar.modulate = Color.RED

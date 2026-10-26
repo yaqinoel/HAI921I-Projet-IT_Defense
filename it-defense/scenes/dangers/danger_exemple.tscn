@@ -212,3 +212,11 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1321212337]
 shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=689784338]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -30.0
+rounded = true
+show_percentage = false
