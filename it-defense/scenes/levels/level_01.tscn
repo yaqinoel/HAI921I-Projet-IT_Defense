@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8w01wgwol0wh" path="res://scenes/dangers/danger_phishing.tscn" id="5_t0hvh"]
 [ext_resource type="Script" uid="uid://p72dmpsriq4q" path="res://scripts/gameplay/danger_detection_area.gd" id="6_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://dr6ily3qxficb" path="res://scenes/environment/defense_slot.tscn" id="6_50wog"]
+[ext_resource type="PackedScene" uid="uid://bxq3b0i2wq83g" path="res://scenes/dangers/danger_crashPC.tscn" id="6_kfebt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
 size = Vector2(780, 80)
@@ -25,7 +26,7 @@ position = Vector2(0, 50)
 
 [node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
 script = ExtResource("2_i2aat")
-dangers = Array[PackedScene]([ExtResource("5_50wog"), ExtResource("4_1ey3t"), ExtResource("5_t0hvh")])
+dangers = Array[PackedScene]([ExtResource("5_50wog"), ExtResource("4_1ey3t"), ExtResource("5_t0hvh"), ExtResource("6_kfebt")])
 
 [node name="Timer" type="Timer" parent="DangerSpawner" unique_id=472311108]
 
