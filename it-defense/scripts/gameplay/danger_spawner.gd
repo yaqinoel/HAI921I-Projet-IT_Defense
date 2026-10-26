@@ -11,7 +11,6 @@ func _ready() -> void:
 	timer.wait_time = interval
 	timer.timeout.connect(spawn_danger)
 	timer.start()
-	print("Spawn appelé ! Nombre de scènes : ", dangers.size())
 	
 func spawn_danger() -> void:
 	if dangers.is_empty() or spawn_points.get_child_count() == 0:

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://r1jdup673nsw"]
+
+[ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/dangers/danger_data.gd" id="1_qbssy"]
+
+[resource]
+script = ExtResource("1_qbssy")
+speed = 30.0
+metadata/_custom_type_script = "uid://cka7rctsu8kr6"
