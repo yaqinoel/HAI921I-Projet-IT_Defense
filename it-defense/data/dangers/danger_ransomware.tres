@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_qbssy")
+type = &"DangerRansomware"
+display_name = "DangerRansomware"
 speed = 30.0
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

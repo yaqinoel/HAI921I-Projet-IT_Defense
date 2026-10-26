@@ -23,9 +23,15 @@ func _on_area_entered(area: Area2D) -> void:
 	var danger := area.get_parent() as Danger
 	if danger == null:
 		return
-	
-	if target == danger or AttackRules.can_damage(defense_type, object_type):
-		danger._takeDamage(damage)
+
+	if target == danger and AttackRules.can_damage(defense_type, danger.type):
+		var multiplier := AttackRules.get_damage_multiplier(
+			defense_type,
+			danger.type
+		)
+
+		var final_damage := damage * multiplier
+		danger._takeDamage(final_damage)
 		destory()
 
 
