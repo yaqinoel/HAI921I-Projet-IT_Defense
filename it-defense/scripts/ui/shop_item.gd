@@ -3,7 +3,7 @@ class_name ShopItem extends Button
 @export var defense_data: DefenseData
 
 @onready var selection_frame: TextureRect = $SelectionFrame
-@onready var defense_icon: TextureRect = $Icon
+@onready var defense_icon: TextureRect = $CenterContainer/Icon
 
 
 func _ready() -> void:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://cad5ngkgu57xj"]
+
+[ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/dangers/danger_data.gd" id="1_jk1p3"]
+
+[resource]
+script = ExtResource("1_jk1p3")
+type = &"DangerDDOS"
+display_name = "DangerDDOS"
+speed = 25.0
+attack_damage = 20.0
+metadata/_custom_type_script = "uid://cka7rctsu8kr6"

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxq3b0i2wq83g" path="res://scenes/dangers/danger_crashPC.tscn" id="6_kfebt"]
 [ext_resource type="PackedScene" uid="uid://df2lh53u4psye" path="res://scenes/dangers/danger_corruption.tscn" id="7_r72dd"]
 [ext_resource type="PackedScene" uid="uid://b2wuiadjsto2s" path="res://scenes/dangers/danger_ransomware.tscn" id="8_ijn0p"]
+[ext_resource type="PackedScene" uid="uid://cxxh57s7q6f13" path="res://scenes/dangers/danger_DDOS.tscn" id="9_jmes4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
 size = Vector2(780, 80)
@@ -28,7 +29,7 @@ position = Vector2(0, 50)
 
 [node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
 script = ExtResource("2_i2aat")
-dangers = Array[PackedScene]([ExtResource("5_50wog"), ExtResource("4_1ey3t"), ExtResource("5_t0hvh"), ExtResource("6_kfebt"), ExtResource("7_r72dd"), ExtResource("8_ijn0p")])
+dangers = Array[PackedScene]([ExtResource("5_50wog"), ExtResource("4_1ey3t"), ExtResource("5_t0hvh"), ExtResource("6_kfebt"), ExtResource("7_r72dd"), ExtResource("8_ijn0p"), ExtResource("9_jmes4")])
 
 [node name="Timer" type="Timer" parent="DangerSpawner" unique_id=472311108]
 

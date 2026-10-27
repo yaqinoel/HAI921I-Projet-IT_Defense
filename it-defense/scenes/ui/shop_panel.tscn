@@ -9,9 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://du8se5qd0o6bu" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconCross01a.png" id="7_4i0u3"]
 [ext_resource type="Script" uid="uid://bmldnr4aq87bq" path="res://scripts/ui/shop_panel.gd" id="7_qjhny"]
 [ext_resource type="Texture2D" uid="uid://uk7n4vpscrex" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Toggle03a.png" id="7_udh10"]
+[ext_resource type="Resource" uid="uid://bm4miud0hmpkq" path="res://data/defenses/defense_antivirus.tres" id="7_vxuka"]
 [ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="8_g0um3"]
+[ext_resource type="Resource" uid="uid://drnb1q1jln6ej" path="res://data/defenses/defense_datashield.tres" id="8_v3v3p"]
 [ext_resource type="Texture2D" uid="uid://cf1slrn1op06q" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01a.png" id="9_8bgle"]
+[ext_resource type="Resource" uid="uid://dtm8a42aqvsq7" path="res://data/defenses/defense_mailfilter.tres" id="9_c2dr8"]
+[ext_resource type="Resource" uid="uid://5f0yhd61q5u1" path="res://data/defenses/defense_antiddos.tres" id="10_c2dr8"]
 [ext_resource type="Texture2D" uid="uid://ds4afmf08qi8u" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01b.png" id="10_vxuka"]
+[ext_resource type="Resource" uid="uid://cox3xqlyja2fm" path="res://data/defenses/defense_systemMaintenance.tres" id="11_cjw16"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugck8"]
 texture = ExtResource("1_3b8rw")
@@ -134,18 +139,23 @@ layout_mode = 2
 
 [node name="ShopItem2" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=971292989 instance=ExtResource("5_qeixu")]
 layout_mode = 2
+defense_data = ExtResource("7_vxuka")
 
 [node name="ShopItem3" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1452129947 instance=ExtResource("5_qeixu")]
 layout_mode = 2
+defense_data = ExtResource("8_v3v3p")
 
 [node name="ShopItem4" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1353458428 instance=ExtResource("5_qeixu")]
 layout_mode = 2
+defense_data = ExtResource("9_c2dr8")
 
 [node name="ShopItem5" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=2144798718 instance=ExtResource("5_qeixu")]
 layout_mode = 2
+defense_data = ExtResource("10_c2dr8")
 
 [node name="ShopItem6" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1172462852 instance=ExtResource("5_qeixu")]
 layout_mode = 2
+defense_data = ExtResource("11_cjw16")
 
 [node name="ShopItem7" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding/ProductGrid" unique_id=1572123348 instance=ExtResource("5_qeixu")]
 layout_mode = 2

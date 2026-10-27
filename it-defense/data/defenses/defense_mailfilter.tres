@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://dtm8a42aqvsq7"]
+
+[ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_1522q"]
+[ext_resource type="Texture2D" uid="uid://bls8x1eeun4i1" path="res://assets/sprites/defenses/mail_filter64x64.png" id="1_b74pa"]
+[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_lc1jk"]
+[ext_resource type="PackedScene" uid="uid://bj0r7cd8dubx" path="res://scenes/defenses/defense_mailfilter.tscn" id="3_xebrr"]
+
+[resource]
+script = ExtResource("1_1522q")
+type = &"DefenseMailfilter"
+display_name = "DefenseMailfilter"
+icon = ExtResource("1_b74pa")
+scene = ExtResource("3_xebrr")
+projectile_scene = ExtResource("2_lc1jk")
+cost = 30
+metadata/_custom_type_script = "uid://b6117p70l0j5n"

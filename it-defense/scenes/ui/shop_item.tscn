@@ -30,10 +30,17 @@ toggle_mode = true
 script = ExtResource("3_aty2n")
 defense_data = ExtResource("5_b8nro")
 
-[node name="Icon" type="TextureRect" parent="." unique_id=1543821225]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=655099670]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="CenterContainer" unique_id=1543821225]
+layout_mode = 2
+stretch_mode = 5
 
 [node name="SelectionFrame" type="TextureRect" parent="." unique_id=277012687]
 visible = false

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://cox3xqlyja2fm"]
+
+[ext_resource type="Texture2D" uid="uid://dr554p7f1o680" path="res://assets/sprites/defenses/systemMaintenance64x64.png" id="1_m8mxe"]
+[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_bl63r"]
+[ext_resource type="PackedScene" uid="uid://dmt7oo73q3vfj" path="res://scenes/defenses/defense_systemMaintenance.tscn" id="3_bl63r"]
+[ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="4_eb5jk"]
+
+[resource]
+script = ExtResource("4_eb5jk")
+type = &"DefenseSystemMaintenance"
+display_name = "DefenseSystemMaintenance"
+icon = ExtResource("1_m8mxe")
+scene = ExtResource("3_bl63r")
+projectile_scene = ExtResource("2_bl63r")
+cost = 30
+metadata/_custom_type_script = "uid://b6117p70l0j5n"
