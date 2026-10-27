@@ -164,7 +164,7 @@ data = ExtResource("2_8wu10")
 position = Vector2(0, -7)
 scale = Vector2(-1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_p0730")
-animation = &"walk"
+animation = &"die"
 
 [node name="HitBox" type="Area2D" parent="." unique_id=456181282]
 collision_layer = 2

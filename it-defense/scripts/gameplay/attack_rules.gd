@@ -10,6 +10,7 @@ const TABLE: Dictionary = {
 		&"DangerRansomware" : 1.,
 		&"DangerVirus" : 1.,
 		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
 		
 	},
 	&"DefenseAntivirus": {
@@ -20,6 +21,7 @@ const TABLE: Dictionary = {
 		&"DangerRansomware" : 1.,
 		&"DangerVirus" : 2.5,
 		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
 	},
 	&"DefenseMailfilter": {
 		&"DangerExample" : 1.,
@@ -29,6 +31,7 @@ const TABLE: Dictionary = {
 		&"DangerRansomware" : 1.5,
 		&"DangerVirus" : 1.,
 		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
 	},
 	&"DefenseDatashield": {
 		&"DangerExample" : 1.,
@@ -38,6 +41,7 @@ const TABLE: Dictionary = {
 		&"DangerRansomware" : 2,
 		&"DangerVirus" : 1.,
 		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
 	},
 	&"DefenseAntiddos": {
 		&"DangerExample" : 1.,
@@ -56,6 +60,37 @@ const TABLE: Dictionary = {
 		&"DangerRansomware" : 1.,
 		&"DangerVirus" : 1.,
 		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
+	},
+	&"DefenseSave": {
+		&"DangerExample" : 1.,
+		&"DangerCorruption" : 1.,
+		&"DangerCrashPC" : 2.,
+		&"DangerPhishing" : 1.,
+		&"DangerRansomware" : 1.,
+		&"DangerVirus" : 1.,
+		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
+	},
+	&"DefenseDNS": {
+		&"DangerExample" : 1.,
+		&"DangerCorruption" : 1.,
+		&"DangerCrashPC" : 2.,
+		&"DangerPhishing" : 1.,
+		&"DangerRansomware" : 1.,
+		&"DangerVirus" : 1.,
+		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
+	},
+	&"DefenseFirewall": {
+		&"DangerExample" : 1.,
+		&"DangerCorruption" : 1.,
+		&"DangerCrashPC" : 2.,
+		&"DangerPhishing" : 1.,
+		&"DangerRansomware" : 1.,
+		&"DangerVirus" : 1.,
+		&"DangerDDOS" : 1.,
+		&"DangerHumanError" : 1.,
 	},
 }
 
