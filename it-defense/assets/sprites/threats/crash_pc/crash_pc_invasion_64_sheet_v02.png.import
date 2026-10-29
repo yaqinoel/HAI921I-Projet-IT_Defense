@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciqo4hktsvkkd"
-path="res://.godot/imported/concept_64_v01.png-4b324db72f547f81755ed8d6649c4ddc.ctex"
+uid="uid://bxcas8s1wly40"
+path="res://.godot/imported/crash_pc_invasion_64_sheet_v02.png-081543e90560d29c093cdb59db0275ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/threats/corruption/concept_64_v01.png"
-dest_files=["res://.godot/imported/concept_64_v01.png-4b324db72f547f81755ed8d6649c4ddc.ctex"]
+source_file="res://assets/sprites/threats/crash_pc/crash_pc_invasion_64_sheet_v02.png"
+dest_files=["res://.godot/imported/crash_pc_invasion_64_sheet_v02.png-081543e90560d29c093cdb59db0275ce.ctex"]
 
 [params]
 

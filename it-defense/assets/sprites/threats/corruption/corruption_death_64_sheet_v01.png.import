@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dubkxt6bbck84"
-path="res://.godot/imported/concept_64_v02.png-901a58fb970a80bc5e1241ad297f28f0.ctex"
+uid="uid://bxxhaxtsou28o"
+path="res://.godot/imported/corruption_death_64_sheet_v01.png-c04240c07b2fb8a9e57b4777d3265839.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/threats/human_error/concept_64_v02.png"
-dest_files=["res://.godot/imported/concept_64_v02.png-901a58fb970a80bc5e1241ad297f28f0.ctex"]
+source_file="res://assets/sprites/threats/corruption/corruption_death_64_sheet_v01.png"
+dest_files=["res://.godot/imported/corruption_death_64_sheet_v01.png-c04240c07b2fb8a9e57b4777d3265839.ctex"]
 
 [params]
 

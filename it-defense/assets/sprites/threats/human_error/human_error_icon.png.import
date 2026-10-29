@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3ciawx14v6og"
-path="res://.godot/imported/concept_64_v01.png-fc6c32f48cf65e443f3cba182aea3754.ctex"
+uid="uid://cbuflo404wkx5"
+path="res://.godot/imported/human_error_icon.png-fec1a136f0876abd8724312d9cd7101d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/threats/ransomware/concept_64_v01.png"
-dest_files=["res://.godot/imported/concept_64_v01.png-fc6c32f48cf65e443f3cba182aea3754.ctex"]
+source_file="res://assets/sprites/threats/human_error/human_error_icon.png"
+dest_files=["res://.godot/imported/human_error_icon.png-fec1a136f0876abd8724312d9cd7101d.ctex"]
 
 [params]
 

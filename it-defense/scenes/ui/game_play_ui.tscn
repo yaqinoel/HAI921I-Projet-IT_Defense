@@ -63,7 +63,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_8t1nb")
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
-columns = 6
+columns = 8
 
 [node name="DefenseCard" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1324209655 instance=ExtResource("1_hx5p6")]
 layout_mode = 2
@@ -81,6 +81,16 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="DefenseCard6" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1613372276 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DefenseCard7" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=2046636742 instance=ExtResource("1_hx5p6")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DefenseCard8" parent="Root/MarginContainer/DefensePanelContainer/GridContainer" unique_id=1320114744 instance=ExtResource("1_hx5p6")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -128,4 +138,4 @@ offset_right = 163.0
 offset_bottom = 83.0
 texture = ExtResource("8_c7wi6")
 
-[node name="MessagePopup" parent="." instance=ExtResource("10_message")]
+[node name="MessagePopup" parent="." unique_id=316572318 instance=ExtResource("10_message")]

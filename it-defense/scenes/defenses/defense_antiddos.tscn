@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bndow6v1bopfm"]
 
 [ext_resource type="Script" uid="uid://cmw3us28iq2cv" path="res://scripts/defenses/defense_exemple.gd" id="1_8k6nx"]
-[ext_resource type="PackedScene" uid="uid://dnfuykjnjm3if" path="res://scenes/defenses/projectiles/projectile_anti_ddos.tscn" id="2_at32n"]
 [ext_resource type="Texture2D" uid="uid://07qla1owrl1x" path="res://assets/sprites/defenses/anti_ddos/anti_ddos_attack_64_sheet_v02.png" id="3_at32n"]
 [ext_resource type="Texture2D" uid="uid://c13yuvwljbqsr" path="res://assets/sprites/defenses/anti_ddos/anti_ddos_idle_64_sheet_v01.png" id="4_gxojs"]
 
@@ -54,7 +53,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -76,14 +75,15 @@ animations = [{
 
 [node name="Defense01" type="Node2D" unique_id=194257191]
 script = ExtResource("1_8k6nx")
-projectile = ExtResource("2_at32n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216515902]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_ugck8")
 animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=195343470]
-position = Vector2(27, -52)
+position = Vector2(35, -22)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=32480669]
