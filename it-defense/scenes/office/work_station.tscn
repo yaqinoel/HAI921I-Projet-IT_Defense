@@ -90,3 +90,5 @@ position = Vector2(0, -10)
 texture = ExtResource("6_tl530")
 
 [node name="IncomeTimer" type="Timer" parent="." unique_id=2069438257]
+
+[node name="RecoveryTimer" type="Timer" parent="." unique_id=374919177]

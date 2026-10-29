@@ -1,6 +1,6 @@
 class_name Projectile extends Area2D
 
-@export var speed: float = 50
+@export var speed: float = 125
 @export var damage: float = 30
 
 var defense_type: StringName
