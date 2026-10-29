@@ -116,3 +116,13 @@ static func can_damage(
 	danger_type: StringName
 ) -> bool:
 	return get_damage_multiplier(defense_type, danger_type) > 0.0
+	
+static func get_effective_damage(
+	defense_type: StringName,
+	danger_type: StringName,
+	base_damage: float
+) -> float:
+	return base_damage * get_damage_multiplier(
+		defense_type,
+		danger_type
+	)
