@@ -7,5 +7,5 @@ script = ExtResource("1_bqf1v")
 type = &"DangerVirus"
 display_name = "DangerVirus"
 speed = 25.0
-attack_damage = 20.0
+attack_damage = 5.0
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"
