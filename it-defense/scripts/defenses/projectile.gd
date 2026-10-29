@@ -1,5 +1,7 @@
 class_name Projectile extends Area2D
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 @export var speed: float = 50
 @export var damage: float = 30
 
@@ -10,6 +12,7 @@ var old_direction: Vector2 = Vector2.RIGHT
 
 
 func _ready() -> void:
+	animated_sprite.play("fly")
 	area_entered.connect(_on_area_entered)
 
 

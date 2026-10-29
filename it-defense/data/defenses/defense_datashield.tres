@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_1hnby"]
 [ext_resource type="Texture2D" uid="uid://cy3yrwor4m38u" path="res://assets/sprites/defenses/data_shield/concept_64_v01.png" id="1_04do8"]
-[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_m2hmo"]
+[ext_resource type="PackedScene" uid="uid://bxtune7obbd2f" path="res://scenes/defenses/projectiles/projectile_data_shield.tscn" id="2_04do8"]
 [ext_resource type="PackedScene" uid="uid://dslc2gyn0vck0" path="res://scenes/defenses/defense_datashield.tscn" id="3_pofed"]
 
 [resource]
@@ -11,6 +11,6 @@ type = &"DefenseDatashield"
 display_name = "DefenseDatashield"
 icon = ExtResource("1_04do8")
 scene = ExtResource("3_pofed")
-projectile_scene = ExtResource("2_m2hmo")
+projectile_scene = ExtResource("2_04do8")
 cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://crsxtlfbmaiq2"]
+
+[ext_resource type="Script" uid="uid://dfin4xou8bsiw" path="res://scripts/defenses/projectile.gd" id="1_huwig"]
+[ext_resource type="Texture2D" uid="uid://crik7f1wdxcwl" path="res://assets/sprites/defenses/projectiles/firewall/firewall_fly_sheet_v01.png" id="2_7jlcc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(17, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s34c3"]
+atlas = ExtResource("2_7jlcc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io8w6"]
+atlas = ExtResource("2_7jlcc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auotw"]
+atlas = ExtResource("2_7jlcc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1mnt"]
+atlas = ExtResource("2_7jlcc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugck8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s34c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io8w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auotw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1mnt")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="ProjectileFirewall" type="Area2D" unique_id=406636964]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_huwig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=630841898]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=787841742]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_ugck8")
+animation = &"fly"

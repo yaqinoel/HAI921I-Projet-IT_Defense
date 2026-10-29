@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dbsxg6fa7m64o"]
+
+[ext_resource type="Script" uid="uid://dfin4xou8bsiw" path="res://scripts/defenses/projectile.gd" id="1_em7tc"]
+[ext_resource type="Texture2D" uid="uid://bm4vf3tbbbki8" path="res://assets/sprites/defenses/projectiles/antivirus/antivirus_fly_sheet_v01.png" id="2_em7tc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(17, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alocw"]
+atlas = ExtResource("2_em7tc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_665j3"]
+atlas = ExtResource("2_em7tc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw2vw"]
+atlas = ExtResource("2_em7tc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwfub"]
+atlas = ExtResource("2_em7tc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugck8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alocw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_665j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw2vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwfub")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="ProjectileAntiVirus" type="Area2D" unique_id=406636964]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_em7tc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=630841898]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=787841742]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_ugck8")
+animation = &"fly"

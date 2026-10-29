@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://p0s17q1jriev"]
 
 [ext_resource type="Texture2D" uid="uid://de2tpdad6ulut" path="res://assets/sprites/defenses/dns/concept_64_v01.png" id="1_xuuwg"]
-[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_etq4v"]
+[ext_resource type="PackedScene" uid="uid://bbvej2vlf8i5d" path="res://scenes/defenses/projectiles/projectile_dns.tscn" id="2_xuuwg"]
 [ext_resource type="PackedScene" uid="uid://o5y7fk724cvt" path="res://scenes/defenses/defense_DNS.tscn" id="3_etq4v"]
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="4_or2mg"]
 
@@ -11,6 +11,6 @@ type = &"DefenseDNS"
 display_name = "DefenseDNS"
 icon = ExtResource("1_xuuwg")
 scene = ExtResource("3_etq4v")
-projectile_scene = ExtResource("2_etq4v")
+projectile_scene = ExtResource("2_xuuwg")
 cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

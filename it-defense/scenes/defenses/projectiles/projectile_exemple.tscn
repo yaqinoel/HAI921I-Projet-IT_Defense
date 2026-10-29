@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://diwtdl4wmk8hr"]
+[gd_scene format=3 uid="uid://dbqyvb68fqpuc"]
 
 [ext_resource type="Script" uid="uid://dfin4xou8bsiw" path="res://scripts/defenses/projectile.gd" id="1_7gjsy"]
 [ext_resource type="Texture2D" uid="uid://cxh6ud0a6umrb" path="res://assets/sprites/defenses/projectiles/blowdart_spritesheet.png" id="2_2tn4n"]

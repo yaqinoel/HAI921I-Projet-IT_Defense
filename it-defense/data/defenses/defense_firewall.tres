@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://bx65rgalvwqp"]
 
 [ext_resource type="Texture2D" uid="uid://bshlv4sn2j0rr" path="res://assets/sprites/defenses/firewall/concept_64_v01.png" id="1_kqtff"]
-[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_usg6d"]
+[ext_resource type="PackedScene" uid="uid://dfmljjohqryok" path="res://scenes/defenses/projectiles/projectile_firewall.tscn" id="2_kqtff"]
 [ext_resource type="PackedScene" uid="uid://dt57ve4fqboh5" path="res://scenes/defenses/defense_firewall.tscn" id="3_usg6d"]
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="4_8penf"]
 
@@ -11,6 +11,6 @@ type = &"DefenseFirewall"
 display_name = "DefenseFirewall"
 icon = ExtResource("1_kqtff")
 scene = ExtResource("3_usg6d")
-projectile_scene = ExtResource("2_usg6d")
+projectile_scene = ExtResource("2_kqtff")
 cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

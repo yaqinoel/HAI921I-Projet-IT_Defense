@@ -1,7 +1,5 @@
 class_name Defense extends Node2D
 
-@export var projectile: PackedScene = null
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var attack_timer: Timer = $AttackTimer
@@ -35,10 +33,11 @@ func _on_animation_finished() -> void:
 
 
 func lunch_projectile_to_target(target: Danger) -> void:
-	if projectile == null:
+	if data == null or data.projectile_scene == null:
+		push_warning("DefenseData or Projectile Scene not configured")
 		return
 		
-	var new_projecticle = projectile.instantiate() as Node2D
+	var new_projecticle = data.projectile_scene.instantiate() as Node2D
 	projectile_container.add_child(new_projecticle)
 	
 	new_projecticle.global_position = muzzle.global_position

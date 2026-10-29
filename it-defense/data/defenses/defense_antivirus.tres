@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_2e8gl"]
 [ext_resource type="Texture2D" uid="uid://daljjjepe87jw" path="res://assets/sprites/defenses/anti_virus/concept_64_v01.png" id="1_2rebo"]
-[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_r0372"]
+[ext_resource type="PackedScene" uid="uid://dbsxg6fa7m64o" path="res://scenes/defenses/projectiles/projectile_anti_virus.tscn" id="2_2rebo"]
 [ext_resource type="PackedScene" uid="uid://cs1pnobi8udnh" path="res://scenes/defenses/defense_antivirus.tscn" id="3_v1iao"]
 
 [resource]
@@ -11,6 +11,6 @@ type = &"DefenseAntivirus"
 display_name = "DefenseAntivirus"
 icon = ExtResource("1_2rebo")
 scene = ExtResource("3_v1iao")
-projectile_scene = ExtResource("2_r0372")
+projectile_scene = ExtResource("2_2rebo")
 cost = 20
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

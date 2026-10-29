@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxpcngspywiq6" path="res://assets/sprites/defenses/anti_ddos/concept_64_v01.png" id="1_auopa"]
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_eanxn"]
-[ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_73dyg"]
+[ext_resource type="PackedScene" uid="uid://dnfuykjnjm3if" path="res://scenes/defenses/projectiles/projectile_anti_ddos.tscn" id="2_auopa"]
 [ext_resource type="PackedScene" uid="uid://bndow6v1bopfm" path="res://scenes/defenses/defense_antiddos.tscn" id="3_r4sp5"]
 
 [resource]
@@ -11,6 +11,6 @@ type = &"DefenseAntiddos"
 display_name = "DefenseAntiddos"
 icon = ExtResource("1_auopa")
 scene = ExtResource("3_r4sp5")
-projectile_scene = ExtResource("2_73dyg")
+projectile_scene = ExtResource("2_auopa")
 cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"
