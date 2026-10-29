@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://bm4miud0hmpkq"]
 
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_2e8gl"]
-[ext_resource type="Texture2D" uid="uid://chddfse4fea1r" path="res://assets/sprites/defenses/antivirusv2.png" id="1_2rebo"]
+[ext_resource type="Texture2D" uid="uid://daljjjepe87jw" path="res://assets/sprites/defenses/anti_virus/concept_64_v01.png" id="1_2rebo"]
 [ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_r0372"]
 [ext_resource type="PackedScene" uid="uid://cs1pnobi8udnh" path="res://scenes/defenses/defense_antivirus.tscn" id="3_v1iao"]
 

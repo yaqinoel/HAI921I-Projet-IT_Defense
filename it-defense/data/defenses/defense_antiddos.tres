@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DefenseData" format=3 uid="uid://5f0yhd61q5u1"]
 
-[ext_resource type="Texture2D" uid="uid://bjp08uskapg55" path="res://assets/sprites/defenses/antiddos64x64.png" id="1_auopa"]
+[ext_resource type="Texture2D" uid="uid://bxpcngspywiq6" path="res://assets/sprites/defenses/anti_ddos/concept_64_v01.png" id="1_auopa"]
 [ext_resource type="Script" uid="uid://b6117p70l0j5n" path="res://scripts/defenses/defense_data.gd" id="1_eanxn"]
 [ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_73dyg"]
 [ext_resource type="PackedScene" uid="uid://bndow6v1bopfm" path="res://scenes/defenses/defense_antiddos.tscn" id="3_r4sp5"]

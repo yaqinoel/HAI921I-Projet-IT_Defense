@@ -2,13 +2,55 @@
 
 [ext_resource type="Script" uid="uid://cmw3us28iq2cv" path="res://scripts/defenses/defense_exemple.gd" id="1_8k6nx"]
 [ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_at32n"]
-[ext_resource type="Texture2D" uid="uid://bjp08uskapg55" path="res://assets/sprites/defenses/antiddos64x64.png" id="3_8k6nx"]
+[ext_resource type="Texture2D" uid="uid://07qla1owrl1x" path="res://assets/sprites/defenses/anti_ddos/anti_ddos_attack_64_sheet_v02.png" id="3_at32n"]
+[ext_resource type="Texture2D" uid="uid://c13yuvwljbqsr" path="res://assets/sprites/defenses/anti_ddos/anti_ddos_idle_64_sheet_v01.png" id="4_gxojs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p4ib"]
+atlas = ExtResource("3_at32n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itgop"]
+atlas = ExtResource("3_at32n")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6fqj"]
+atlas = ExtResource("3_at32n")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kj4v"]
+atlas = ExtResource("3_at32n")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an8ue"]
+atlas = ExtResource("4_gxojs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2krg"]
+atlas = ExtResource("4_gxojs")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q8xw"]
+atlas = ExtResource("4_gxojs")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1021"]
+atlas = ExtResource("4_gxojs")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ugck8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_8k6nx")
+"texture": SubResource("AtlasTexture_7p4ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itgop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6fqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kj4v")
 }],
 "loop": 0,
 "name": &"attack",
@@ -16,7 +58,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_8k6nx")
+"texture": SubResource("AtlasTexture_an8ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2krg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q8xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1021")
 }],
 "loop": 1,
 "name": &"idle",

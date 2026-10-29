@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://eep66jq3nmq8" path="res://data/dangers/danger_phishing.tres" id="2_8wu10"]
 [ext_resource type="Texture2D" uid="uid://0e3fai6kjbsn" path="res://assets/sprites/effets/particles_sprite.png" id="3_rp2qg"]
 [ext_resource type="Texture2D" uid="uid://cd4mngrkfq0vo" path="res://assets/sprites/effets/orb_spritesheet.png" id="4_4tlux"]
-[ext_resource type="Texture2D" uid="uid://kbf2t2wae55b" path="res://assets/sprites/threats/envelope_sealed.png" id="5_k81v7"]
+[ext_resource type="Texture2D" uid="uid://cvyjjv0ckkqhp" path="res://assets/sprites/threats/phishing/phishing_walk_sheet_v05.png" id="5_8wu10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqqma"]
 atlas = ExtResource("3_rp2qg")
@@ -78,6 +78,22 @@ region = Rect2(128, 0, 16, 16)
 atlas = ExtResource("4_4tlux")
 region = Rect2(144, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k81v7"]
+atlas = ExtResource("5_8wu10")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp2qg"]
+atlas = ExtResource("5_8wu10")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tlux"]
+atlas = ExtResource("5_8wu10")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2ym8"]
+atlas = ExtResource("5_8wu10")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_p0730"]
 animations = [{
 "frames": [{
@@ -146,7 +162,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_k81v7")
+"texture": SubResource("AtlasTexture_k81v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp2qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tlux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2ym8")
 }],
 "loop": 1,
 "name": &"walk",
@@ -154,7 +179,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
-size = Vector2(30, 30)
+size = Vector2(39, 32)
 
 [node name="DangerExemple" type="Node2D" unique_id=259263018]
 script = ExtResource("1_8wu10")
@@ -162,9 +187,10 @@ data = ExtResource("2_8wu10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1359514599]
 position = Vector2(0, -7)
-scale = Vector2(-1.5, 1.5)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_p0730")
-animation = &"die"
+animation = &"walk"
+frame_progress = 0.6230392
 
 [node name="HitBox" type="Area2D" parent="." unique_id=456181282]
 collision_layer = 2
@@ -172,6 +198,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1321212337]
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_ugck8")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=689784338]

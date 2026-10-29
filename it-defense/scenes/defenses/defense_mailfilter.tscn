@@ -2,13 +2,55 @@
 
 [ext_resource type="Script" uid="uid://cmw3us28iq2cv" path="res://scripts/defenses/defense_exemple.gd" id="1_op27k"]
 [ext_resource type="PackedScene" uid="uid://diwtdl4wmk8hr" path="res://scenes/defenses/projectiles/projectile_exemple.tscn" id="2_ox5ar"]
-[ext_resource type="Texture2D" uid="uid://bls8x1eeun4i1" path="res://assets/sprites/defenses/mail_filter64x64.png" id="3_op27k"]
+[ext_resource type="Texture2D" uid="uid://do0pcjctlk6ne" path="res://assets/sprites/defenses/mail_filter/mail_filter_attack_64_sheet_v02.png" id="3_ox5ar"]
+[ext_resource type="Texture2D" uid="uid://fwv7kbdcwkj1" path="res://assets/sprites/defenses/mail_filter/mail_filter_idle_64_sheet_v01.png" id="4_08j11"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44kwc"]
+atlas = ExtResource("3_ox5ar")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0t22"]
+atlas = ExtResource("3_ox5ar")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x0dg"]
+atlas = ExtResource("3_ox5ar")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hetfo"]
+atlas = ExtResource("3_ox5ar")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g41y"]
+atlas = ExtResource("4_08j11")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ud6h"]
+atlas = ExtResource("4_08j11")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5im3"]
+atlas = ExtResource("4_08j11")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0opx3"]
+atlas = ExtResource("4_08j11")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ugck8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_op27k")
+"texture": SubResource("AtlasTexture_44kwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0t22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x0dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hetfo")
 }],
 "loop": 0,
 "name": &"attack",
@@ -16,7 +58,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_op27k")
+"texture": SubResource("AtlasTexture_5g41y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ud6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5im3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0opx3")
 }],
 "loop": 1,
 "name": &"idle",
@@ -30,7 +81,7 @@ projectile = ExtResource("2_ox5ar")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216515902]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_ugck8")
-animation = &"attack"
+animation = &"idle"
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=195343470]
 position = Vector2(27, -52)
