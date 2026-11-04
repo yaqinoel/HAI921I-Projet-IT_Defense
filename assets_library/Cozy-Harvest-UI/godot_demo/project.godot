@@ -1,0 +1,21 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="Cozy Harvest - UI Kit Demo"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.7")
+
+[display]
+window/size/viewport_width=384
+window/size/viewport_height=216
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[gui]
+theme/custom="res://ui_kit/theme.tres"
+
+[rendering]
+textures/canvas_textures/default_texture_filter=0

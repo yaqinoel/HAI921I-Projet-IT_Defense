@@ -1,0 +1,167 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://main.gd" id="1_main_gd"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_difficulty_1"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main_gd")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.6627, 0.5882, 0.3922, 1)
+
+[node name="Menu" type="PanelContainer" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 140.0
+offset_bottom = 204.0
+
+[node name="VBox" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="Menu/VBox"]
+layout_mode = 2
+text = "MENU"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="Menu/VBox"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Play"
+tooltip_text = "Start a new game"
+
+[node name="Options" type="Button" parent="Menu/VBox"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Options"
+tooltip_text = "Change settings"
+
+[node name="Load" type="Button" parent="Menu/VBox"]
+layout_mode = 2
+disabled = true
+text = "Load"
+
+[node name="Separator" type="HSeparator" parent="Menu/VBox"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Menu/VBox"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Quit"
+
+[node name="Tabs" type="TabContainer" parent="."]
+offset_left = 152.0
+offset_top = 12.0
+offset_right = 372.0
+offset_bottom = 150.0
+current_tab = 0
+
+[node name="Options" type="VBoxContainer" parent="Tabs"]
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 0
+
+[node name="MusicRow" type="HBoxContainer" parent="Tabs/Options"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MusicLabel" type="Label" parent="Tabs/Options/MusicRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(36, 0)
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Tabs/Options/MusicRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 60.0
+
+[node name="Fullscreen" type="CheckBox" parent="Tabs/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "Fullscreen"
+
+[node name="VSync" type="CheckButton" parent="Tabs/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "VSync"
+
+[node name="Difficulty" type="HBoxContainer" parent="Tabs/Options"]
+layout_mode = 2
+
+[node name="Easy" type="CheckBox" parent="Tabs/Options/Difficulty"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_group = SubResource("ButtonGroup_difficulty_1")
+text = "Easy"
+
+[node name="Hard" type="CheckBox" parent="Tabs/Options/Difficulty"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_difficulty_1")
+text = "Hard"
+
+[node name="Hero" type="VBoxContainer" parent="Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 1
+
+[node name="HPRow" type="HBoxContainer" parent="Tabs/Hero"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HPLabel" type="Label" parent="Tabs/Hero/HPRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(36, 0)
+text = "HP"
+
+[node name="HP" type="ProgressBar" parent="Tabs/Hero/HPRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 70.0
+show_percentage = false
+
+[node name="NameRow" type="HBoxContainer" parent="Tabs/Hero"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NameLabel" type="Label" parent="Tabs/Hero/NameRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(36, 0)
+text = "Name"
+
+[node name="Name" type="LineEdit" parent="Tabs/Hero/NameRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Hero name"
+
+[node name="Log" type="PanelContainer" parent="."]
+offset_left = 152.0
+offset_top = 156.0
+offset_right = 372.0
+offset_bottom = 204.0
+
+[node name="Scroll" type="ScrollContainer" parent="Log"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Text" type="Label" parent="Log/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Day 1: Arrived in town.\nDay 2: Met the elder.\nDay 3: Found a rusty key.\nDay 4: The bridge is out.\nDay 5: Fixed the bridge.\nDay 6: Storm coming.\nDay 7: Into the caves."

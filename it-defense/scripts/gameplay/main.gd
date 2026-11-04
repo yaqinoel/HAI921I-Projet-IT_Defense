@@ -65,15 +65,15 @@ func _on_purchase_requested(defense_data: DefenseData) -> void:
 	var card := gameplay_ui.find_avaliable_card(defense_data)
 
 	if card == null:
-		gameplay_ui.show_message(
+		gameplay_ui.show_toast(
 			"No place for new defense.",
 			"Purchase failed"
 		)
 		return
 
 	if not game_session.try_spend_money(defense_data.cost):
-		gameplay_ui.show_message(
-			"Not engouh money.\nPrice : %d €\nSolde : %d €" % [defense_data.cost, game_session.money],
+		gameplay_ui.show_toast(
+			"Not enough money.\nPrice: %d €\nBalance: %d €" % [defense_data.cost, game_session.money],
 			"Purchase failed"
 		)
 		return

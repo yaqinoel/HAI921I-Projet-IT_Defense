@@ -1,0 +1,842 @@
+{
+ "image": "oakhold_atlas_1x.png",
+ "scale": 1,
+ "frames": {
+  "badge": {
+   "x": 74,
+   "y": 194,
+   "w": 9,
+   "h": 9,
+   "nine_slice": null
+  },
+  "banner": {
+   "x": 100,
+   "y": 146,
+   "w": 50,
+   "h": 14,
+   "nine_slice": {
+    "left": 5,
+    "top": 0,
+    "right": 5,
+    "bottom": 0
+   }
+  },
+  "bar_empty": {
+   "x": 155,
+   "y": 194,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_fill_accent": {
+   "x": 0,
+   "y": 208,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_fill_blue": {
+   "x": 44,
+   "y": 208,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_fill_green": {
+   "x": 88,
+   "y": 208,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_fill_purple": {
+   "x": 132,
+   "y": 208,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_fill_red": {
+   "x": 0,
+   "y": 216,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_fill_yellow": {
+   "x": 44,
+   "y": 216,
+   "w": 42,
+   "h": 6,
+   "nine_slice": {
+    "left": 1,
+    "top": 0,
+    "right": 1,
+    "bottom": 0
+   }
+  },
+  "bar_frame": {
+   "x": 24,
+   "y": 194,
+   "w": 48,
+   "h": 10,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_disabled": {
+   "x": 0,
+   "y": 74,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_focus": {
+   "x": 50,
+   "y": 74,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_hover": {
+   "x": 100,
+   "y": 74,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_normal": {
+   "x": 150,
+   "y": 74,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_pressed": {
+   "x": 0,
+   "y": 92,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_square_disabled": {
+   "x": 50,
+   "y": 92,
+   "w": 16,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_square_hover": {
+   "x": 68,
+   "y": 92,
+   "w": 16,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_square_normal": {
+   "x": 86,
+   "y": 92,
+   "w": 16,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "button_square_pressed": {
+   "x": 104,
+   "y": 92,
+   "w": 16,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "checkbox_off": {
+   "x": 152,
+   "y": 164,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "checkbox_off_disabled": {
+   "x": 166,
+   "y": 164,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "checkbox_off_hover": {
+   "x": 180,
+   "y": 164,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "checkbox_on": {
+   "x": 0,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "checkbox_on_disabled": {
+   "x": 14,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "checkbox_on_hover": {
+   "x": 28,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "divider": {
+   "x": 165,
+   "y": 216,
+   "w": 32,
+   "h": 3,
+   "nine_slice": {
+    "left": 4,
+    "top": 0,
+    "right": 4,
+    "bottom": 0
+   }
+  },
+  "divider_v": {
+   "x": 88,
+   "y": 0,
+   "w": 3,
+   "h": 32,
+   "nine_slice": {
+    "left": 0,
+    "top": 4,
+    "right": 0,
+    "bottom": 4
+   }
+  },
+  "dropdown_arrow": {
+   "x": 156,
+   "y": 216,
+   "w": 7,
+   "h": 4,
+   "nine_slice": null
+  },
+  "dropdown_hover": {
+   "x": 122,
+   "y": 92,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 0,
+    "right": 12,
+    "bottom": 0
+   }
+  },
+  "dropdown_normal": {
+   "x": 0,
+   "y": 110,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 0,
+    "right": 12,
+    "bottom": 0
+   }
+  },
+  "dropdown_pressed": {
+   "x": 50,
+   "y": 110,
+   "w": 48,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 0,
+    "right": 12,
+    "bottom": 0
+   }
+  },
+  "focus_ring": {
+   "x": 100,
+   "y": 110,
+   "w": 16,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "icon_button_close_hover": {
+   "x": 118,
+   "y": 110,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_close_normal": {
+   "x": 136,
+   "y": 110,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_close_pressed": {
+   "x": 154,
+   "y": 110,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_down_hover": {
+   "x": 172,
+   "y": 110,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_down_normal": {
+   "x": 0,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_down_pressed": {
+   "x": 18,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_dropdown_hover": {
+   "x": 36,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_dropdown_normal": {
+   "x": 54,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_dropdown_pressed": {
+   "x": 72,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_left_hover": {
+   "x": 90,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_left_normal": {
+   "x": 108,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_left_pressed": {
+   "x": 126,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_right_hover": {
+   "x": 144,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_right_normal": {
+   "x": 162,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_right_pressed": {
+   "x": 180,
+   "y": 128,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_up_hover": {
+   "x": 0,
+   "y": 146,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_up_normal": {
+   "x": 18,
+   "y": 146,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "icon_button_up_pressed": {
+   "x": 36,
+   "y": 146,
+   "w": 16,
+   "h": 16,
+   "nine_slice": null
+  },
+  "input": {
+   "x": 152,
+   "y": 146,
+   "w": 48,
+   "h": 14,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "input_focus": {
+   "x": 0,
+   "y": 164,
+   "w": 48,
+   "h": 14,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "panel_flat": {
+   "x": 93,
+   "y": 0,
+   "w": 32,
+   "h": 32,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "panel_header": {
+   "x": 0,
+   "y": 0,
+   "w": 48,
+   "h": 38,
+   "nine_slice": {
+    "left": 8,
+    "top": 14,
+    "right": 8,
+    "bottom": 8
+   }
+  },
+  "panel_inset": {
+   "x": 127,
+   "y": 0,
+   "w": 32,
+   "h": 32,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  },
+  "panel_window": {
+   "x": 161,
+   "y": 0,
+   "w": 32,
+   "h": 32,
+   "nine_slice": {
+    "left": 8,
+    "top": 8,
+    "right": 8,
+    "bottom": 8
+   }
+  },
+  "portrait_frame": {
+   "x": 50,
+   "y": 0,
+   "w": 36,
+   "h": 36,
+   "nine_slice": null
+  },
+  "radio_off": {
+   "x": 42,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "radio_off_disabled": {
+   "x": 56,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "radio_on": {
+   "x": 70,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "radio_on_disabled": {
+   "x": 84,
+   "y": 180,
+   "w": 12,
+   "h": 12,
+   "nine_slice": null
+  },
+  "scroll_thumb_h": {
+   "x": 85,
+   "y": 194,
+   "w": 16,
+   "h": 8,
+   "nine_slice": {
+    "left": 5,
+    "top": 0,
+    "right": 5,
+    "bottom": 0
+   }
+  },
+  "scroll_thumb_h_hover": {
+   "x": 103,
+   "y": 194,
+   "w": 16,
+   "h": 8,
+   "nine_slice": {
+    "left": 5,
+    "top": 0,
+    "right": 5,
+    "bottom": 0
+   }
+  },
+  "scroll_thumb_v": {
+   "x": 54,
+   "y": 146,
+   "w": 8,
+   "h": 16,
+   "nine_slice": {
+    "left": 0,
+    "top": 5,
+    "right": 0,
+    "bottom": 5
+   }
+  },
+  "scroll_thumb_v_hover": {
+   "x": 64,
+   "y": 146,
+   "w": 8,
+   "h": 16,
+   "nine_slice": {
+    "left": 0,
+    "top": 5,
+    "right": 0,
+    "bottom": 5
+   }
+  },
+  "scroll_track_h": {
+   "x": 121,
+   "y": 194,
+   "w": 32,
+   "h": 8,
+   "nine_slice": {
+    "left": 3,
+    "top": 0,
+    "right": 3,
+    "bottom": 0
+   }
+  },
+  "scroll_track_v": {
+   "x": 0,
+   "y": 40,
+   "w": 8,
+   "h": 32,
+   "nine_slice": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   }
+  },
+  "slider_fill": {
+   "x": 88,
+   "y": 216,
+   "w": 32,
+   "h": 6,
+   "nine_slice": {
+    "left": 3,
+    "top": 0,
+    "right": 3,
+    "bottom": 0
+   }
+  },
+  "slider_fill_v": {
+   "x": 10,
+   "y": 40,
+   "w": 6,
+   "h": 32,
+   "nine_slice": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   }
+  },
+  "slider_knob": {
+   "x": 98,
+   "y": 180,
+   "w": 8,
+   "h": 12,
+   "nine_slice": null
+  },
+  "slider_knob_hover": {
+   "x": 108,
+   "y": 180,
+   "w": 8,
+   "h": 12,
+   "nine_slice": null
+  },
+  "slider_track": {
+   "x": 122,
+   "y": 216,
+   "w": 32,
+   "h": 6,
+   "nine_slice": {
+    "left": 3,
+    "top": 0,
+    "right": 3,
+    "bottom": 0
+   }
+  },
+  "slider_track_v": {
+   "x": 18,
+   "y": 40,
+   "w": 6,
+   "h": 32,
+   "nine_slice": {
+    "left": 0,
+    "top": 3,
+    "right": 0,
+    "bottom": 3
+   }
+  },
+  "slot": {
+   "x": 26,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "slot_common": {
+   "x": 48,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "slot_epic": {
+   "x": 70,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "slot_legendary": {
+   "x": 92,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "slot_rare": {
+   "x": 114,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "slot_selected": {
+   "x": 136,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "slot_uncommon": {
+   "x": 158,
+   "y": 40,
+   "w": 20,
+   "h": 20,
+   "nine_slice": null
+  },
+  "tab_active": {
+   "x": 50,
+   "y": 164,
+   "w": 32,
+   "h": 14,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 2
+   }
+  },
+  "tab_hover": {
+   "x": 84,
+   "y": 164,
+   "w": 32,
+   "h": 14,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 2
+   }
+  },
+  "tab_inactive": {
+   "x": 118,
+   "y": 164,
+   "w": 32,
+   "h": 14,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 2
+   }
+  },
+  "toggle_off": {
+   "x": 118,
+   "y": 180,
+   "w": 22,
+   "h": 12,
+   "nine_slice": null
+  },
+  "toggle_off_disabled": {
+   "x": 142,
+   "y": 180,
+   "w": 22,
+   "h": 12,
+   "nine_slice": null
+  },
+  "toggle_on": {
+   "x": 166,
+   "y": 180,
+   "w": 22,
+   "h": 12,
+   "nine_slice": null
+  },
+  "toggle_on_disabled": {
+   "x": 0,
+   "y": 194,
+   "w": 22,
+   "h": 12,
+   "nine_slice": null
+  },
+  "tooltip": {
+   "x": 74,
+   "y": 146,
+   "w": 24,
+   "h": 16,
+   "nine_slice": {
+    "left": 4,
+    "top": 4,
+    "right": 4,
+    "bottom": 4
+   }
+  }
+ }
+}

@@ -1,0 +1,7 @@
+Cozy Harvest UI - licence
+
+Free to use in any project, free or commercial: games, apps, videos, prototypes, game jams.
+Edit it as much as you like. Credit is not required, but appreciated:
+  "UI: Cozy Harvest UI by denizlabs, made with Bevelsmith"
+
+Please don't resell or re-upload the pack itself (as it is, or as part of another asset pack).

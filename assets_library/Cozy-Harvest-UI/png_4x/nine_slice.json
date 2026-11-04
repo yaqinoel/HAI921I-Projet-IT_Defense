@@ -1,0 +1,206 @@
+{
+  "scale": 4,
+  "pieces": {
+    "panel": {
+      "width": 280,
+      "height": 288,
+      "left": 20,
+      "top": 20,
+      "right": 20,
+      "bottom": 28,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "button_normal": {
+      "width": 80,
+      "height": 96,
+      "left": 16,
+      "top": 24,
+      "right": 16,
+      "bottom": 24,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "button_hover": {
+      "width": 80,
+      "height": 96,
+      "left": 16,
+      "top": 24,
+      "right": 16,
+      "bottom": 24,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "button_pressed": {
+      "width": 80,
+      "height": 96,
+      "left": 16,
+      "top": 24,
+      "right": 16,
+      "bottom": 24,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "button_disabled": {
+      "width": 80,
+      "height": 96,
+      "left": 16,
+      "top": 24,
+      "right": 16,
+      "bottom": 24,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "inset": {
+      "width": 72,
+      "height": 72,
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "bar_fill": {
+      "width": 64,
+      "height": 16,
+      "left": 8,
+      "top": 0,
+      "right": 8,
+      "bottom": 0,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "tab_selected": {
+      "width": 96,
+      "height": 64,
+      "left": 24,
+      "top": 32,
+      "right": 24,
+      "bottom": 0,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "tab_unselected": {
+      "width": 96,
+      "height": 64,
+      "left": 24,
+      "top": 32,
+      "right": 24,
+      "bottom": 0,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "tab_hover": {
+      "width": 96,
+      "height": 64,
+      "left": 24,
+      "top": 32,
+      "right": 24,
+      "bottom": 0,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "tab_disabled": {
+      "width": 96,
+      "height": 64,
+      "left": 24,
+      "top": 32,
+      "right": 24,
+      "bottom": 0,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "tooltip": {
+      "width": 84,
+      "height": 84,
+      "left": 16,
+      "top": 16,
+      "right": 20,
+      "bottom": 20,
+      "tile_h": false,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "scroll_thumb_normal": {
+      "width": 72,
+      "height": 72,
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "scroll_thumb_hover": {
+      "width": 72,
+      "height": 72,
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "scroll_thumb_pressed": {
+      "width": 72,
+      "height": 72,
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "tile_h": true,
+      "tile_v": true,
+      "tile_centre": true
+    },
+    "separator_h": {
+      "width": 32,
+      "height": 8,
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "tile_h": true,
+      "tile_v": false,
+      "tile_centre": false
+    },
+    "separator_v": {
+      "width": 8,
+      "height": 32,
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "tile_h": false,
+      "tile_v": true,
+      "tile_centre": false
+    }
+  },
+  "cursors": {
+    "cursor_normal": {
+      "hotspot_x": 0,
+      "hotspot_y": 0
+    },
+    "cursor_hover": {
+      "hotspot_x": 12,
+      "hotspot_y": 0
+    },
+    "cursor_pressed": {
+      "hotspot_x": 12,
+      "hotspot_y": 0
+    }
+  }
+}

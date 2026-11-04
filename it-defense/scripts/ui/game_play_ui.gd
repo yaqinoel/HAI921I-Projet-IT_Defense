@@ -7,6 +7,7 @@ class_name GamePlayUI extends CanvasLayer
 @onready var shop_panel: ShopPanel = $Root/ShopPanel
 @onready var shop_button: Button = $Root/ShopButton
 @onready var message_popup: MessagePopup = $MessagePopup
+@onready var toast_message: ToastMessage = $ToastMessage
 
 
 signal defense_drag_started(card: DefenseCard)
@@ -81,6 +82,10 @@ func update_money(value: int) -> void:
 
 func show_message(message: String, title: String = "Information") -> void:
 	message_popup.show_message(message, title)
+
+
+func show_toast(message: String, title: String = "Information") -> void:
+	toast_message.show_message(message, title)
 
 
 func _on_shop_button_pressed() -> void:

@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://dtm8a42aqvsq7" path="res://data/defenses/defense_mailfilter.tres" id="14_r273a"]
 [ext_resource type="Resource" uid="uid://cox3xqlyja2fm" path="res://data/defenses/defense_systemMaintenance.tres" id="15_ib7tg"]
 [ext_resource type="Resource" uid="uid://cawpigfxs75ww" path="res://data/defenses/defense_save.tres" id="16_cifbm"]
+[ext_resource type="PackedScene" path="res://scenes/ui/toast_message.tscn" id="17_toast"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8t1nb"]
 texture = ExtResource("4_oeqqt")
@@ -151,3 +152,5 @@ offset_bottom = 83.0
 texture = ExtResource("8_c7wi6")
 
 [node name="MessagePopup" parent="." unique_id=316572318 instance=ExtResource("10_message")]
+
+[node name="ToastMessage" parent="." instance=ExtResource("17_toast")]

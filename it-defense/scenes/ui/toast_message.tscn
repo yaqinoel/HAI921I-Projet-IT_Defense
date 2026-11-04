@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cya1kekbfc4w5"]
+
+[ext_resource type="Script" uid="uid://br084hfydn5g1" path="res://scripts/ui/toast_message.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="2_theme"]
+[ext_resource type="FontFile" uid="uid://c4bssk6o3nkdu" path="res://assets/fonts/PixelifySans-Bold.ttf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://d3gf2w7scu67l" path="res://assets/ui/CozyHarvestUI/tooltip.png" id="4_tooltip"]
+[ext_resource type="Texture2D" uid="uid://bsa7x86hwf4p7" path="res://assets/ui/CozyHarvestUI/separator_h.png" id="5_separator"]
+
+[sub_resource type="StyleBoxTexture" id="Style_tooltip"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+texture = ExtResource("4_tooltip")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="Style_separator"]
+content_margin_left = 0.0
+content_margin_top = 1.0
+content_margin_right = 0.0
+content_margin_bottom = 1.0
+texture = ExtResource("5_separator")
+axis_stretch_horizontal = 1
+
+[node name="ToastMessage" type="CanvasLayer" unique_id=1062460008]
+process_mode = 3
+layer = 19
+script = ExtResource("1_script")
+
+[node name="Bubble" type="PanelContainer" parent="." unique_id=2100131300]
+visible = false
+texture_filter = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 288.0
+offset_bottom = 16.0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+theme_override_styles/panel = SubResource("Style_tooltip")
+
+[node name="Content" type="VBoxContainer" parent="Bubble" unique_id=933866351]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="TitleLabel" type="Label" parent="Bubble/Content" unique_id=1888382746]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44, 0.25, 0.15, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+[node name="TitleDivider" type="HSeparator" parent="Bubble/Content" unique_id=947128409]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("Style_separator")
+
+[node name="MessageLabel" type="Label" parent="Bubble/Content" unique_id=2106354654]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="HideTimer" type="Timer" parent="." unique_id=2058353568]
+wait_time = 2.0
+one_shot = true
