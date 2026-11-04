@@ -10,8 +10,11 @@ class_name ShopPanel extends Control
 @onready var product_icon: TextureRect = description_content.get_node("ProductIcon")
 @onready var description_label: Label = description_content.get_node("DescriptionLabel")
 @onready var price_label: Label = description_content.get_node("PriceLabel")
-@onready var but_button: Button = details.get_node("BuyButton")
+@onready var buy_button: Button = details.get_node("BuyButton")
 
+
+@export var shop_item_scene: PackedScene
+@export var products: Array[DefenseData]
 
 signal try_buy_defense(defense_data: DefenseData)
 
@@ -26,15 +29,33 @@ func _ready() -> void:
 	product_group.allow_unpress = false
 	product_group.pressed.connect(_on_product_pressed)
 	
-	for child in product_grid.get_children():
-		var item := child as ShopItem
-		if item == null:
-			continue
-
-		item.toggle_mode = true
-		item.button_group = product_group
+	_fill_products()
 	
-	but_button.pressed.connect(_on_buy_button_pressed)
+	buy_button.pressed.connect(_on_buy_button_pressed)
+
+
+# function to fill product grid
+func _fill_products() -> void:
+	var first_item: ShopItem = null
+	
+	for product in products:
+		var item := shop_item_scene.instantiate() as ShopItem
+		item.defense_data = product
+		
+		if product != null:
+			item.toggle_mode = true
+			item.button_group = product_group
+			if first_item == null:
+				first_item = item
+			
+		product_grid.add_child(item)
+			
+	buy_button.disabled = first_item == null
+		
+	if first_item != null:
+		select_item(first_item)
+	else:
+		refresh_details()
 
 
 func _on_close_button_pressed() -> void:
