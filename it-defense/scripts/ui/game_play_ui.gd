@@ -44,12 +44,10 @@ func find_avaliable_card(data: DefenseData) -> DefenseCard:
 		if card.is_empty():
 			if first_empty_card == null:
 				first_empty_card = card
-		# if there are a case has the same type defense, return it
-		elif card.defense_data.type == data.type and card.can_put(data):
-			return card 
-		# over max count, we can not put more
-		else:
-			return null
+		# if there are a case has the same type defense
+		elif card.defense_data.type == data.type:
+			# if over max count return null
+			return card if card.can_put(data) else null
 	
 	# if there are no case has the same type defense, return first empty card
 	return first_empty_card
