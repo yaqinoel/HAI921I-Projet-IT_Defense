@@ -20,7 +20,8 @@
 [ext_resource type="Resource" uid="uid://dtm8a42aqvsq7" path="res://data/defenses/defense_mailfilter.tres" id="14_r273a"]
 [ext_resource type="Resource" uid="uid://cox3xqlyja2fm" path="res://data/defenses/defense_systemMaintenance.tres" id="15_ib7tg"]
 [ext_resource type="Resource" uid="uid://cawpigfxs75ww" path="res://data/defenses/defense_save.tres" id="16_cifbm"]
-[ext_resource type="PackedScene" path="res://scenes/ui/toast_message.tscn" id="17_toast"]
+[ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="17_8sw36"]
+[ext_resource type="PackedScene" uid="uid://cya1kekbfc4w5" path="res://scenes/ui/toast_message.tscn" id="17_toast"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8t1nb"]
 texture = ExtResource("4_oeqqt")
@@ -121,18 +122,19 @@ shop_item_scene = ExtResource("7_03hkc")
 products = Array[ExtResource("8_taow4")]([ExtResource("9_cifbm"), ExtResource("10_ckbpb"), ExtResource("11_8sw36"), ExtResource("12_ldufu"), ExtResource("13_w56si"), ExtResource("14_r273a"), ExtResource("15_ib7tg"), ExtResource("16_cifbm"), null])
 
 [node name="ShopButton" type="Button" parent="Root" unique_id=1149380294]
-custom_minimum_size = Vector2(160, 80)
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 0
 offset_left = 871.0
 offset_top = 20.0
 offset_right = 1031.0
-offset_bottom = 100.0
+offset_bottom = 80.0
+theme = ExtResource("17_8sw36")
 theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_ugck8")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_uelu8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dtttb")
-text = "Defense 
-Boutique"
+text = "Boutique"
 
 [node name="TextureRect2" type="TextureRect" parent="Root/ShopButton" unique_id=1951612861]
 layout_mode = 0
@@ -146,11 +148,11 @@ texture = ExtResource("8_c7wi6")
 [node name="TextureRect" type="TextureRect" parent="Root/ShopButton" unique_id=1931773233]
 layout_mode = 0
 offset_left = 143.0
-offset_top = 63.0
+offset_top = 42.0
 offset_right = 163.0
-offset_bottom = 83.0
+offset_bottom = 62.0
 texture = ExtResource("8_c7wi6")
 
 [node name="MessagePopup" parent="." unique_id=316572318 instance=ExtResource("10_message")]
 
-[node name="ToastMessage" parent="." instance=ExtResource("17_toast")]
+[node name="ToastMessage" parent="." unique_id=825759142 instance=ExtResource("17_toast")]
