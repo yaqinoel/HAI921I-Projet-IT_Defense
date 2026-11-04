@@ -129,7 +129,8 @@ func place_defense(slot: DefenseSlot) -> void:
 	defense.global_position = slot.global_position
 	
 	slot.placed_defense = defense
-	source_card.set_card(null)
+	#source_card.set_card(null)
+	source_card.take_one_card(dragged_data)
 	
 	
 	

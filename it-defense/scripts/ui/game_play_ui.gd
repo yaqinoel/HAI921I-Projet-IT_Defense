@@ -28,12 +28,27 @@ func _on_card_drag_started(card: DefenseCard) -> void:
 	defense_drag_started.emit(card)
 
 
-func find_empty_card() -> DefenseCard:
+# find a avaliable card by defese
+func find_avaliable_card(data: DefenseData) -> DefenseCard:
+	if data == null:
+		return null
+	
+	# keep the first empty card
+	var first_empty_card: DefenseCard = null
+	
 	for child in grid.get_children():
 		var card :=  child as DefenseCard
-		if card != null and card.is_empty():
-			return card
-	return null
+		if card == null:
+			continue
+		if card.is_empty():
+			if first_empty_card == null:
+				first_empty_card = card
+		# if there are a case has the same type defense, return it
+		elif card.can_put(data):
+			return card 
+	
+	# if there are no case has the same type defense, return first empty card
+	return first_empty_card
 
 
 func _input(event: InputEvent) -> void:
@@ -55,36 +70,6 @@ func _input(event: InputEvent) -> void:
 			if shop_panel.visible:
 				shop_panel.hide()
 				get_viewport().set_input_as_handled()
-
-		KEY_P:
-			add_test_card()
-			get_viewport().set_input_as_handled()
-
-
-func add_test_card() -> void:
-	if test_defense == null:
-		print("please set Test Defense")
-		return
-
-	var card := find_empty_card()
-	if card == null:
-		print("No place for new card")
-		return
-
-	card.set_card(test_defense)
-
-
-func add_defense_card(defense_data: DefenseData) -> void:
-	if defense_data == null:
-		print("defense_data is null")
-		return
-	
-	var card := find_empty_card()
-	if card == null:
-		print("No place for new card")
-		return
-
-	card.set_card(defense_data)
 
 
 func update_money(value: int) -> void:

@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://drnb1q1jln6ej" path="res://data/defenses/defense_datashield.tres" id="13_w56si"]
 [ext_resource type="Resource" uid="uid://dtm8a42aqvsq7" path="res://data/defenses/defense_mailfilter.tres" id="14_r273a"]
 [ext_resource type="Resource" uid="uid://cox3xqlyja2fm" path="res://data/defenses/defense_systemMaintenance.tres" id="15_ib7tg"]
+[ext_resource type="Resource" uid="uid://cawpigfxs75ww" path="res://data/defenses/defense_save.tres" id="16_cifbm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8t1nb"]
 texture = ExtResource("4_oeqqt")
@@ -116,7 +117,7 @@ text = "0€"
 visible = false
 layout_mode = 1
 shop_item_scene = ExtResource("7_03hkc")
-products = Array[ExtResource("8_taow4")]([ExtResource("9_cifbm"), ExtResource("10_ckbpb"), ExtResource("11_8sw36"), ExtResource("12_ldufu"), ExtResource("13_w56si"), ExtResource("12_ldufu"), ExtResource("14_r273a"), ExtResource("15_ib7tg"), null])
+products = Array[ExtResource("8_taow4")]([ExtResource("9_cifbm"), ExtResource("10_ckbpb"), ExtResource("11_8sw36"), ExtResource("12_ldufu"), ExtResource("13_w56si"), ExtResource("14_r273a"), ExtResource("15_ib7tg"), ExtResource("16_cifbm"), null])
 
 [node name="ShopButton" type="Button" parent="Root" unique_id=1149380294]
 custom_minimum_size = Vector2(160, 80)

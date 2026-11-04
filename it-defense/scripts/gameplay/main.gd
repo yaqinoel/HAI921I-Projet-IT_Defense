@@ -62,7 +62,7 @@ func _on_purchase_requested(defense_data: DefenseData) -> void:
 	if defense_data == null:
 		return
 
-	var card := gameplay_ui.find_empty_card()
+	var card := gameplay_ui.find_avaliable_card(defense_data)
 
 	if card == null:
 		gameplay_ui.show_message(
@@ -78,6 +78,6 @@ func _on_purchase_requested(defense_data: DefenseData) -> void:
 		)
 		return
 
-	card.set_card(defense_data)
+	card.add_card(defense_data)
 
 	print("purchase successed", defense_data.display_name)

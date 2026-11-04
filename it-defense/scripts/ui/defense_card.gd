@@ -1,5 +1,9 @@
 class_name DefenseCard extends Control
 
+
+const MAX_COUNT: int = 10	# max defense number in this case
+var count: int = 0	# current defense card in this case
+
 var defense_data: DefenseData = null
 var is_dragging: bool = false
 
@@ -10,9 +14,17 @@ func _ready() -> void:
 	refresh_state()
 
 
+# to see if we can put this kind of defense in this case
+func can_put(data: DefenseData) -> bool:
+	if data == null or count >= MAX_COUNT:
+		return false
+	return is_empty() or defense_data.type == data.type
+
+
 func refresh_state() -> void:
 	$Icon.visible = defense_data != null and not is_dragging
 	$Icon.texture = defense_data.icon if defense_data != null else null
+	$CountLabel.text = str(count) if count > 0 else ""
 
 
 func set_dragging(value: bool) -> void:
@@ -21,11 +33,33 @@ func set_dragging(value: bool) -> void:
 
 
 func is_empty() -> bool:
-	return defense_data == null
+	return count == 0
 
 
-func set_card(data: DefenseData) -> void:
-	defense_data = data
+# add one defense card in this case
+func add_card(data: DefenseData) -> void:
+	if not can_put(data):
+		return
+	
+	if is_empty():
+		defense_data = data
+	
+	count += 1
+	refresh_state()
+
+
+# take one defense card from this card
+func take_one_card(data: DefenseData) -> void:
+	if is_empty() or data == null:
+		return
+	count -= 1
+	
+	if defense_data.type != data.type:
+		return
+	
+	if is_empty():
+		defense_data = null
+		
 	is_dragging = false
 	refresh_state()
 
