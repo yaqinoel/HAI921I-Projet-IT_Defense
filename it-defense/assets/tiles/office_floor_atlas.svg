@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="16" viewBox="0 0 128 16" shape-rendering="crispEdges">
+  <g>
+    <path fill="#665347" d="M0 0h16v16H0z"/>
+    <path fill="#796052" d="M0 1h16v3H0zM0 9h16v3H0z"/>
+    <path fill="#70584a" d="M0 5h16v3H0zM0 13h16v3H0z"/>
+    <path fill="#58473e" d="M11 1h1v3h-1zM4 5h1v3H4zM13 9h1v3h-1zM7 13h1v3H7z"/>
+    <path fill="#886c58" opacity=".55" d="M2 2h5v1H2zM7 6h6v1H7zM1 10h8v1H1zM10 14h4v1h-4z"/>
+  </g>
+  <g transform="translate(16)">
+    <path fill="#665347" d="M0 0h16v16H0z"/>
+    <path fill="#70584a" d="M0 1h16v3H0zM0 9h16v3H0z"/>
+    <path fill="#796052" d="M0 5h16v3H0zM0 13h16v3H0z"/>
+    <path fill="#58473e" d="M3 1h1v3H3zM12 5h1v3h-1zM5 9h1v3H5zM10 13h1v3h-1z"/>
+    <path fill="#886c58" opacity=".55" d="M7 2h6v1H7zM2 6h6v1H2zM9 10h4v1H9zM2 14h5v1H2z"/>
+  </g>
+  <g transform="translate(32)">
+    <path fill="#505559" d="M0 0h16v16H0z"/>
+    <path fill="#5b6063" d="M1 1h15v15H1z"/>
+    <path fill="#65686a" d="M1 1h15v1H1z"/>
+    <path fill="#6c6f70" opacity=".40" d="M3 5h2v1H3zM10 11h3v1h-3z"/>
+  </g>
+  <g transform="translate(48)">
+    <path fill="#505559" d="M0 0h16v16H0z"/>
+    <path fill="#5c6062" d="M1 1h15v15H1z"/>
+    <path fill="#676a6b" d="M1 1h15v1H1z"/>
+    <path fill="#474d51" opacity=".35" d="M8 7h3v1H8zM4 13h2v1H4z"/>
+  </g>
+  <g transform="translate(64)">
+    <path fill="#3b464c" d="M0 0h16v16H0z"/>
+    <path fill="#465259" d="M1 1h15v15H1z"/>
+    <path fill="#505d62" d="M1 1h15v1H1z"/>
+    <path fill="#627077" opacity=".40" d="M4 6h1v1H4zM10 12h2v1h-2z"/>
+  </g>
+  <g transform="translate(80)">
+    <path fill="#3b464c" d="M0 0h16v16H0z"/>
+    <path fill="#48545a" d="M1 1h15v15H1z"/>
+    <path fill="#525e63" d="M1 1h15v1H1z"/>
+    <path fill="#627077" opacity=".40" d="M9 5h2v1H9zM4 12h1v1H4z"/>
+  </g>
+  <g transform="translate(96)">
+    <path fill="#2b333a" d="M0 0h16v16H0z"/>
+    <path fill="#313a41" d="M1 1h15v15H1z"/>
+    <path fill="#38434a" d="M1 1h15v1H1z"/>
+  </g>
+  <g transform="translate(112)">
+    <path fill="#353c40" d="M0 0h16v16H0z"/>
+    <path fill="#3d4649" d="M1 1h15v15H1z"/>
+    <path fill="#485255" d="M1 1h15v1H1z"/>
+    <path fill="#535e60" opacity=".48" d="M3 7h1v1H3zM11 12h2v1h-2z"/>
+  </g>
+</svg>
