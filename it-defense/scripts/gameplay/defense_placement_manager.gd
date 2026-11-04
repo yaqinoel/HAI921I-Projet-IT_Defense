@@ -2,6 +2,8 @@ extends Node2D
 
 const SLOT_MASK: int = 1 << 3
 
+@onready var drag_preview_layer: CanvasLayer = $DragPreviewLayer
+
 var source_card: DefenseCard
 var dragged_data: DefenseData
 var preview: Sprite2D
@@ -33,10 +35,8 @@ func start_drag(card: DefenseCard) -> void:
 	
 	preview = Sprite2D.new()
 	preview.texture = dragged_data.icon
-	preview.z_index = 100
-	add_child(preview)
-	
-	preview.global_position = get_global_mouse_position()
+	drag_preview_layer.add_child(preview)
+	preview.global_position = preview.get_global_mouse_position()
 
 
 func cancel_drag() -> void:
@@ -53,7 +53,7 @@ func cancel_drag() -> void:
 
 func _process(_delta: float) -> void:
 	if is_instance_valid(preview):
-		preview.global_position = get_global_mouse_position()
+		preview.global_position = preview.get_global_mouse_position()
 
 
 func _physics_process(_delta: float) -> void:
