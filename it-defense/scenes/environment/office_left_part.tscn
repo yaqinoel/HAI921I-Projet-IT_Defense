@@ -1,0 +1,240 @@
+[gd_scene format=4 uid="uid://c3mlbswavys0m"]
+
+[ext_resource type="TileSet" uid="uid://c4owe248oyqa4" path="res://assets/tiles/office_floor_tileset.tres" id="1_floor"]
+[ext_resource type="Texture2D" uid="uid://g05u8guuy6v3" path="res://assets/sprites/office/office_west_architecture.svg" id="2_shell"]
+[ext_resource type="Texture2D" uid="uid://copl5h13el6pc" path="res://assets/sprites/office/decor/desk-with-pc.png" id="3_desk"]
+[ext_resource type="Texture2D" uid="uid://dbak743v2brhs" path="res://assets/sprites/office/Chair.png" id="6_chair"]
+[ext_resource type="Texture2D" uid="uid://yx8uef58n4a8" path="res://assets/sprites/office/decor/Trash.png" id="6_jq3rt"]
+[ext_resource type="Texture2D" uid="uid://bce2rc51xl3pr" path="res://assets/sprites/office/plant.png" id="7_plant"]
+[ext_resource type="Texture2D" uid="uid://dmpftx2yf380p" path="res://assets/sprites/office/decor/cabinet.png" id="8_cabinet"]
+[ext_resource type="Texture2D" uid="uid://bhh2xj8t1drcc" path="res://assets/sprites/office/decor/water-cooler.png" id="9_water"]
+[ext_resource type="Texture2D" uid="uid://c43yhpsvl6tlp" path="res://assets/sprites/office/Julia_walk_Left.png" id="10_walk_left"]
+[ext_resource type="Texture2D" uid="uid://rrtwbxlha8iw" path="res://assets/sprites/office/Julia_walk_Rigth.png" id="10_walk_right"]
+
+[sub_resource type="AtlasTexture" id="Atlas_Left0"]
+atlas = ExtResource("10_walk_left")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Left1"]
+atlas = ExtResource("10_walk_left")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Left2"]
+atlas = ExtResource("10_walk_left")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Left3"]
+atlas = ExtResource("10_walk_left")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Right0"]
+atlas = ExtResource("10_walk_right")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Right1"]
+atlas = ExtResource("10_walk_right")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Right2"]
+atlas = ExtResource("10_walk_right")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_Right3"]
+atlas = ExtResource("10_walk_right")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_employee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_Left0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_Left1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_Left2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_Left3")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_Right0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_Right1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_Right2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_Right3")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_patrol"]
+resource_name = "patrol"
+length = 9.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.8, 9.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(84, 327), Vector2(419, 327), Vector2(84, 327)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"walk_right", &"walk_left"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_patrol"]
+_data = {
+&"patrol": SubResource("Animation_patrol")
+}
+
+[node name="OfficeWestWing" type="Node2D" unique_id=773242340]
+texture_filter = 1
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1901700940]
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAAAAAAAAAGAAAAAAABAAAAAAAGAAAAAAACAAAAAAAGAAAAAAADAAAAAAAGAAAAAAAEAAAAAAAGAAAAAAAFAAAAAAAGAAAAAAAGAAAAAAAGAAAAAAAHAAAAAAAGAAAAAAAIAAAAAAAGAAAAAAAJAAAAAAAGAAAAAAAKAAAAAAAGAAAAAAALAAAAAAAGAAAAAAAMAAAAAAAGAAAAAAANAAAAAAAGAAAAAAAOAAAAAAAGAAAAAAAAAAEAAAAGAAAAAAABAAEAAAAGAAAAAAACAAEAAAAGAAAAAAADAAEAAAAGAAAAAAAEAAEAAAAGAAAAAAAFAAEAAAAGAAAAAAAGAAEAAAAGAAAAAAAHAAEAAAAGAAAAAAAIAAEAAAAGAAAAAAAJAAEAAAAGAAAAAAAKAAEAAAAGAAAAAAALAAEAAAAGAAAAAAAMAAEAAAAGAAAAAAANAAEAAAAGAAAAAAAOAAEAAAAGAAAAAAAAAAIAAAAGAAAAAAABAAIAAAABAAAAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAABAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAABAAAAAAAJAAIAAAACAAAAAAAKAAIAAAAEAAAAAAALAAIAAAAFAAAAAAAMAAIAAAAEAAAAAAANAAIAAAAFAAAAAAAOAAIAAAACAAAAAAAAAAMAAAAGAAAAAAABAAMAAAABAAAAAAACAAMAAAABAAAAAAADAAMAAAABAAAAAAAEAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAHAAMAAAABAAAAAAAIAAMAAAABAAAAAAAJAAMAAAADAAAAAAAKAAMAAAAFAAAAAAALAAMAAAAFAAAAAAAMAAMAAAAFAAAAAAANAAMAAAAFAAAAAAAOAAMAAAADAAAAAAAAAAQAAAAGAAAAAAABAAQAAAABAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAABAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAABAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAADAAAAAAAKAAQAAAAEAAAAAAALAAQAAAAFAAAAAAAMAAQAAAAEAAAAAAANAAQAAAAEAAAAAAAOAAQAAAADAAAAAAAAAAUAAAAGAAAAAAABAAUAAAABAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAACAAAAAAAKAAUAAAAFAAAAAAALAAUAAAAFAAAAAAAMAAUAAAAEAAAAAAANAAUAAAAEAAAAAAAOAAUAAAACAAAAAAAAAAYAAAAGAAAAAAABAAYAAAADAAAAAAACAAYAAAADAAAAAAADAAYAAAACAAAAAAAEAAYAAAACAAAAAAAFAAYAAAACAAAAAAAGAAYAAAADAAAAAAAHAAYAAAADAAAAAAAIAAYAAAACAAAAAAAJAAYAAAACAAAAAAAKAAYAAAACAAAAAAALAAYAAAADAAAAAAAMAAYAAAADAAAAAAANAAYAAAACAAAAAAAOAAYAAAACAAAAAAAAAAcAAAAGAAAAAAABAAcAAAADAAAAAAACAAcAAAACAAAAAAADAAcAAAADAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAADAAAAAAAHAAcAAAACAAAAAAAIAAcAAAADAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAADAAAAAAAMAAcAAAACAAAAAAANAAcAAAADAAAAAAAOAAcAAAACAAAAAAAAAAgAAAAGAAAAAAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAAHAAgAAAABAAAAAAAIAAgAAAABAAAAAAAJAAgAAAADAAAAAAAKAAgAAAABAAAAAAALAAgAAAABAAAAAAAMAAgAAAABAAAAAAANAAgAAAABAAAAAAAOAAgAAAADAAAAAAAAAAkAAAAGAAAAAAABAAkAAAABAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAABAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAABAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAADAAAAAAAKAAkAAAAAAAAAAAALAAkAAAABAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAADAAAAAAAAAAoAAAAGAAAAAAABAAoAAAABAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAABAAAAAAAGAAoAAAABAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAACAAAAAAAKAAoAAAABAAAAAAALAAoAAAABAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAACAAAAAAAAAAsAAAAGAAAAAAABAAsAAAABAAAAAAACAAsAAAABAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAABAAAAAAAHAAsAAAABAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAACAAAAAAAKAAsAAAAAAAAAAAALAAsAAAABAAAAAAAMAAsAAAABAAAAAAANAAsAAAAAAAAAAAAOAAsAAAACAAAAAAAAAAwAAAAGAAAAAAABAAwAAAABAAAAAAACAAwAAAAAAAAAAAADAAwAAAABAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAABAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAABAAAAAAAJAAwAAAACAAAAAAAKAAwAAAAAAAAAAAALAAwAAAABAAAAAAAMAAwAAAAAAAAAAAANAAwAAAABAAAAAAAOAAwAAAACAAAAAAAAAA0AAAAGAAAAAAABAA0AAAAGAAAAAAACAA0AAAAGAAAAAAADAA0AAAAGAAAAAAAEAA0AAAAGAAAAAAAFAA0AAAAGAAAAAAAGAA0AAAAGAAAAAAAHAA0AAAAGAAAAAAAIAA0AAAAGAAAAAAAJAA0AAAAGAAAAAAAKAA0AAAAGAAAAAAALAA0AAAAGAAAAAAAMAA0AAAAGAAAAAAANAA0AAAAGAAAAAAAOAA0AAAAGAAAAAAA=")
+tile_set = ExtResource("1_floor")
+
+[node name="WallsAndFurniture" type="Sprite2D" parent="." unique_id=329519714]
+scale = Vector2(3, 3)
+texture = ExtResource("2_shell")
+centered = false
+
+[node name="OpenOffice" type="Node2D" parent="." unique_id=1213183787]
+
+[node name="WorkstationA" type="Sprite2D" parent="OpenOffice" unique_id=1656124368]
+position = Vector2(114, 192)
+scale = Vector2(3, 3)
+texture = ExtResource("3_desk")
+
+[node name="Chair" type="Sprite2D" parent="OpenOffice/WorkstationA" unique_id=1991584047]
+position = Vector2(0, 20)
+texture = ExtResource("6_chair")
+
+[node name="WorkstationB" type="Sprite2D" parent="OpenOffice" unique_id=1710413684]
+position = Vector2(237, 192)
+scale = Vector2(3, 3)
+texture = ExtResource("3_desk")
+
+[node name="Chair" type="Sprite2D" parent="OpenOffice/WorkstationB" unique_id=432799462]
+position = Vector2(0, 20)
+texture = ExtResource("6_chair")
+
+[node name="WorkstationC" type="Sprite2D" parent="OpenOffice" unique_id=1246737652]
+position = Vector2(360, 192)
+scale = Vector2(3, 3)
+texture = ExtResource("3_desk")
+
+[node name="Chair" type="Sprite2D" parent="OpenOffice/WorkstationC" unique_id=1787094939]
+position = Vector2(0, 20)
+texture = ExtResource("6_chair")
+
+[node name="Plant" type="Sprite2D" parent="OpenOffice" unique_id=4894725]
+position = Vector2(48, 134)
+scale = Vector2(2, 2)
+texture = ExtResource("7_plant")
+
+[node name="MeetingRoom" type="Node2D" parent="." unique_id=618174879]
+
+[node name="Chair1" type="Sprite2D" parent="MeetingRoom" unique_id=298446562]
+position = Vector2(171, 379)
+rotation = 3.1415927
+scale = Vector2(3, 3)
+texture = ExtResource("6_chair")
+
+[node name="Chair2" type="Sprite2D" parent="MeetingRoom" unique_id=1617644667]
+position = Vector2(249, 379.00003)
+rotation = 3.1415927
+scale = Vector2(3, 3)
+texture = ExtResource("6_chair")
+
+[node name="Chair3" type="Sprite2D" parent="MeetingRoom" unique_id=1100493774]
+position = Vector2(327, 380)
+rotation = 3.1415927
+scale = Vector2(3, 3)
+texture = ExtResource("6_chair")
+
+[node name="Chair4" type="Sprite2D" parent="MeetingRoom" unique_id=1862235699]
+position = Vector2(171, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("6_chair")
+
+[node name="Chair5" type="Sprite2D" parent="MeetingRoom" unique_id=1179310372]
+position = Vector2(249, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("6_chair")
+
+[node name="Chair6" type="Sprite2D" parent="MeetingRoom" unique_id=1078013957]
+position = Vector2(327, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("6_chair")
+
+[node name="Plant" type="Sprite2D" parent="MeetingRoom" unique_id=1108314131]
+position = Vector2(91, 486)
+scale = Vector2(2, 2)
+texture = ExtResource("7_plant")
+
+[node name="Plant2" type="Sprite2D" parent="MeetingRoom" unique_id=1911444442]
+position = Vector2(483, 346)
+scale = Vector2(2, 2)
+texture = ExtResource("7_plant")
+
+[node name="Trash" type="Sprite2D" parent="MeetingRoom" unique_id=1191101380]
+position = Vector2(528, 327)
+scale = Vector2(3, 3)
+texture = ExtResource("6_jq3rt")
+
+[node name="Lounge" type="Node2D" parent="." unique_id=1051191021]
+
+[node name="Cabinet" type="Sprite2D" parent="Lounge" unique_id=1890394098]
+position = Vector2(446, 518)
+scale = Vector2(2, 2)
+texture = ExtResource("8_cabinet")
+
+[node name="WaterCooler" type="Sprite2D" parent="Lounge" unique_id=2081832788]
+position = Vector2(684, 501)
+scale = Vector2(2, 2)
+texture = ExtResource("9_water")
+
+[node name="Plant" type="Sprite2D" parent="Lounge" unique_id=967443893]
+position = Vector2(658, 393)
+scale = Vector2(2, 2)
+texture = ExtResource("7_plant")
+
+[node name="WalkingEmployee" type="AnimatedSprite2D" parent="." unique_id=1651474177]
+position = Vector2(417.60416, 327)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_employee")
+animation = &"walk_left"
+autoplay = "walk_right"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WalkingEmployee" unique_id=1065323111]
+libraries/ = SubResource("AnimationLibrary_patrol")
+autoplay = &"patrol"
