@@ -27,9 +27,6 @@ texture_filter = 1
 
 [node name="OfficeEnvironment" parent="." unique_id=342150533 instance=ExtResource("1_office")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=460830028]
-anchor_mode = 0
-
 [node name="CameraViews" type="Node2D" parent="." unique_id=1869764559]
 
 [node name="MenuView" type="Marker2D" parent="CameraViews" unique_id=971860397]

@@ -8,6 +8,12 @@ extends Node2D
 @onready var game_session: GameSession = $GameSession
 @onready var gameplay_ui: GamePlayUI = $GamePlayUI
 
+@onready var camera: Camera2D = $Camera2D
+
+# main menu references
+@onready var menu_layer: CanvasLayer = $CanvasLayer
+@onready var play_button: Button = $CanvasLayer/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/PlayButton
+
 var current_level: Node2D
 
 
@@ -21,10 +27,26 @@ func _ready():
 	
 	gameplay_ui.defense_drag_started.connect(defense_placement_manager.start_drag)
 	gameplay_ui.purchase_requested.connect(_on_purchase_requested)
+	
+	# move camera to menu view when game start
+	var menu_view := current_level.get_node("CameraViews/MenuView") as Marker2D
+	camera.global_position = menu_view.global_position
+	
+	#
+	play_button.pressed.connect(_on_play_pressed)
+	gameplay_ui.hide()
+	get_tree().paused = true
 
 
-func _process(delta: float) -> void:
-	pass
+func _on_play_pressed() -> void:
+	var gameplay_view := current_level.get_node("CameraViews/GameplayView") as Marker2D
+	camera.global_position = gameplay_view.global_position
+	camera.force_update_scroll()
+
+	menu_layer.hide()
+	gameplay_ui.show()
+	game_session.running = true
+	get_tree().paused = false
 
 
 func change_level(scene: PackedScene) -> void:

@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://bu6wrw0qpb87n"]
+
+[ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="1_sl1te"]
+[ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="2_fe2o3"]
+[ext_resource type="FontFile" uid="uid://bk0kb4ivbriyk" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_menu_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87aya"]
+bg_color = Color(0.153, 0.125, 0.149, 1)
+border_width_right = 2
+border_color = Color(0.46, 0.32, 0.25, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_menu_focus"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.62, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="Style_secondary_hover"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.31, 0.22, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.65, 0.46, 0.32, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_secondary_normal"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.23, 0.17, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.39, 0.28, 0.28, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_secondary_pressed"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.18, 0.13, 0.16, 1)
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.38, 0.29, 1)
+
+[sub_resource type="Theme" id="Theme_menu_buttons"]
+default_font = ExtResource("3_menu_font")
+default_font_size = 22
+Button/colors/font_color = Color(0.94, 0.85, 0.75, 1)
+Button/colors/font_focus_color = Color(1, 0.92, 0.8, 1)
+Button/colors/font_hover_color = Color(1, 0.92, 0.8, 1)
+Button/colors/font_pressed_color = Color(1, 0.92, 0.8, 1)
+Button/styles/focus = SubResource("Style_menu_focus")
+Button/styles/hover = SubResource("Style_secondary_hover")
+Button/styles/normal = SubResource("Style_secondary_normal")
+Button/styles/pressed = SubResource("Style_secondary_pressed")
+
+[sub_resource type="StyleBoxFlat" id="Style_play_normal"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.92, 0.68, 0.42, 1)
+border_width_bottom = 4
+border_color = Color(0.56, 0.32, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_play_pressed"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.79, 0.53, 0.33, 1)
+border_width_top = 4
+border_color = Color(0.56, 0.32, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_play_hover"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(1, 0.77, 0.51, 1)
+border_width_bottom = 4
+border_color = Color(0.67, 0.4, 0.25, 1)
+
+[node name="MainMenu" type="Control" unique_id=274161819]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_sl1te")
+
+[node name="LeftPanel" type="PanelContainer" parent="." unique_id=62141939]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.4
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_87aya")
+
+[node name="Padding" type="MarginContainer" parent="LeftPanel" unique_id=567328617]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="HomePage" type="VBoxContainer" parent="LeftPanel/Padding" unique_id=347307005]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="AccentLine" type="ColorRect" parent="LeftPanel/Padding/HomePage" unique_id=177844243]
+custom_minimum_size = Vector2(44, 3)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.92, 0.68, 0.42, 1)
+
+[node name="InformationLabel" type="Label" parent="LeftPanel/Padding/HomePage" unique_id=614954812]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.7, 0.49, 1)
+theme_override_font_sizes/font_size = 16
+text = "SERVICE INFORMATIQUE"
+autowrap_mode = 3
+
+[node name="TitleLabel" type="Label" parent="LeftPanel/Padding/HomePage" unique_id=1951741937]
+layout_mode = 2
+theme = ExtResource("2_fe2o3")
+theme_override_colors/font_color = Color(1, 0.92, 0.8, 1)
+theme_override_font_sizes/font_size = 50
+text = "IT DEFENSE"
+autowrap_mode = 3
+
+[node name="MissionLabel" type="Label" parent="LeftPanel/Padding/HomePage" unique_id=437913318]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.72, 0.65, 1)
+theme_override_font_sizes/font_size = 20
+text = "Protégez les postes.
+Gardez le réseau en service."
+autowrap_mode = 3
+
+[node name="Gap" type="Control" parent="LeftPanel/Padding/HomePage" unique_id=991653768]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="LeftPanel/Padding/HomePage" unique_id=1490862984]
+layout_mode = 2
+theme = SubResource("Theme_menu_buttons")
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="LeftPanel/Padding/HomePage/MenuButtons" unique_id=978344077]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19, 0.12, 0.13, 1)
+theme_override_colors/font_focus_color = Color(0.19, 0.12, 0.13, 1)
+theme_override_colors/font_pressed_color = Color(0.19, 0.12, 0.13, 1)
+theme_override_colors/font_hover_color = Color(0.19, 0.12, 0.13, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19, 0.12, 0.13, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("Style_play_normal")
+theme_override_styles/pressed = SubResource("Style_play_pressed")
+theme_override_styles/hover = SubResource("Style_play_hover")
+text = "Jouer"
+
+[node name="SettingsButton" type="Button" parent="LeftPanel/Padding/HomePage/MenuButtons" unique_id=601550593]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Paramètres"
+
+[node name="AboutButton" type="Button" parent="LeftPanel/Padding/HomePage/MenuButtons" unique_id=1779890037]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "À propos"
