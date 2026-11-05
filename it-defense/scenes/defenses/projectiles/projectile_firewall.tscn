@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://dfmljjohqryok"]
+[gd_scene format=3 uid="uid://crsxtlfbmaiq2"]
 
 [ext_resource type="Script" uid="uid://dfin4xou8bsiw" path="res://scripts/defenses/projectile.gd" id="1_jrgmk"]
-[ext_resource type="Texture2D" uid="uid://n1gmtq2jkupd" path="res://assets/sprites/defenses/projectiles/mail_filter/mail_filter_fly_sheet_v01.png" id="2_3h0mc"]
+[ext_resource type="Texture2D" uid="uid://crik7f1wdxcwl" path="res://assets/sprites/defenses/projectiles/firewall/firewall_fly_sheet_v01.png" id="2_3h0mc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
 size = Vector2(17, 8)
@@ -42,7 +42,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ProjectileMailFilter" type="Area2D" unique_id=406636964]
+[node name="ProjectileFirewall" type="Area2D" unique_id=406636964]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jrgmk")
