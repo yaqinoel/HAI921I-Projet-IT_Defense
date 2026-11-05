@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://rhypxcib5h8k" path="res://scenes/environment/office_environment.tscn" id="1_office"]
 [ext_resource type="Script" uid="uid://bf6agh6vgawhg" path="res://scripts/gameplay/danger_spawner.gd" id="2_i2aat"]
+[ext_resource type="Resource" uid="uid://cy3qrbw2gmhx1" path="res://data/levels/level1.tres" id="3_tyxjt"]
 [ext_resource type="PackedScene" uid="uid://j5rpncy6pqah" path="res://scenes/dangers/danger_virus.tscn" id="4_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://uvt3rkv4rl7h" path="res://scenes/office/work_station.tscn" id="5_qdh5e"]
 [ext_resource type="PackedScene" uid="uid://b8w01wgwol0wh" path="res://scenes/dangers/danger_phishing.tscn" id="5_t0hvh"]
@@ -36,9 +37,14 @@ position = Vector2(-1152, 0)
 
 [node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
 script = ExtResource("2_i2aat")
-dangers = Array[PackedScene]([ExtResource("4_1ey3t"), ExtResource("5_t0hvh"), ExtResource("6_kfebt"), ExtResource("7_r72dd"), ExtResource("8_ijn0p"), ExtResource("9_jmes4"), ExtResource("10_tyxjt")])
+level_data = ExtResource("3_tyxjt")
+dangers = Array[PackedScene]([ExtResource("4_1ey3t"), ExtResource("5_t0hvh"), ExtResource("6_kfebt"), ExtResource("7_r72dd"), ExtResource("10_tyxjt"), ExtResource("8_ijn0p"), ExtResource("9_jmes4")])
+new_danger_weight = null
 
 [node name="Timer" type="Timer" parent="DangerSpawner" unique_id=472311108]
+
+[node name="WaveTimer" type="Timer" parent="DangerSpawner" unique_id=1448672826]
+one_shot = true
 
 [node name="SpawnPoints" type="Node2D" parent="DangerSpawner" unique_id=1305147989]
 

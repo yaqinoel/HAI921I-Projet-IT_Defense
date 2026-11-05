@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var first_level: PackedScene
-
 @onready var level_container: Node2D = $LevelContainer
 @onready var defense_placement_manager = $DefensePlacementManager
 
@@ -16,15 +14,20 @@ extends Node2D
 
 var current_level: Node2D
 
+@export var levels: Array[PackedScene] = []
+var current_level_index: int = 0
+
 
 func _ready():
+	if levels.is_empty():
+		push_error("Aucun niveau n'a été ajouté dans la liste levels.")
+		return
+	current_level_index = 0
+	change_level(levels[current_level_index])
 	game_session.money_changed.connect(gameplay_ui.update_money)
 
 	gameplay_ui.update_money(game_session.money)
 
-	if first_level != null:
-		change_level(first_level)
-	
 	gameplay_ui.defense_drag_started.connect(defense_placement_manager.start_drag)
 	gameplay_ui.purchase_requested.connect(_on_purchase_requested)
 	
@@ -78,6 +81,17 @@ func change_level(scene: PackedScene) -> void:
 	
 	var stations := current_level.get_node("WorkStations") as Node2D
 	game_session.setup_workstations(stations)
+	var spawner = current_level.get_node("DangerSpawner")
+	spawner.level_won.connect(load_next_level)
+	
+func load_next_level() -> void:
+	current_level_index += 1
+
+	if current_level_index >= levels.size():
+		print("Félicitations ! Tous les niveaux sont terminés.")
+		return
+	game_session.reset_session()
+	change_level(levels[current_level_index])
 
 
 func _on_purchase_requested(defense_data: DefenseData) -> void:

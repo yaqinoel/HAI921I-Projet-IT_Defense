@@ -87,7 +87,11 @@ func find_target() -> Danger:
 				best_damage = effective_damage
 				best_pos = danger.global_position.x
 				continue
-			# Le danger le plus à gauche est prioritaire.
+			if (danger.global_position.x < best_pos and effective_damage >= best_damage):
+				target = danger
+				best_damage = effective_damage
+				best_pos = danger.global_position.x
+				continue
 			if (effective_damage > best_damage and danger.global_position.x < best_pos + max_position_gap):
 				target = danger
 				best_damage = effective_damage

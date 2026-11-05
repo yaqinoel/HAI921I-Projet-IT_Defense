@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cy3qrbw2gmhx1"]
+
+[ext_resource type="Script" uid="uid://do44l4m6065uq" path="res://scripts/gameplay/levelData.gd" id="1_imdmg"]
+
+[resource]
+script = ExtResource("1_imdmg")
+total_waves = 2
+starting_spawns_per_wave = 10
+extra_spawns_per_wave = 5
+metadata/_custom_type_script = "uid://do44l4m6065uq"
