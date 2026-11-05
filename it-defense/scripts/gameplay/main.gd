@@ -50,6 +50,9 @@ func _on_play_pressed() -> void:
 	gameplay_ui.show()
 	game_session.running = true
 	get_tree().paused = false
+	
+	var spawner = current_level.get_node("DangerSpawner")
+	spawner.start_game()
 
 
 func change_level(scene: PackedScene) -> void:

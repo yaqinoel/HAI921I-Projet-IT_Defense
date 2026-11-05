@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b2wuiadjsto2s" path="res://scenes/dangers/danger_ransomware.tscn" id="8_ijn0p"]
 [ext_resource type="PackedScene" uid="uid://cxxh57s7q6f13" path="res://scenes/dangers/danger_DDOS.tscn" id="9_jmes4"]
 [ext_resource type="PackedScene" uid="uid://b0qq761urghc2" path="res://scenes/dangers/danger_humanError.tscn" id="10_tyxjt"]
+[ext_resource type="PackedScene" path="res://scenes/ui/quiz_popup.tscn" id="11_07lms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
 size = Vector2(780, 80)
@@ -39,9 +40,10 @@ position = Vector2(-1152, 0)
 script = ExtResource("2_i2aat")
 level_data = ExtResource("3_tyxjt")
 dangers = Array[PackedScene]([ExtResource("4_1ey3t"), ExtResource("5_t0hvh"), ExtResource("6_kfebt"), ExtResource("7_r72dd"), ExtResource("10_tyxjt"), ExtResource("8_ijn0p"), ExtResource("9_jmes4")])
-new_danger_weight = null
 
 [node name="Timer" type="Timer" parent="DangerSpawner" unique_id=472311108]
+
+[node name="QuizPopup" parent="DangerSpawner" unique_id=65962337 instance=ExtResource("11_07lms")]
 
 [node name="WaveTimer" type="Timer" parent="DangerSpawner" unique_id=1448672826]
 one_shot = true

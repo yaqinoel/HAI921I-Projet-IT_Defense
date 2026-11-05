@@ -10,6 +10,7 @@ extends Node2D
 @onready var spawn_points: Node2D = $SpawnPoints
 @onready var danger_container: Node2D = $"../DangerContainer"
 @onready var game_session: GameSession = $"../../../GameSession"
+@onready var quiz_popup: QuizPopup = $"QuizPopup"
 
 var current_wave: int = 1
 var spawned_this_wave: int = 0
@@ -23,7 +24,6 @@ signal level_lost
 func _ready() -> void:
 	timer.timeout.connect(_on_spawn_timer_timeout)
 	wave_timer.timeout.connect(start_next_wave)
-	start_wave()
 	
 func _process(_delta: float) -> void:
 	if spawned_this_wave < get_spawns_for_current_wave():
@@ -37,6 +37,18 @@ func _process(_delta: float) -> void:
 		wave_in_progress = false
 		wave_timer.start(2.0)
 
+func start_game() -> void:
+	start_wave()
+
+func get_danger_name(scene: PackedScene) -> String:
+	var state := scene.get_state()
+	for i in state.get_node_property_count(0):
+		if state.get_node_property_name(0, i) == &"data":
+			var data := state.get_node_property_value(0, i) as DangerData
+			if data:
+				return data.display_name   # ou data.type
+	return ""
+
 func start_wave() -> void:
 	if current_wave > level_data.total_waves:
 		check_victory()
@@ -44,6 +56,7 @@ func start_wave() -> void:
 
 	print("Début de la vague ", current_wave)
 
+	quiz_popup.ask_about_danger(get_danger_name(dangers[get_unlocked_danger_count() - 1]))
 	spawned_this_wave = 0
 	update_spawn_interval()
 	timer.start()

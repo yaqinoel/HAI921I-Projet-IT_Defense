@@ -21,6 +21,7 @@ func _ready() -> void:
 	
 	shop_panel.hide()
 	
+	
 	shop_button.pressed.connect(_on_shop_button_pressed)
 	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)	
 
