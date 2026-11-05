@@ -100,6 +100,9 @@ func load_next_level() -> void:
 		return
 	game_session.reset_session()
 	change_level(levels[current_level_index])
+	var spawner = current_level.get_node("DangerSpawner")
+	game_session.running = true
+	spawner.start_game()
 
 
 func _on_purchase_requested(defense_data: DefenseData) -> void:
