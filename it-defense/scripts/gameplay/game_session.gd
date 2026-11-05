@@ -41,3 +41,4 @@ func reset_session() -> void:
 	money = 0
 	survival_time = 0
 	running = false
+	money_changed.emit(money)

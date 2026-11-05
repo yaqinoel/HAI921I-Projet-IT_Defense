@@ -40,6 +40,7 @@ func start_drag(card: DefenseCard) -> void:
 
 
 func cancel_drag() -> void:
+	placement_pending = false
 	if is_instance_valid(preview):
 		preview.queue_free()
 	

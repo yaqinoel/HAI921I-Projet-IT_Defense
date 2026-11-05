@@ -229,10 +229,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_plant")
 
 [node name="WalkingEmployee" type="AnimatedSprite2D" parent="." unique_id=1651474177]
-position = Vector2(417.60416, 327)
+process_mode = 3
+position = Vector2(84, 327)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_employee")
-animation = &"walk_left"
+animation = &"walk_right"
 autoplay = "walk_right"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WalkingEmployee" unique_id=1065323111]

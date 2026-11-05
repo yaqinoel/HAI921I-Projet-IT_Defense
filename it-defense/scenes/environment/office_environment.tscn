@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bnafc202ldvi5" path="res://assets/sprites/office/decor/writing-table.png" id="7_table"]
 [ext_resource type="Texture2D" uid="uid://yx8uef58n4a8" path="res://assets/sprites/office/decor/Trash.png" id="8_trash"]
 [ext_resource type="Texture2D" uid="uid://bce2rc51xl3pr" path="res://assets/sprites/office/plant.png" id="9_plant"]
-[ext_resource type="FontFile" uid="uid://c4bssk6o3nkdu" path="res://assets/fonts/PixelifySans-Bold.ttf" id="10_font"]
 [ext_resource type="PackedScene" uid="uid://c3mlbswavys0m" path="res://scenes/environment/office_left_part.tscn" id="11_west"]
 
 [sub_resource type="Animation" id="Animation_reset"]
@@ -75,7 +74,7 @@ centered = false
 [node name="OfficeFurniture" type="Node2D" parent="." unique_id=1070053194]
 
 [node name="MiddlePlant" type="Sprite2D" parent="OfficeFurniture" unique_id=198210596]
-position = Vector2(69, 323)
+position = Vector2(64, 337)
 scale = Vector2(3, 3)
 texture = ExtResource("9_plant")
 
@@ -97,17 +96,17 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_water")
 
 [node name="CoffeeStation" type="Sprite2D" parent="BreakArea" unique_id=160060297]
-position = Vector2(104, 555)
-scale = Vector2(1.5, 1.5)
+position = Vector2(96, 561)
+scale = Vector2(-1.5, 1.5)
 texture = ExtResource("4_coffee")
 
 [node name="WaterCooler" type="Sprite2D" parent="BreakArea" unique_id=123749178]
-position = Vector2(47, 558)
+position = Vector2(161, 560)
 scale = Vector2(2, 2)
 texture = ExtResource("6_water")
 
 [node name="Plant" type="Sprite2D" parent="BreakArea" unique_id=1410602047]
-position = Vector2(166, 552)
+position = Vector2(210, 558)
 scale = Vector2(2, 2)
 texture = ExtResource("9_plant")
 
@@ -125,17 +124,6 @@ texture = ExtResource("5_printer")
 hframes = 2
 
 [node name="WallConsole" type="Node2D" parent="." unique_id=1980738650]
-
-[node name="NetworkSign" type="Label" parent="WallConsole" unique_id=429261954]
-offset_left = 714.0
-offset_top = 31.0
-offset_right = 847.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0.72, 0.86, 0.8, 1)
-theme_override_fonts/font = ExtResource("10_font")
-theme_override_font_sizes/font_size = 15
-text = "SUPERVISION"
-horizontal_alignment = 1
 
 [node name="StatusBacking" type="Polygon2D" parent="WallConsole" unique_id=432808187]
 position = Vector2(764, 59)

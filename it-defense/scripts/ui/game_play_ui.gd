@@ -3,15 +3,25 @@ class_name GamePlayUI extends CanvasLayer
 @export var test_defense: DefenseData
 
 @onready var grid: GridContainer = ($Root/MarginContainer/DefensePanelContainer/GridContainer)
-@onready var money_label: Label = $Root/MoneyLabel
+@onready var root: Control = $Root
+@onready var top_right: HBoxContainer = $Root/TopRight
+@onready var money_label: Label = $Root/TopRight/Balance/Content/MoneyLabel
 @onready var shop_panel: ShopPanel = $Root/ShopPanel
-@onready var shop_button: Button = $Root/ShopButton
+@onready var shop_button: Button = $Root/TopRight/ShopButton
+@onready var pause_button: Button = $Root/TopRight/PauseButton
+@onready var settings_button: Button = $Root/TopRight/SettingsButton
 @onready var message_popup: MessagePopup = $MessagePopup
 @onready var toast_message: ToastMessage = $ToastMessage
 
 
 signal defense_drag_started(card: DefenseCard)
 signal purchase_requested(defense_data: DefenseData)
+signal pause_requested
+signal settings_requested
+
+var interaction_blocked: bool = false
+var previous_process_mode: ProcessMode
+var previous_popup_process_mode: ProcessMode
 
 func _ready() -> void:
 	for child in grid.get_children():
@@ -23,11 +33,52 @@ func _ready() -> void:
 	
 	
 	shop_button.pressed.connect(_on_shop_button_pressed)
-	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)	
+	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)
+	pause_button.pressed.connect(pause_requested.emit)
+	settings_button.pressed.connect(settings_requested.emit)
+	root.resized.connect(_fit_hud)
+	top_right.resized.connect(_fit_hud)
+	_fit_hud()
 
 
 func _on_card_drag_started(card: DefenseCard) -> void:
+	if interaction_blocked or get_tree().paused:
+		return
 	defense_drag_started.emit(card)
+
+
+func _fit_hud() -> void:
+	var card := grid.get_child(0) as Control
+	var gap := grid.get_theme_constant("h_separation")
+	var available_width := root.size.x - top_right.size.x - 64.0
+	var card_width := card.get_combined_minimum_size().x
+	var columns := floori((available_width + gap) / (card_width + gap))
+	grid.columns = clampi(columns, 1, grid.get_child_count())
+
+
+# if we alreay opened the system menu, we can not click gameplay ui
+func set_gameplay_ui_blocked(value: bool) -> void:
+	if interaction_blocked == value:
+		return
+	interaction_blocked = value
+	if value:
+		previous_process_mode = process_mode
+		previous_popup_process_mode = message_popup.process_mode
+		message_popup.process_mode = Node.PROCESS_MODE_DISABLED
+		process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		process_mode = previous_process_mode
+		message_popup.process_mode = previous_popup_process_mode
+
+
+func reset_for_new_run() -> void:
+	shop_panel.hide()
+	message_popup.close()
+	toast_message.clear_message()
+	for child in grid.get_children():
+		var card := child as DefenseCard
+		if card != null:
+			card.clear_card()
 
 
 # find a avaliable card by defese
@@ -88,8 +139,12 @@ func show_toast(message: String, title: String = "Information") -> void:
 
 
 func _on_shop_button_pressed() -> void:
+	if interaction_blocked:
+		return
 	shop_panel.visible = not shop_panel.visible
 
 
 func _on_shop_purchase_requested(defense_data: DefenseData) -> void:
+	if interaction_blocked:
+		return
 	purchase_requested.emit(defense_data)

@@ -20,6 +20,13 @@ func _fit_bubble_height() -> void:
 	bubble.size.y = bubble.get_combined_minimum_size().y
 
 
+func clear_message() -> void:
+	hide_timer.stop()
+	if transition != null:
+		transition.kill()
+	bubble.hide()
+
+
 func show_message(message: String, title: String = "Information") -> void:
 	title_label.text = title
 	message_label.text = message

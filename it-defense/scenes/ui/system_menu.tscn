@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://6gbcx1k4vwva"]
+
+[ext_resource type="FontFile" uid="uid://c4bssk6o3nkdu" path="res://assets/fonts/PixelifySans-Bold.ttf" id="bold"]
+[ext_resource type="Texture2D" uid="uid://twnq0wwtosnb" path="res://assets/ui/Framewright/divider.png" id="divider"]
+[ext_resource type="Texture2D" uid="uid://co5a5qhsjjukn" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconGear01a.png" id="Gear"]
+[ext_resource type="Texture2D" uid="uid://bdiw1mgf27bg1" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconHome01a.png" id="Home"]
+[ext_resource type="Texture2D" uid="uid://bum2ghjs4bxar" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconPause01a.png" id="Pause"]
+[ext_resource type="Texture2D" uid="uid://8mvnaeahshd6" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconPlay01a.png" id="Play"]
+[ext_resource type="Texture2D" uid="uid://cveowxvsl4mvl" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconRestart01a.png" id="Restart"]
+[ext_resource type="Script" uid="uid://6i4ukbkjhcrm" path="res://scripts/ui/system_menu.gd" id="script"]
+[ext_resource type="Theme" uid="uid://cbx5bgbr0xtl6" path="res://assets/ui/system_ui_theme.tres" id="theme"]
+
+[node name="SystemMenu" type="CanvasLayer" unique_id=503026554]
+process_mode = 3
+layer = 30
+visible = false
+script = ExtResource("script")
+
+[node name="Screen" type="Control" parent="." unique_id=1638108246]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+
+[node name="Shade" type="ColorRect" parent="Screen" unique_id=1573429024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.075, 0.055, 0.075, 0.72)
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen" unique_id=523553454]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Window" type="PanelContainer" parent="Screen/CenterContainer" unique_id=1628188254]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+
+[node name="Padding" type="MarginContainer" parent="Screen/CenterContainer/Window" unique_id=1435594975]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="Pages" type="VBoxContainer" parent="Screen/CenterContainer/Window/Padding" unique_id=1493601824]
+layout_mode = 2
+
+[node name="PausePage" type="VBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages" unique_id=1740770643]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage" unique_id=327903875]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage/Header" unique_id=1741993894]
+custom_minimum_size = Vector2(28, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("Pause")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage/Header" unique_id=460777115]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("bold")
+theme_override_font_sizes/font_size = 32
+text = "En pause"
+
+[node name="Divider" type="TextureRect" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage" unique_id=771136180]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("divider")
+expand_mode = 1
+
+[node name="ResumeButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage" unique_id=2075691277]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "Reprendre"
+icon = ExtResource("Play")
+expand_icon = true
+
+[node name="RestartButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage" unique_id=914183260]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Button"
+text = "Recommencer"
+icon = ExtResource("Restart")
+expand_icon = true
+
+[node name="ReturnMenuButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage" unique_id=1824954878]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_type_variation = &"ReturnMenuButton"
+text = "Retour au menu"
+icon = ExtResource("Home")
+expand_icon = true
+
+[node name="ReturnHint" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/PausePage" unique_id=1495898163]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.32, 0.22, 1)
+theme_override_font_sizes/font_size = 16
+text = "Termine la partie en cours"
+horizontal_alignment = 1
+
+[node name="SettingsPage" type="VBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages" unique_id=1175546124]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage" unique_id=325358884]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/Header" unique_id=291639608]
+custom_minimum_size = Vector2(28, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("Gear")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/Header" unique_id=1057627300]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("bold")
+theme_override_font_sizes/font_size = 32
+text = "Paramètres"
+
+[node name="Divider" type="TextureRect" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage" unique_id=44810113]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("divider")
+expand_mode = 1
+
+[node name="AudioPanel" type="PanelContainer" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage" unique_id=528809534]
+layout_mode = 2
+theme_type_variation = &"InsetPanel"
+
+[node name="AudioContent" type="VBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/AudioPanel" unique_id=1639149290]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VolumeHeading" type="HBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/AudioPanel/AudioContent" unique_id=728928027]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/AudioPanel/AudioContent/VolumeHeading" unique_id=799332519]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Volume général"
+
+[node name="VolumeValue" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/AudioPanel/AudioContent/VolumeHeading" unique_id=2045047300]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "100 %"
+horizontal_alignment = 2
+
+[node name="VolumeSlider" type="HSlider" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage/AudioPanel/AudioContent" unique_id=454984598]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+value = 100.0
+
+[node name="BackButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/SettingsPage" unique_id=86900102]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_type_variation = &"Button"
+text = "Retour"
+expand_icon = true

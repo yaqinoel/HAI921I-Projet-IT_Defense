@@ -60,6 +60,7 @@ position = Vector2(0, 17)
 texture = ExtResource("3_k5fra")
 
 [node name="employee" type="AnimatedSprite2D" parent="." unique_id=803218768]
+process_mode = 3
 z_index = 3
 position = Vector2(5.684342e-14, 8)
 scale = Vector2(0.8, 0.757)

@@ -84,6 +84,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=195343470]
+process_mode = 3
 position = Vector2(39, -31)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=32480669]

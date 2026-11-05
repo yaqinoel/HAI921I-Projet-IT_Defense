@@ -36,6 +36,13 @@ func is_empty() -> bool:
 	return count == 0
 
 
+func clear_card() -> void:
+	count = 0
+	defense_data = null
+	is_dragging = false
+	refresh_state()
+
+
 # add one defense card in this case
 func add_card(data: DefenseData) -> void:
 	if not can_put(data):

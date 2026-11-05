@@ -77,6 +77,7 @@ animations = [{
 script = ExtResource("1_wolk0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216515902]
+process_mode = 3
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_ugck8")
 animation = &"attack"
