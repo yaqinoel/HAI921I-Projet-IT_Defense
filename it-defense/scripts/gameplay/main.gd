@@ -83,6 +83,11 @@ func change_level(scene: PackedScene) -> void:
 	game_session.setup_workstations(stations)
 	var spawner = current_level.get_node("DangerSpawner")
 	spawner.level_won.connect(load_next_level)
+	spawner.level_lost.connect(restart_level)
+	
+func restart_level() -> void:
+	game_session.reset_session()
+	change_level(levels[current_level_index])
 	
 func load_next_level() -> void:
 	current_level_index += 1

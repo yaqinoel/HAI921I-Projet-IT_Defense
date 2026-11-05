@@ -17,6 +17,7 @@ var wave_in_progress: bool = false
 var waiting_for_next_wave: bool = false
 
 signal level_won
+signal level_lost
 
 
 func _ready() -> void:
@@ -140,3 +141,6 @@ func check_victory() -> void:
 			finish_level()
 		else:
 			print("Défaite : objectif d'argent non atteint !.")
+			timer.stop()
+			wave_timer.stop()
+			level_lost.emit()
