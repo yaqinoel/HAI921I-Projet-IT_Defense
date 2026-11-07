@@ -5,10 +5,13 @@ class_name Projectile extends Area2D
 @export var speed: float = 125
 @export var damage: float = 30
 
+@export var max_lifetime: float = 10.0
+
 var defense_type: StringName
 var object_type: StringName
 var target: Danger = null
 var old_direction: Vector2 = Vector2.RIGHT
+var fly_time: float = 0.0
 
 
 func _ready() -> void:
@@ -43,6 +46,12 @@ func destory() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	fly_time += delta
+	
+	if fly_time >= max_lifetime:
+		destory()
+		return
+	
 	if not is_instance_valid(target):
 		global_position += old_direction * delta * speed
 		return
