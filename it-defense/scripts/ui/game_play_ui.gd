@@ -34,10 +34,13 @@ func _ready() -> void:
 		var card := child as DefenseCard
 		if card != null:
 			card.drag_started.connect(_on_card_drag_started)
+			card.contents_changed.connect(_update_shop_capacity)
 	
 	shop_panel.hide()
 	shop_button.pressed.connect(_on_shop_button_pressed)
 	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)
+	shop_panel.selection_changed.connect(_update_shop_capacity)
+	shop_panel.visibility_changed.connect(_update_shop_capacity)
 	
 	defense_slot_actions.hide()
 	remove_defense_button.pressed.connect(defense_remove_requested.emit)
@@ -48,6 +51,7 @@ func _ready() -> void:
 	root.resized.connect(_fit_hud)
 	top_right.resized.connect(_fit_hud)
 	_fit_hud()
+	_update_shop_capacity()
 
 
 func _on_card_drag_started(card: DefenseCard) -> void:
@@ -112,6 +116,18 @@ func find_avaliable_card(data: DefenseData) -> DefenseCard:
 	
 	# if there are no case has the same type defense, return first empty card
 	return first_empty_card
+
+
+func get_remaining_capacity(data: DefenseData) -> int:
+	var card := find_avaliable_card(data)
+	if card == null:
+		return 0
+	return maxi(0, DefenseCard.MAX_COUNT - card.count)
+
+
+func _update_shop_capacity() -> void:
+	var remaining := get_remaining_capacity(shop_panel.selected_defense)
+	shop_panel.update_capacity(remaining)
 
 
 func _input(event: InputEvent) -> void:

@@ -11,12 +11,14 @@ class_name ShopPanel extends Control
 @onready var description_label: Label = description_content.get_node("DescriptionLabel")
 @onready var price_label: Label = description_content.get_node("PriceLabel")
 @onready var buy_button: Button = details.get_node("BuyButton")
+@onready var capacity_label: Label = %CapacityLabel
 
 
 @export var shop_item_scene: PackedScene
 @export var products: Array[DefenseData]
 
 signal try_buy_defense(defense_data: DefenseData)
+signal selection_changed
 
 
 var product_group: ButtonGroup = ButtonGroup.new()
@@ -74,6 +76,15 @@ func select_item(item: ShopItem) -> void:
 
 	selected_defense = item.defense_data
 	refresh_details()
+	selection_changed.emit()
+
+
+func update_capacity(remaining: int) -> void:
+	if selected_defense == null:
+		capacity_label.text = "Place : —"
+		return
+
+	capacity_label.text = "Place : %d / %d" % [remaining, DefenseCard.MAX_COUNT]
 
 
 func refresh_details() -> void:

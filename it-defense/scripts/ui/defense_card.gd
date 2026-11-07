@@ -8,6 +8,7 @@ var defense_data: DefenseData = null
 var is_dragging: bool = false
 
 signal drag_started(card: DefenseCard)
+signal contents_changed
 
 
 func _ready() -> void:
@@ -41,6 +42,7 @@ func clear_card() -> void:
 	defense_data = null
 	is_dragging = false
 	refresh_state()
+	contents_changed.emit()
 
 
 # add one defense card in this case
@@ -53,22 +55,24 @@ func add_card(data: DefenseData) -> void:
 	
 	count += 1
 	refresh_state()
+	contents_changed.emit()
 
 
 # take one defense card from this card
 func take_one_card(data: DefenseData) -> void:
 	if is_empty() or data == null:
 		return
-	count -= 1
 	
 	if defense_data.type != data.type:
 		return
+	count -= 1
 	
 	if is_empty():
 		defense_data = null
 		
 	is_dragging = false
 	refresh_state()
+	contents_changed.emit()
 
 
 func _gui_input(event: InputEvent) -> void:

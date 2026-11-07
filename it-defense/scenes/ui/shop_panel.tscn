@@ -137,13 +137,15 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 3
 
-[node name="Label2" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=1057172089]
+[node name="CapacityLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=1057172089]
+unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Nombre de défenses de ce type pouvant encore être stockées."
 theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
 theme_override_colors/font_shadow_color = Color(0.68267375, 0.53505844, 0.53407544, 1)
 theme_override_fonts/font = ExtResource("4_j21la")
 theme_override_font_sizes/font_size = 32
-text = "Place: 6/6"
+text = "Place : —"
 horizontal_alignment = 1
 
 [node name="RightPage" type="PanelContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer" unique_id=1997853978]
