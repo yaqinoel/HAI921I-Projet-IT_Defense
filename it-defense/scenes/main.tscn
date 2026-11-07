@@ -19,6 +19,10 @@ levels = Array[PackedScene]([ExtResource("4_office"), ExtResource("3_tipki"), Ex
 [node name="DefensePlacementManager" type="Node2D" parent="." unique_id=1326259773]
 script = ExtResource("3_jyhfs")
 
+[node name="SelectionTimer" type="Timer" parent="DefensePlacementManager" unique_id=398193292]
+wait_time = 3.0
+one_shot = true
+
 [node name="DragPreviewLayer" type="CanvasLayer" parent="DefensePlacementManager" unique_id=1988914897]
 layer = 2
 

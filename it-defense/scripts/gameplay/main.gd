@@ -61,11 +61,14 @@ func _ready():
 	gameplay_ui.purchase_requested.connect(_on_purchase_requested)
 	gameplay_ui.pause_requested.connect(_on_pause_requested)
 	gameplay_ui.settings_requested.connect(_on_settings_requested)
+	gameplay_ui.defense_remove_requested.connect(defense_placement_manager.remove_selected_defense)
 	
 	system_menu.resume_requested.connect(_close_system_menu)
 	system_menu.settings_back_requested.connect(_on_settings_back)
 	system_menu.restart_requested.connect(restart_level, CONNECT_DEFERRED)
 	system_menu.return_to_menu_requested.connect(_on_return_to_menu_requested, CONNECT_DEFERRED)
+	
+	defense_placement_manager.selection_changed.connect(gameplay_ui.show_defense_slot_actions)
 	
 	# move camera to menu view when game start
 	var menu_view := current_level.get_node("CameraViews/MenuView") as Marker2D

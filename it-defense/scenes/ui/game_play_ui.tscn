@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://cox3xqlyja2fm" path="res://data/defenses/defense_systemMaintenance.tres" id="15_ib7tg"]
 [ext_resource type="Resource" uid="uid://cawpigfxs75ww" path="res://data/defenses/defense_save.tres" id="16_cifbm"]
 [ext_resource type="PackedScene" uid="uid://cya1kekbfc4w5" path="res://scenes/ui/toast_message.tscn" id="17_toast"]
+[ext_resource type="PackedScene" uid="uid://dgruxttri4vx4" path="res://scenes/ui/defense_action_menu.tscn" id="21_ldufu"]
 [ext_resource type="Texture2D" uid="uid://dxpc5b7e5itwb" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconCoin01a.png" id="coin"]
 [ext_resource type="Texture2D" uid="uid://co5a5qhsjjukn" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconGear01a.png" id="gear_icon"]
 [ext_resource type="Texture2D" uid="uid://bum2ghjs4bxar" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconPause01a.png" id="pause_icon"]
@@ -170,6 +171,11 @@ tooltip_text = "Paramètres"
 theme_type_variation = &"SquareButton"
 icon = ExtResource("gear_icon")
 expand_icon = true
+
+[node name="DefenseSlotActionMenu" parent="Root" unique_id=671981938 instance=ExtResource("21_ldufu")]
+visible = false
+z_index = 15
+layout_mode = 1
 
 [node name="MessagePopup" parent="." unique_id=316572318 instance=ExtResource("10_message")]
 

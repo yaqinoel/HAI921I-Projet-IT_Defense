@@ -13,15 +13,21 @@ class_name GamePlayUI extends CanvasLayer
 @onready var message_popup: MessagePopup = $MessagePopup
 @onready var toast_message: ToastMessage = $ToastMessage
 
+@onready var defense_slot_actions: PanelContainer = $Root/DefenseSlotActionMenu
+@onready var remove_defense_button: Button = defense_slot_actions.get_node("Padding/ActionButtons/RemoveButton")
+@onready var defense_info_button: Button = defense_slot_actions.get_node("Padding/ActionButtons/InfoButton")
+
 
 signal defense_drag_started(card: DefenseCard)
 signal purchase_requested(defense_data: DefenseData)
 signal pause_requested
 signal settings_requested
+signal defense_remove_requested
 
 var interaction_blocked: bool = false
 var previous_process_mode: ProcessMode
 var previous_popup_process_mode: ProcessMode
+var selectd_display_slot: DefenseSlot	# the slot that we want to show action menu
 
 func _ready() -> void:
 	for child in grid.get_children():
@@ -30,10 +36,13 @@ func _ready() -> void:
 			card.drag_started.connect(_on_card_drag_started)
 	
 	shop_panel.hide()
-	
-	
 	shop_button.pressed.connect(_on_shop_button_pressed)
 	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)
+	
+	defense_slot_actions.hide()
+	remove_defense_button.pressed.connect(defense_remove_requested.emit)
+	defense_info_button.pressed.connect(_on_defense_info_pressed)
+	
 	pause_button.pressed.connect(pause_requested.emit)
 	settings_button.pressed.connect(settings_requested.emit)
 	root.resized.connect(_fit_hud)
@@ -148,3 +157,45 @@ func _on_shop_purchase_requested(defense_data: DefenseData) -> void:
 	if interaction_blocked:
 		return
 	purchase_requested.emit(defense_data)
+
+
+func show_defense_slot_actions(slot: DefenseSlot) -> void:
+	if not is_instance_valid(slot) or slot.is_available():
+		defense_slot_actions.hide()
+		return
+		
+	selectd_display_slot = slot
+	
+	# change anchor position from game to screen space
+	var screen_position := (
+		slot.action_menu_anchor.get_global_transform_with_canvas().origin
+	)
+	
+	defense_slot_actions.reset_size()
+	var menu_position := (
+		root.get_global_transform_with_canvas().affine_inverse()
+		* screen_position
+	)
+	var maximum_position := root.size - defense_slot_actions.size - Vector2(8, 8)
+	defense_slot_actions.position = Vector2(
+		clampf(menu_position.x, 8.0, maxf(8.0, maximum_position.x)),
+		clampf(menu_position.y, 8.0, maxf(8.0, maximum_position.y))
+	)
+	
+	defense_slot_actions.show()
+
+
+func _on_defense_info_pressed() -> void:
+	if not is_instance_valid(selectd_display_slot):
+		return
+	
+	var defense := selectd_display_slot.placed_defense as Defense
+
+	if not is_instance_valid(defense) or defense.data == null:
+		return
+
+	show_message(
+		defense.data.description,
+		defense.data.display_name
+	)
+	

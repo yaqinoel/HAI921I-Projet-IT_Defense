@@ -18,9 +18,13 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_ugck8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=657675096]
+texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("1_d4uuu")
 region_enabled = true
 region_rect = Rect2(32, 32, 16, 16)
 
-[node name="Border" type="Node2D" parent="." unique_id=805139869]
+[node name="Border" type="Line2D" parent="." unique_id=292382382]
+
+[node name="ActionMenuAnchor" type="Marker2D" parent="." unique_id=63400450]
+position = Vector2(43, -44)

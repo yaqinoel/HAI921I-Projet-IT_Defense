@@ -1,8 +1,13 @@
 extends Node2D
 
-const SLOT_MASK: int = 1 << 3
+const SLOT_MASK: int = 1 << 3 # lot collison layer mask = 4
 
 @onready var drag_preview_layer: CanvasLayer = $DragPreviewLayer
+@onready var selection_timer: Timer = $SelectionTimer
+
+
+# signal to inform GameplayUI selection is changed, update action button for defense slot
+signal selection_changed(slot: DefenseSlot)
 
 var source_card: DefenseCard
 var dragged_data: DefenseData
@@ -16,10 +21,71 @@ var placement_pending: bool = false
 var release_position: Vector2
 var release_over_ui: bool = false
 
+var selected_slot: DefenseSlot
 
-func setup_container(slots: Node2D, defenses: Node2D) -> void:
-	defense_slots_container = slots
-	defense_container = defenses
+func _ready() -> void:
+	selection_timer.timeout.connect(clear_selection)
+
+# set container for defenses and slots
+func setup_container(slots_container: Node2D, defenses_container: Node2D) -> void:
+	defense_slots_container = slots_container
+	defense_container = defenses_container
+	
+	# connect signals for every slot in container
+	for child in defense_slots_container.get_children():
+		var slot := child as DefenseSlot
+		
+		if slot == null:
+			continue
+		
+		slot.slot_clicked.connect(select_one_slot)
+
+
+func select_one_slot(slot: DefenseSlot) -> void:
+	if not is_instance_valid(slot) or slot.is_available():
+		clear_selection()
+		return
+	
+	# cancel old selecttion
+	if is_instance_valid(selected_slot):
+		selected_slot.set_selected(false)
+	
+	# select new slot
+	selected_slot = slot
+	selected_slot.set_selected(true)
+	
+	# start cancal selection timer
+	selection_timer.start()
+	
+	# release signal to gameplayui
+	selection_changed.emit(slot)
+
+
+func clear_selection() -> void:
+	# stop timer
+	selection_timer.stop()
+	
+	if is_instance_valid(selected_slot):
+		selected_slot.set_selected(false)
+	
+	selected_slot = null
+	selection_changed.emit(null)
+
+
+func remove_selected_defense() -> void:
+	if not is_instance_valid(selected_slot):
+		return
+	
+	if selected_slot.is_available():
+		clear_selection()
+		return
+	
+	var defense := selected_slot.placed_defense
+	defense.attack_timer.stop()
+	selected_slot.placed_defense = null
+	
+	clear_selection()
+	defense.queue_free()
 
 
 func start_drag(card: DefenseCard) -> void:
@@ -40,6 +106,8 @@ func start_drag(card: DefenseCard) -> void:
 
 
 func cancel_drag() -> void:
+	clear_selection()
+	
 	placement_pending = false
 	if is_instance_valid(preview):
 		preview.queue_free()
