@@ -38,7 +38,8 @@ enum OverlayMenu {
 	PAUSE,
 	SETTINGS,
 	RESTART,
-	QUIT
+	QUIT,
+	RESULT
 }
 
 var content_window: ContentWindow = ContentWindow.NONE
@@ -47,6 +48,7 @@ var previous_ui_focus: Control
 var previous_menu_process_mode: ProcessMode
 var previous_content_focus: Control
 var current_quiz: QuizPopup
+var result_won: bool = false
 
 
 func _ready():
@@ -73,6 +75,7 @@ func _ready():
 	system_menu.settings_back_requested.connect(_on_settings_back)
 	system_menu.restart_requested.connect(restart_level, CONNECT_DEFERRED)
 	system_menu.return_to_menu_requested.connect(_on_return_to_menu_requested, CONNECT_DEFERRED)
+	system_menu.next_level_requested.connect(_on_next_level_requested, CONNECT_DEFERRED)
 	
 	defense_placement_manager.selection_changed.connect(gameplay_ui.show_defense_slot_actions)
 	
@@ -203,7 +206,7 @@ func _on_pause_requested() -> void:
 
 
 func _on_settings_requested() -> void:
-	if camera_transitioning or overlay_menu == OverlayMenu.SETTINGS:
+	if camera_transitioning or overlay_menu in [OverlayMenu.SETTINGS, OverlayMenu.RESULT]:
 		return
 	if not gameplay_ui.visible and not menu_layer.visible:
 		return
@@ -220,7 +223,7 @@ func _on_settings_back() -> void:
 func _close_system_menu() -> void:
 	if overlay_menu == OverlayMenu.NONE:
 		return
-	system_menu.hide()
+	system_menu.close()
 	overlay_menu = OverlayMenu.NONE
 	menu_layer.process_mode = previous_menu_process_mode
 	_update_pause_state()
@@ -285,6 +288,7 @@ func change_level(scene: PackedScene) -> void:
 		current_level.queue_free()
 	
 	current_level = next_level
+	result_won = false
 	level_container.add_child(current_level)
 	
 	# pass defense deplacement slot container and defenses container to  defense_placement_manager
@@ -293,13 +297,56 @@ func change_level(scene: PackedScene) -> void:
 	var stations := current_level.get_node("WorkStations") as Node2D
 	game_session.setup_workstations(stations)
 	var spawner = current_level.get_node("DangerSpawner")
-	spawner.level_won.connect(load_next_level, CONNECT_DEFERRED)
-	spawner.level_lost.connect(restart_level, CONNECT_DEFERRED)
+	spawner.level_won.connect(_on_level_won, CONNECT_DEFERRED)
+	spawner.level_lost.connect(_on_level_lost, CONNECT_DEFERRED)
 	current_quiz = spawner.get_node("QuizPopup") as QuizPopup
 	current_quiz.pause_game = false
 	current_quiz.open_requested.connect(_on_quiz_open_requested.bind(current_quiz))
 	current_quiz.quiz_finished.connect(_on_quiz_finished.bind(current_quiz))
 	_update_pause_state()
+
+
+func _on_level_won() -> void:
+	_show_level_result(true)
+
+
+func _on_level_lost() -> void:
+	_show_level_result(false)
+
+
+func _show_level_result(won: bool) -> void:
+	if not game_session.running:
+		return
+	result_won = won
+	var spawner := current_level.get_node("DangerSpawner")
+	var target_money: int = spawner.level_data.target_money
+	var minutes := floori(game_session.survival_time / 60.0)
+	var seconds := floori(game_session.survival_time) % 60
+	var summary := "Niveau %d · Temps : %02d:%02d\nSolde : %d € / %d €\nBloquées : %d  |  Intrusions : %d" % [
+		current_level_index + 1,
+		minutes,
+		seconds,
+		game_session.money,
+		target_money,
+		game_session.defended_threats,
+		game_session.invaded_threats
+	]
+	if not won:
+		summary = "Objectif d'argent non atteint.\n" + summary
+	game_session.running = false
+	_clear_content_windows()
+	_enter_system_menu(OverlayMenu.RESULT)
+	var has_next_level := current_level_index + 1 < levels.size()
+	system_menu.show_result(won, summary, has_next_level)
+
+
+func _on_next_level_requested() -> void:
+	if overlay_menu != OverlayMenu.RESULT or not result_won:
+		return
+	if current_level_index + 1 >= levels.size():
+		return
+	load_next_level()
+	_close_system_menu()
 
 
 func restart_level() -> void:

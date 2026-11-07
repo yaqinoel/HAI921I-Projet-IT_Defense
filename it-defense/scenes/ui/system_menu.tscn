@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bum2ghjs4bxar" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconPause01a.png" id="Pause"]
 [ext_resource type="Texture2D" uid="uid://8mvnaeahshd6" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconPlay01a.png" id="Play"]
 [ext_resource type="Texture2D" uid="uid://cveowxvsl4mvl" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconRestart01a.png" id="Restart"]
+[ext_resource type="Texture2D" uid="uid://bebt6opbs8nnx" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconTick01a.png" id="ResultTick"]
 [ext_resource type="Script" uid="uid://6i4ukbkjhcrm" path="res://scripts/ui/system_menu.gd" id="script"]
 [ext_resource type="Theme" uid="uid://cbx5bgbr0xtl6" path="res://assets/ui/system_ui_theme.tres" id="theme"]
 
@@ -187,4 +188,78 @@ custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_type_variation = &"Button"
 text = "Retour"
+expand_icon = true
+
+[node name="ResultPage" type="VBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages" unique_id=1662872295]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage" unique_id=255846013]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage/Header" unique_id=565957673]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("ResultTick")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage/Header" unique_id=2036395492]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("bold")
+theme_override_font_sizes/font_size = 28
+text = "Victoire !"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Divider" type="TextureRect" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage" unique_id=1040689970]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("divider")
+expand_mode = 1
+
+[node name="SummaryPanel" type="PanelContainer" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage" unique_id=399285001]
+layout_mode = 2
+theme_type_variation = &"InsetPanel"
+
+[node name="SummaryLabel" type="Label" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage/SummaryPanel" unique_id=520520112]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Niveau 1 · Temps : 02:30
+Solde : 1000 € / 1000 €
+Bloquées : 25  |  Intrusions : 0"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage" unique_id=974099051]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+theme_override_font_sizes/font_size = 22
+text = "Niveau suivant"
+icon = ExtResource("Play")
+expand_icon = true
+
+[node name="RetryButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage" unique_id=498439652]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Rejouer ce niveau"
+icon = ExtResource("Restart")
+expand_icon = true
+
+[node name="MainMenuButton" type="Button" parent="Screen/CenterContainer/Window/Padding/Pages/ResultPage" unique_id=1488357079]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"ReturnMenuButton"
+theme_override_font_sizes/font_size = 20
+text = "Retour au menu"
+icon = ExtResource("Home")
 expand_icon = true

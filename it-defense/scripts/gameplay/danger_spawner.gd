@@ -146,6 +146,7 @@ func spawn_danger() -> bool:
 	var new_danger := selected_scene.instantiate() as Danger
 
 	new_danger.lane = lane_index
+	game_session.register_danger(new_danger)
 	danger_container.add_child(new_danger)
 	new_danger.global_position = birth_point.global_position
 	return true

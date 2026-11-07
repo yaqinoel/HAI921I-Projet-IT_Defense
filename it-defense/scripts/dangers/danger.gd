@@ -1,6 +1,9 @@
 class_name Danger
 extends Node2D
 
+signal defeated
+signal invaded
+
 @export var data: DangerData
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -52,15 +55,21 @@ func _takeDamage(damage) -> void:
 
 
 func die() -> void:
+	if is_dying or is_invading:
+		return
 	is_dying = true
 	health_bar.visible = false
 	animated_sprite.play("die")
+	defeated.emit()
 
 
 func invade() -> void:
+	if is_dying or is_invading:
+		return
 	is_invading = true
 	health_bar.visible = false
 	animated_sprite.play("invading")
+	invaded.emit()
 
 
 func destory() -> void:
