@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cn6jo7uxomjvc"]
+
+[ext_resource type="Script" uid="uid://citbtdd7gwu4t" path="res://scripts/audio/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://c8566j64migdk" path="res://assets/music/main_menu.wav" id="2_3asnw"]
+[ext_resource type="AudioStream" uid="uid://b2medoahyvlw" path="res://assets/music/level_music_01.wav" id="3_m6ggh"]
+[ext_resource type="AudioStream" uid="uid://c17kp5dbttx73" path="res://assets/music/level_music_02.wav" id="4_aoitu"]
+[ext_resource type="AudioStream" uid="uid://b04buh8g7luey" path="res://assets/music/level_music_03.wav" id="5_njtn3"]
+
+[node name="AudioManager" type="Node" unique_id=1531123608]
+process_mode = 3
+script = ExtResource("1_8qd8g")
+menu_music = ExtResource("2_3asnw")
+level_music = Array[AudioStream]([ExtResource("3_m6ggh"), ExtResource("4_aoitu"), ExtResource("5_njtn3")])
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=389192394]
+volume_db = -12.0
+bus = &"Music"

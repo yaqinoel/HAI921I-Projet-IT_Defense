@@ -15,6 +15,14 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://b3au20w750xce"
+
+[autoload]
+
+AudioManager="*uid://cn6jo7uxomjvc"
+
 [display]
 
 window/stretch/mode="canvas_items"

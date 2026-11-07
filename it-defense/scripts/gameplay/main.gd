@@ -87,6 +87,9 @@ func _ready():
 	menu_settings_button.pressed.connect(_on_settings_requested)
 	gameplay_ui.hide()	# gameplay ui is hiden by default
 	_update_pause_state()
+	
+	# play menu music when start game
+	AudioManager.play_menu_music()
 
 
 func _update_pause_state() -> void:
@@ -183,6 +186,9 @@ func _on_play_pressed() -> void:
 	
 	var spawner = current_level.get_node("DangerSpawner")
 	spawner.start_game()
+	
+	# play level music correspondent
+	AudioManager.play_level_music(current_level_index)
 
 # when pause or settings request 
 func _enter_system_menu(target: OverlayMenu) -> void:
@@ -263,6 +269,8 @@ func _on_return_to_menu_requested() -> void:
 	menu_layer.show()
 	await _move_camera_to(menu_view.global_position, true, original_menu_position.x)
 	play_button.grab_focus()
+	
+	AudioManager.play_menu_music()
 
 
 func change_level(scene: PackedScene) -> void:
@@ -304,6 +312,9 @@ func change_level(scene: PackedScene) -> void:
 	current_quiz.open_requested.connect(_on_quiz_open_requested.bind(current_quiz))
 	current_quiz.quiz_finished.connect(_on_quiz_finished.bind(current_quiz))
 	_update_pause_state()
+	
+	# play level music correspondent
+	AudioManager.play_level_music(current_level_index)
 
 
 func _on_level_won() -> void:
