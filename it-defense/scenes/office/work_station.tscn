@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://uvt3rkv4rl7h"]
 
 [ext_resource type="Texture2D" uid="uid://ba7jckr2fy14u" path="res://assets/sprites/office/desk.png" id="1_nvwbs"]
+[ext_resource type="Texture2D" uid="uid://dxpc5b7e5itwb" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconCoin01a.png" id="2_6afem"]
 [ext_resource type="Texture2D" uid="uid://cfu62uwwergac" path="res://assets/sprites/office/PC1.png" id="2_f4ywn"]
+[ext_resource type="Texture2D" uid="uid://c6tssy51qe047" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Alert01a.png" id="3_i3wn2"]
 [ext_resource type="Texture2D" uid="uid://dbak743v2brhs" path="res://assets/sprites/office/Chair.png" id="3_k5fra"]
+[ext_resource type="Texture2D" uid="uid://bebt6opbs8nnx" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconTick01a.png" id="4_hme1e"]
 [ext_resource type="Texture2D" uid="uid://dk3r1ecryeb5a" path="res://assets/sprites/office/Julia_walk_Up.png" id="4_k5fra"]
 [ext_resource type="Script" uid="uid://dkhd86lvachet" path="res://scripts/office/work_station.gd" id="5_krihi"]
 [ext_resource type="Texture2D" uid="uid://bduccmffwxq14" path="res://assets/sprites/office/PC2.png" id="6_tl530"]
+[ext_resource type="PackedScene" uid="uid://bjrvr0y3euuvg" path="res://scenes/office/status_feedback.tscn" id="8_i3wn2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krihi"]
 atlas = ExtResource("4_k5fra")
@@ -49,6 +53,9 @@ size = Vector2(30, 40)
 [node name="work_station" type="Node2D" unique_id=588220065]
 scale = Vector2(3, 3)
 script = ExtResource("5_krihi")
+income_icon = ExtResource("2_6afem")
+warning_icon = ExtResource("3_i3wn2")
+recovery_icon = ExtResource("4_hme1e")
 
 [node name="table" type="Sprite2D" parent="." unique_id=50044430]
 z_index = 1
@@ -93,3 +100,6 @@ texture = ExtResource("6_tl530")
 [node name="IncomeTimer" type="Timer" parent="." unique_id=2069438257]
 
 [node name="RecoveryTimer" type="Timer" parent="." unique_id=374919177]
+
+[node name="StatusFeedback" parent="." unique_id=2032096787 instance=ExtResource("8_i3wn2")]
+scale = Vector2(0.7, 0.7)

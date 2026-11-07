@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bjrvr0y3euuvg"]
+
+[ext_resource type="Script" uid="uid://dcgwpdkm5nf4g" path="res://scripts/office/status_feedback.gd" id="1_jdk4x"]
+[ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="1_uqc8q"]
+
+[node name="StatusFeedback" type="Node2D" unique_id=2032096787]
+z_index = 10
+script = ExtResource("1_jdk4x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=976290255]
+offset_right = 54.0
+offset_bottom = 23.0
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer" unique_id=373649439]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="HBoxContainer" unique_id=415086056]
+layout_mode = 2
+theme = ExtResource("1_uqc8q")
+theme_override_font_sizes/font_size = 8
+text = "feedback"
+vertical_alignment = 1
