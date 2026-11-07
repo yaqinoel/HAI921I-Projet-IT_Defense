@@ -44,10 +44,10 @@ animations = [{
 }]
 
 [node name="Defense01" type="Node2D" unique_id=194257191]
-process_mode = 3
 script = ExtResource("1_lr2o5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=216515902]
+process_mode = 3
 position = Vector2(0, -48)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ugck8")

@@ -42,6 +42,8 @@ func setup_container(slots_container: Node2D, defenses_container: Node2D) -> voi
 
 
 func select_one_slot(slot: DefenseSlot) -> void:
+	if get_tree().paused:
+		return
 	if not is_instance_valid(slot) or slot.is_available():
 		clear_selection()
 		return
@@ -73,6 +75,8 @@ func clear_selection() -> void:
 
 
 func remove_selected_defense() -> void:
+	if get_tree().paused:
+		return
 	if not is_instance_valid(selected_slot):
 		return
 	
@@ -89,6 +93,8 @@ func remove_selected_defense() -> void:
 
 
 func start_drag(card: DefenseCard) -> void:
+	if get_tree().paused:
+		return
 	# clean last drag data and preview
 	cancel_drag()
 	
@@ -179,6 +185,8 @@ func find_avaliable_slot(position: Vector2) -> DefenseSlot:
 	return null
 
 func place_defense(slot: DefenseSlot) -> void:
+	if get_tree().paused:
+		return
 	if not is_instance_valid(source_card) or dragged_data == null:
 		return
 	if dragged_data.scene == null:

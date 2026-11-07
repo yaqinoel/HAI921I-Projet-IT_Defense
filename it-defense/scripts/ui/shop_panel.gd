@@ -19,6 +19,7 @@ class_name ShopPanel extends Control
 
 signal try_buy_defense(defense_data: DefenseData)
 signal selection_changed
+signal closed
 
 
 var product_group: ButtonGroup = ButtonGroup.new()
@@ -61,7 +62,14 @@ func _fill_products() -> void:
 
 
 func _on_close_button_pressed() -> void:
+	close()
+
+
+func close() -> void:
+	if not visible:
+		return
 	hide()
+	closed.emit()
 
 
 func _on_product_pressed(button: BaseButton) -> void:

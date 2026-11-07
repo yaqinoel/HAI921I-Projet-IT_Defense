@@ -8,8 +8,9 @@ class_name GamePlayUI extends CanvasLayer
 @onready var money_label: Label = $Root/TopRight/Balance/Content/MoneyLabel
 @onready var shop_panel: ShopPanel = $Root/ShopPanel
 @onready var shop_button: Button = $Root/TopRight/ShopButton
-@onready var pause_button: Button = $Root/TopRight/PauseButton
-@onready var settings_button: Button = $Root/TopRight/SettingsButton
+@onready var system_controls_layer: CanvasLayer = $SystemControlsLayer
+@onready var pause_button: Button = $SystemControlsLayer/Root/Buttons/PauseButton
+@onready var settings_button: Button = $SystemControlsLayer/Root/Buttons/SettingsButton
 @onready var message_popup: MessagePopup = $MessagePopup
 @onready var toast_message: ToastMessage = $ToastMessage
 
@@ -23,10 +24,11 @@ signal purchase_requested(defense_data: DefenseData)
 signal pause_requested
 signal settings_requested
 signal defense_remove_requested
+signal shop_requested
+signal message_requested(message: String, title: String)
 
 var interaction_blocked: bool = false
-var previous_process_mode: ProcessMode
-var previous_popup_process_mode: ProcessMode
+var content_window_open: bool = false
 var selectd_display_slot: DefenseSlot	# the slot that we want to show action menu
 
 func _ready() -> void:
@@ -50,6 +52,8 @@ func _ready() -> void:
 	settings_button.pressed.connect(settings_requested.emit)
 	root.resized.connect(_fit_hud)
 	top_right.resized.connect(_fit_hud)
+	visibility_changed.connect(_sync_system_controls_visibility)
+	_sync_system_controls_visibility()
 	_fit_hud()
 	_update_shop_capacity()
 
@@ -71,21 +75,34 @@ func _fit_hud() -> void:
 
 # if we alreay opened the system menu, we can not click gameplay ui
 func set_gameplay_ui_blocked(value: bool) -> void:
-	if interaction_blocked == value:
-		return
 	interaction_blocked = value
-	if value:
-		previous_process_mode = process_mode
-		previous_popup_process_mode = message_popup.process_mode
-		message_popup.process_mode = Node.PROCESS_MODE_DISABLED
-		process_mode = Node.PROCESS_MODE_DISABLED
-	else:
-		process_mode = previous_process_mode
-		message_popup.process_mode = previous_popup_process_mode
+	_refresh_input_permissions()
+
+
+func set_content_window_open(value: bool) -> void:
+	content_window_open = value
+	_refresh_input_permissions()
+
+
+func _refresh_input_permissions() -> void:
+	var gameplay_blocked := interaction_blocked or content_window_open
+	grid.process_mode = Node.PROCESS_MODE_DISABLED if gameplay_blocked else Node.PROCESS_MODE_INHERIT
+	shop_button.disabled = gameplay_blocked
+	defense_slot_actions.process_mode = Node.PROCESS_MODE_DISABLED if gameplay_blocked else Node.PROCESS_MODE_INHERIT
+	if gameplay_blocked:
+		defense_slot_actions.hide()
+	pause_button.disabled = interaction_blocked
+	settings_button.disabled = interaction_blocked
+	shop_panel.process_mode = Node.PROCESS_MODE_DISABLED if interaction_blocked else Node.PROCESS_MODE_INHERIT
+	message_popup.process_mode = Node.PROCESS_MODE_DISABLED if interaction_blocked else Node.PROCESS_MODE_ALWAYS
+
+
+func _sync_system_controls_visibility() -> void:
+	system_controls_layer.visible = visible
 
 
 func reset_for_new_run() -> void:
-	shop_panel.hide()
+	shop_panel.close()
 	message_popup.close()
 	toast_message.clear_message()
 	for child in grid.get_children():
@@ -131,7 +148,7 @@ func _update_shop_capacity() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if message_popup.is_open():
+	if interaction_blocked or message_popup.is_open():
 		return
 
 	if not event is InputEventKey:
@@ -142,12 +159,12 @@ func _input(event: InputEvent) -> void:
 
 	match event.physical_keycode:
 		KEY_B:
-			shop_panel.visible = not shop_panel.visible
+			_on_shop_button_pressed()
 			get_viewport().set_input_as_handled()
 
 		KEY_ESCAPE:
 			if shop_panel.visible:
-				shop_panel.hide()
+				shop_panel.close()
 				get_viewport().set_input_as_handled()
 
 
@@ -156,7 +173,8 @@ func update_money(value: int) -> void:
 
 
 func show_message(message: String, title: String = "Information") -> void:
-	message_popup.show_message(message, title)
+	if not interaction_blocked:
+		message_requested.emit(message, title)
 
 
 func show_toast(message: String, title: String = "Information") -> void:
@@ -164,19 +182,20 @@ func show_toast(message: String, title: String = "Information") -> void:
 
 
 func _on_shop_button_pressed() -> void:
-	if interaction_blocked:
+	if interaction_blocked or content_window_open:
 		return
-	shop_panel.visible = not shop_panel.visible
+	shop_requested.emit()
 
 
 func _on_shop_purchase_requested(defense_data: DefenseData) -> void:
-	if interaction_blocked:
+	if interaction_blocked or not shop_panel.visible:
 		return
 	purchase_requested.emit(defense_data)
 
 
 func show_defense_slot_actions(slot: DefenseSlot) -> void:
-	if not is_instance_valid(slot) or slot.is_available():
+	if interaction_blocked or content_window_open or not is_instance_valid(slot) or slot.is_available():
+		selectd_display_slot = null
 		defense_slot_actions.hide()
 		return
 		

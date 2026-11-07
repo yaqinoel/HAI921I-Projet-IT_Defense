@@ -28,7 +28,8 @@ enum ContentWindow {
 	NONE,
 	SHOP,
 	DANGER_INFO,
-	QUESTIONNAIRE
+	MESSAGE_POP,
+	QUIZZ
 }
 
 # ui menu status (ex. pause, restart, settings, quit)
@@ -42,9 +43,10 @@ enum OverlayMenu {
 
 var content_window: ContentWindow = ContentWindow.NONE
 var overlay_menu: OverlayMenu = OverlayMenu.NONE
-var paused_before_system_menu: bool = false
 var previous_ui_focus: Control
 var previous_menu_process_mode: ProcessMode
+var previous_content_focus: Control
+var current_quiz: QuizPopup
 
 
 func _ready():
@@ -61,6 +63,10 @@ func _ready():
 	gameplay_ui.purchase_requested.connect(_on_purchase_requested)
 	gameplay_ui.pause_requested.connect(_on_pause_requested)
 	gameplay_ui.settings_requested.connect(_on_settings_requested)
+	gameplay_ui.shop_requested.connect(_on_shop_requested)
+	gameplay_ui.message_requested.connect(_on_message_requested)
+	gameplay_ui.shop_panel.closed.connect(_on_content_window_closed.bind(ContentWindow.SHOP))
+	gameplay_ui.message_popup.closed.connect(_on_content_window_closed.bind(ContentWindow.MESSAGE_POP))
 	gameplay_ui.defense_remove_requested.connect(defense_placement_manager.remove_selected_defense)
 	
 	system_menu.resume_requested.connect(_close_system_menu)
@@ -77,12 +83,88 @@ func _ready():
 	play_button.pressed.connect(_on_play_pressed)
 	menu_settings_button.pressed.connect(_on_settings_requested)
 	gameplay_ui.hide()	# gameplay ui is hiden by default
-	get_tree().paused = true	# pause the game
+	_update_pause_state()
+
+
+func _update_pause_state() -> void:
+	var system_blocked := overlay_menu != OverlayMenu.NONE
+	gameplay_ui.set_content_window_open(content_window != ContentWindow.NONE)
+	gameplay_ui.set_gameplay_ui_blocked(system_blocked)
+	if is_instance_valid(current_quiz):
+		current_quiz.process_mode = Node.PROCESS_MODE_DISABLED if system_blocked else Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = (
+		not game_session.running
+		or camera_transitioning
+		or content_window != ContentWindow.NONE
+		or system_blocked
+	)
+
+
+func _enter_content_window(target: ContentWindow) -> bool:
+	if target == ContentWindow.NONE or not game_session.running or camera_transitioning:
+		return false
+	if overlay_menu != OverlayMenu.NONE or content_window != ContentWindow.NONE:
+		return false
+	previous_content_focus = get_viewport().gui_get_focus_owner()
+	defense_placement_manager.cancel_drag()
+	content_window = target
+	_update_pause_state()
+	return true
+
+
+func _on_content_window_closed(target: ContentWindow) -> void:
+	if content_window != target:
+		return
+	var focus := previous_content_focus
+	previous_content_focus = null
+	content_window = ContentWindow.NONE
+	_update_pause_state()
+	if (
+		content_window == ContentWindow.NONE
+		and overlay_menu == OverlayMenu.NONE
+		and is_instance_valid(focus)
+		and focus.is_visible_in_tree()
+		and focus.can_process()
+	):
+		focus.grab_focus()
+
+
+func _on_shop_requested() -> void:
+	if _enter_content_window(ContentWindow.SHOP):
+		gameplay_ui.shop_panel.show()
+		gameplay_ui.shop_panel.buy_button.grab_focus()
+
+
+func _on_message_requested(message: String, title: String) -> void:
+	if _enter_content_window(ContentWindow.MESSAGE_POP):
+		gameplay_ui.message_popup.show_message(message, title)
+
+
+func _on_quiz_open_requested(danger_type: String, quiz: QuizPopup) -> void:
+	if quiz != current_quiz:
+		return
+	if _enter_content_window(ContentWindow.QUIZZ):
+		quiz.open_question(danger_type)
+
+
+func _on_quiz_finished(quiz: QuizPopup) -> void:
+	if quiz == current_quiz:
+		_on_content_window_closed(ContentWindow.QUIZZ)
+
+
+func _clear_content_windows() -> void:
+	previous_content_focus = null
+	content_window = ContentWindow.NONE
+	gameplay_ui.shop_panel.close()
+	gameplay_ui.message_popup.close()
+	if is_instance_valid(current_quiz):
+		current_quiz.dismiss()
+	defense_placement_manager.cancel_drag()
 
 
 # when play button is pressed
 func _on_play_pressed() -> void:
-	if camera_transitioning or overlay_menu != OverlayMenu.NONE:
+	if camera_transitioning or overlay_menu != OverlayMenu.NONE or game_session.running:
 		return
 	var original_menu_position := menu_panel.position
 	
@@ -94,7 +176,7 @@ func _on_play_pressed() -> void:
 	menu_panel.position = original_menu_position
 	gameplay_ui.show()	# show HUD
 	game_session.running = true
-	get_tree().paused = false
+	_update_pause_state()
 	
 	var spawner = current_level.get_node("DangerSpawner")
 	spawner.start_game()
@@ -103,20 +185,18 @@ func _on_play_pressed() -> void:
 func _enter_system_menu(target: OverlayMenu) -> void:
 	# first time into system menu from game
 	if overlay_menu == OverlayMenu.NONE:
-		paused_before_system_menu = get_tree().paused	# if the game is already paused before into system menu
 		previous_ui_focus = get_viewport().gui_get_focus_owner()	# focus before
 		previous_menu_process_mode = menu_layer.process_mode
 		menu_layer.process_mode = Node.PROCESS_MODE_DISABLED
 		defense_placement_manager.cancel_drag()
-		gameplay_ui.set_gameplay_ui_blocked(true)
 	
 	# change system menu to target menu
 	overlay_menu = target
-	get_tree().paused = true
+	_update_pause_state()
 
 
 func _on_pause_requested() -> void:
-	if overlay_menu != OverlayMenu.NONE or not gameplay_ui.visible:
+	if camera_transitioning or overlay_menu != OverlayMenu.NONE or not gameplay_ui.visible:
 		return
 	_enter_system_menu(OverlayMenu.PAUSE)
 	system_menu.show_pause()
@@ -142,9 +222,8 @@ func _close_system_menu() -> void:
 		return
 	system_menu.hide()
 	overlay_menu = OverlayMenu.NONE
-	gameplay_ui.set_gameplay_ui_blocked(false)
 	menu_layer.process_mode = previous_menu_process_mode
-	get_tree().paused = paused_before_system_menu
+	_update_pause_state()
 	
 	# try to reset previous focus
 	if (
@@ -162,19 +241,17 @@ func _on_return_to_menu_requested() -> void:
 		return
 
 	# clean or close everythings
-	defense_placement_manager.cancel_drag()
-	gameplay_ui.reset_for_new_run()
 	game_session.reset_session()
+	_clear_content_windows()
+	gameplay_ui.reset_for_new_run()
 	
 	# change to first level (or we can just keep the same level
 	current_level_index = 0
 	change_level(levels[current_level_index])
 	
-	paused_before_system_menu = true
 	_close_system_menu()
-	content_window = ContentWindow.NONE
 	gameplay_ui.hide()
-	get_tree().paused = true
+	_update_pause_state()
 	
 	# move camera to menu view
 	var menu_view := current_level.get_node("CameraViews/MenuView") as Marker2D
@@ -200,7 +277,7 @@ func change_level(scene: PackedScene) -> void:
 		next_level.free()
 		push_error("There is no slots or defenses for new level")
 		return
-	defense_placement_manager.cancel_drag()
+	_clear_content_windows()
 	
 	# clean old level
 	if is_instance_valid(current_level):
@@ -218,20 +295,26 @@ func change_level(scene: PackedScene) -> void:
 	var spawner = current_level.get_node("DangerSpawner")
 	spawner.level_won.connect(load_next_level, CONNECT_DEFERRED)
 	spawner.level_lost.connect(restart_level, CONNECT_DEFERRED)
+	current_quiz = spawner.get_node("QuizPopup") as QuizPopup
+	current_quiz.pause_game = false
+	current_quiz.open_requested.connect(_on_quiz_open_requested.bind(current_quiz))
+	current_quiz.quiz_finished.connect(_on_quiz_finished.bind(current_quiz))
+	_update_pause_state()
 
 
 func restart_level() -> void:
 	# clean and reset everythings
-	defense_placement_manager.cancel_drag()
-	gameplay_ui.reset_for_new_run()
 	game_session.reset_session()
+	_clear_content_windows()
+	gameplay_ui.reset_for_new_run()
 	change_level(levels[current_level_index])
 	var gameplay_view := current_level.get_node("CameraViews/GameplayView") as Marker2D
 	camera.global_position = gameplay_view.global_position
 	camera.force_update_scroll()
 	game_session.running = true
-	paused_before_system_menu = false
 	_close_system_menu()
+	_update_pause_state()
+	current_level.get_node("DangerSpawner").start_game()
 
 
 func load_next_level() -> void:
@@ -245,11 +328,19 @@ func load_next_level() -> void:
 	change_level(levels[current_level_index])
 	var spawner = current_level.get_node("DangerSpawner")
 	game_session.running = true
+	_update_pause_state()
 	spawner.start_game()
 
 
 func _on_purchase_requested(defense_data: DefenseData) -> void:
-	if defense_data == null or overlay_menu != OverlayMenu.NONE:
+	if (
+		defense_data == null
+		or not game_session.running
+		or camera_transitioning
+		or overlay_menu != OverlayMenu.NONE
+		or content_window != ContentWindow.SHOP
+		or not gameplay_ui.shop_panel.visible
+	):
 		return
 
 	var card := gameplay_ui.find_avaliable_card(defense_data)
@@ -280,6 +371,7 @@ func _move_camera_to(
 	menu_target_x: float = 0.0
 ) -> void:
 	camera_transitioning = true
+	_update_pause_state()
 
 	# transition
 	var tween := create_tween()
@@ -306,6 +398,7 @@ func _move_camera_to(
 	# block until finished
 	await tween.finished
 	camera_transitioning = false
+	_update_pause_state()
 
 func _update_camera_position(value: Vector2) -> void:
 	camera.global_position = value

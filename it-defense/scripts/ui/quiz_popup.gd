@@ -3,6 +3,7 @@ extends CanvasLayer
 
 signal question_answered(danger_type: String, correct: bool)
 signal quiz_finished()
+signal open_requested(danger_type: String)
 
 const QuizData = preload("res://scripts/data/quiz_data.gd")
 
@@ -54,10 +55,33 @@ func ask_about_danger(danger_type: String, force: bool = false) -> void:
 	if ask_only_first_time and not force and _already_asked.has(danger_type):
 		return
 
-	_already_asked[danger_type] = true
+	if _active:
+		_already_asked[danger_type] = true
+		_queue.append(_build_question(danger_type))
+		if _answered:
+			_next_button.text = "Suivant"
+		return
+
+	if open_requested.has_connections():
+		open_requested.emit(danger_type)
+	else:
+		open_question(danger_type)
+
+
+func open_question(danger_type: String) -> void:
+	if _active or not QuizData.DANGERS.has(danger_type):
+		return
 	_queue.append(_build_question(danger_type))
-	if not _active:
-		_open()
+	_already_asked[danger_type] = true
+	_open()
+
+
+func dismiss() -> void:
+	_queue.clear()
+	_current.clear()
+	_active = false
+	_answered = false
+	_overlay.hide()
 
 
 ## Oublie les dangers déjà posés (utile en début de partie / de niveau).
@@ -172,6 +196,8 @@ func _on_answer_pressed(defense_type: String) -> void:
 
 
 func _on_next_pressed() -> void:
+	if not _active or not _answered:
+		return
 	if _queue.is_empty():
 		_close()
 	else:
