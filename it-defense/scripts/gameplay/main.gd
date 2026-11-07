@@ -11,12 +11,16 @@ extends Node2D
 
 # main menu references
 @onready var menu_layer: CanvasLayer = $StartMenu
+@onready var menu_panel: Control = $StartMenu/MainMenu/LeftPanel
 @onready var play_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/PlayButton
 
 var current_level: Node2D
 
 @export var levels: Array[PackedScene] = []
 var current_level_index: int = 0
+
+@export var camera_transition_duration: float = 0.9
+var camera_transitioning: bool = false
 
 # content winsows status (ex. shop, questionnaire...)
 enum ContentWindow {
@@ -72,13 +76,16 @@ func _ready():
 
 # when play button is pressed
 func _on_play_pressed() -> void:
+	if camera_transitioning:
+		return
+	var original_menu_position := menu_panel.position
 	
 	# move camera to game view
 	var gameplay_view := current_level.get_node("CameraViews/GameplayView") as Marker2D
-	camera.global_position = gameplay_view.global_position
-	camera.force_update_scroll()
+	await _move_camera_to(gameplay_view.global_position, true, -menu_panel.size.x)
 
 	menu_layer.hide()	# hide start menu
+	menu_panel.position = original_menu_position
 	gameplay_ui.show()	# show HUD
 	game_session.running = true
 	get_tree().paused = false
@@ -140,6 +147,9 @@ func _close_system_menu() -> void:
 
 # go back to start menu
 func _on_return_to_menu_requested() -> void:
+	if camera_transitioning:
+		return
+
 	# clean or close everythings
 	defense_placement_manager.cancel_drag()
 	gameplay_ui.reset_for_new_run()
@@ -153,13 +163,14 @@ func _on_return_to_menu_requested() -> void:
 	_close_system_menu()
 	content_window = ContentWindow.NONE
 	gameplay_ui.hide()
-	menu_layer.show()
+	get_tree().paused = true
 	
 	# move camera to menu view
 	var menu_view := current_level.get_node("CameraViews/MenuView") as Marker2D
-	camera.global_position = menu_view.global_position
-	camera.force_update_scroll()
-	get_tree().paused = true
+	var original_menu_position := menu_panel.position
+	menu_panel.position.x = -menu_panel.size.x
+	menu_layer.show()
+	await _move_camera_to(menu_view.global_position, true, original_menu_position.x)
 	play_button.grab_focus()
 
 
@@ -249,3 +260,42 @@ func _on_purchase_requested(defense_data: DefenseData) -> void:
 	card.add_card(defense_data)
 
 	print("purchase successed", defense_data.display_name)
+
+
+# move camera position (not linearly)
+func _move_camera_to(
+	target_position: Vector2,
+	slide_menu: bool = false,
+	menu_target_x: float = 0.0
+) -> void:
+	camera_transitioning = true
+
+	# transition
+	var tween := create_tween()
+	# set tween can works when game paused
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_method(
+		_update_camera_position,
+		camera.global_position,
+		target_position,
+		camera_transition_duration
+	)
+	
+	if slide_menu:
+		tween.parallel().tween_property(
+			menu_panel,
+			"position:x",
+			menu_target_x,
+			camera_transition_duration
+		)
+
+	# block until finished
+	await tween.finished
+	camera_transitioning = false
+
+func _update_camera_position(value: Vector2) -> void:
+	camera.global_position = value
+	camera.force_update_scroll()

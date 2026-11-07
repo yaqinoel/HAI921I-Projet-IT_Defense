@@ -3,6 +3,8 @@ extends Node2D
 @export var level_data: LevelData
 @export var dangers: Array[PackedScene] = []
 
+@export var preparation_time: float = 4.0
+
 @export var new_danger_weight: float = 2.0
 
 @onready var timer: Timer = $Timer
@@ -38,6 +40,7 @@ func _process(_delta: float) -> void:
 		wave_timer.start(2.0)
 
 func start_game() -> void:
+	await get_tree().create_timer(preparation_time, false).timeout
 	start_wave()
 
 func get_danger_name(scene: PackedScene) -> String:
