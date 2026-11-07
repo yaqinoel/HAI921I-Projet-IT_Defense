@@ -13,6 +13,7 @@ extends Node2D
 @onready var menu_layer: CanvasLayer = $StartMenu
 @onready var menu_panel: Control = $StartMenu/MainMenu/LeftPanel
 @onready var play_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/PlayButton
+@onready var menu_settings_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/SettingsButton
 
 var current_level: Node2D
 
@@ -43,6 +44,7 @@ var content_window: ContentWindow = ContentWindow.NONE
 var overlay_menu: OverlayMenu = OverlayMenu.NONE
 var paused_before_system_menu: bool = false
 var previous_ui_focus: Control
+var previous_menu_process_mode: ProcessMode
 
 
 func _ready():
@@ -70,13 +72,14 @@ func _ready():
 	camera.global_position = menu_view.global_position
 	
 	play_button.pressed.connect(_on_play_pressed)
+	menu_settings_button.pressed.connect(_on_settings_requested)
 	gameplay_ui.hide()	# gameplay ui is hiden by default
 	get_tree().paused = true	# pause the game
 
 
 # when play button is pressed
 func _on_play_pressed() -> void:
-	if camera_transitioning:
+	if camera_transitioning or overlay_menu != OverlayMenu.NONE:
 		return
 	var original_menu_position := menu_panel.position
 	
@@ -99,6 +102,8 @@ func _enter_system_menu(target: OverlayMenu) -> void:
 	if overlay_menu == OverlayMenu.NONE:
 		paused_before_system_menu = get_tree().paused	# if the game is already paused before into system menu
 		previous_ui_focus = get_viewport().gui_get_focus_owner()	# focus before
+		previous_menu_process_mode = menu_layer.process_mode
+		menu_layer.process_mode = Node.PROCESS_MODE_DISABLED
 		defense_placement_manager.cancel_drag()
 		gameplay_ui.set_gameplay_ui_blocked(true)
 	
@@ -115,7 +120,9 @@ func _on_pause_requested() -> void:
 
 
 func _on_settings_requested() -> void:
-	if overlay_menu == OverlayMenu.SETTINGS or not gameplay_ui.visible:
+	if camera_transitioning or overlay_menu == OverlayMenu.SETTINGS:
+		return
+	if not gameplay_ui.visible and not menu_layer.visible:
 		return
 	_enter_system_menu(OverlayMenu.SETTINGS)
 	system_menu.show_settings()
@@ -133,6 +140,7 @@ func _close_system_menu() -> void:
 	system_menu.hide()
 	overlay_menu = OverlayMenu.NONE
 	gameplay_ui.set_gameplay_ui_blocked(false)
+	menu_layer.process_mode = previous_menu_process_mode
 	get_tree().paused = paused_before_system_menu
 	
 	# try to reset previous focus
