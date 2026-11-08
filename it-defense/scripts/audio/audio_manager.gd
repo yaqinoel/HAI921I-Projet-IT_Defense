@@ -1,12 +1,17 @@
 extends Node
 
 @export var menu_music: AudioStream
+@export var tutorial_music: AudioStream
 @export var level_music: Array[AudioStream] = []
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func play_menu_music() -> void:
 	_play_music(menu_music)
+
+
+func play_tutorial_music() -> void:
+	_play_music(tutorial_music)
 
 
 func play_level_music(level: int) -> void:

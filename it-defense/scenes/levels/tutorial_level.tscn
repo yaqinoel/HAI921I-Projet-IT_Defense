@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://2x4pp2w7bo6d"]
+
+[ext_resource type="Script" uid="uid://bydx7hfcphpg" path="res://scripts/gameplay/tutorial_level.gd" id="1_2iuaq"]
+[ext_resource type="PackedScene" uid="uid://rhypxcib5h8k" path="res://scenes/environment/office_environment.tscn" id="1_ey2yj"]
+[ext_resource type="Script" uid="uid://bf6agh6vgawhg" path="res://scripts/gameplay/danger_spawner.gd" id="2_2iuaq"]
+[ext_resource type="Resource" uid="uid://cy3qrbw2gmhx1" path="res://data/levels/level1.tres" id="3_7lhta"]
+[ext_resource type="PackedScene" uid="uid://j5rpncy6pqah" path="res://scenes/dangers/danger_virus.tscn" id="4_c2hjr"]
+[ext_resource type="PackedScene" uid="uid://b8w01wgwol0wh" path="res://scenes/dangers/danger_phishing.tscn" id="5_m2g2s"]
+[ext_resource type="PackedScene" uid="uid://bxq3b0i2wq83g" path="res://scenes/dangers/danger_crashPC.tscn" id="6_q72f6"]
+[ext_resource type="PackedScene" uid="uid://df2lh53u4psye" path="res://scenes/dangers/danger_corruption.tscn" id="7_t7aa4"]
+[ext_resource type="PackedScene" uid="uid://b0qq761urghc2" path="res://scenes/dangers/danger_humanError.tscn" id="8_kgkl0"]
+[ext_resource type="PackedScene" uid="uid://b2wuiadjsto2s" path="res://scenes/dangers/danger_ransomware.tscn" id="9_w2wn7"]
+[ext_resource type="PackedScene" uid="uid://cxxh57s7q6f13" path="res://scenes/dangers/danger_DDOS.tscn" id="10_80b8l"]
+[ext_resource type="PackedScene" path="res://scenes/ui/quiz_popup.tscn" id="11_fp3bk"]
+[ext_resource type="PackedScene" uid="uid://dr6ily3qxficb" path="res://scenes/environment/defense_slot.tscn" id="12_hyyxn"]
+[ext_resource type="PackedScene" uid="uid://uvt3rkv4rl7h" path="res://scenes/office/work_station.tscn" id="13_iwbex"]
+[ext_resource type="Script" uid="uid://p72dmpsriq4q" path="res://scripts/gameplay/danger_detection_area.gd" id="14_472te"]
+[ext_resource type="PackedScene" uid="uid://dhel36oc52p44" path="res://scenes/ui/tutorial_ui.tscn" id="16_7lhta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugck8"]
+size = Vector2(780, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uelu8"]
+size = Vector2(780, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vpop"]
+size = Vector2(780, 80)
+
+[node name="TutorialLevel" type="Node2D" unique_id=2138363239]
+texture_filter = 1
+script = ExtResource("1_2iuaq")
+
+[node name="OfficeEnvironment" parent="." unique_id=342150533 instance=ExtResource("1_ey2yj")]
+
+[node name="CameraViews" type="Node2D" parent="." unique_id=1869764559]
+
+[node name="MenuView" type="Marker2D" parent="CameraViews" unique_id=971860397]
+position = Vector2(-1152, 0)
+
+[node name="GameplayView" type="Marker2D" parent="CameraViews" unique_id=1824508389]
+
+[node name="DangerSpawner" type="Node2D" parent="." unique_id=82806727]
+script = ExtResource("2_2iuaq")
+level_data = ExtResource("3_7lhta")
+dangers = Array[PackedScene]([ExtResource("4_c2hjr"), ExtResource("5_m2g2s"), ExtResource("6_q72f6"), ExtResource("7_t7aa4"), ExtResource("8_kgkl0"), ExtResource("9_w2wn7"), ExtResource("10_80b8l")])
+
+[node name="Timer" type="Timer" parent="DangerSpawner" unique_id=472311108]
+
+[node name="QuizPopup" parent="DangerSpawner" unique_id=65962337 instance=ExtResource("11_fp3bk")]
+
+[node name="WaveTimer" type="Timer" parent="DangerSpawner" unique_id=1448672826]
+one_shot = true
+
+[node name="SpawnPoints" type="Node2D" parent="DangerSpawner" unique_id=1305147989]
+
+[node name="Lane0" type="Marker2D" parent="DangerSpawner/SpawnPoints" unique_id=1514748491]
+position = Vector2(1100, 175)
+
+[node name="Lane1" type="Marker2D" parent="DangerSpawner/SpawnPoints" unique_id=240132942]
+position = Vector2(1100, 335)
+
+[node name="Lane2" type="Marker2D" parent="DangerSpawner/SpawnPoints" unique_id=406140004]
+position = Vector2(1100, 495)
+
+[node name="DangerContainer" type="Node2D" parent="." unique_id=121298440]
+
+[node name="DefenseContainer" type="Node2D" parent="." unique_id=962935301]
+
+[node name="DefenseSlotContainer" type="Node2D" parent="." unique_id=1706624547]
+
+[node name="DefenseSlot0" parent="DefenseSlotContainer" unique_id=1649401231 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(300, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
+
+[node name="DefenseSlot2" parent="DefenseSlotContainer" unique_id=805175272 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(500, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
+
+[node name="DefenseSlot3" parent="DefenseSlotContainer" unique_id=788522775 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(700, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
+
+[node name="DefenseSlot4" parent="DefenseSlotContainer" unique_id=2003675483 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(900, 250)
+detection_areas = [NodePath("../../Lanes/Lane0/Lane0DetectionArea"), NodePath("../../Lanes/Lane1/Lane1DetectionArea")]
+
+[node name="DefenseSlot5" parent="DefenseSlotContainer" unique_id=806125279 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(300, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
+
+[node name="DefenseSlot6" parent="DefenseSlotContainer" unique_id=223609960 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(500, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
+
+[node name="DefenseSlot7" parent="DefenseSlotContainer" unique_id=1365296245 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(700, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
+
+[node name="DefenseSlot8" parent="DefenseSlotContainer" unique_id=1811419403 node_paths=PackedStringArray("detection_areas") instance=ExtResource("12_hyyxn")]
+position = Vector2(900, 410)
+detection_areas = [NodePath("../../Lanes/Lane1/Lane1DetectionArea"), NodePath("../../Lanes/Lane2/Lane2DetectionArea")]
+
+[node name="WorkStations" type="Node2D" parent="." unique_id=1590089799]
+
+[node name="work_station" parent="WorkStations" unique_id=588220065 instance=ExtResource("13_iwbex")]
+position = Vector2(201, 168)
+
+[node name="work_station2" parent="WorkStations" unique_id=40759856 instance=ExtResource("13_iwbex")]
+position = Vector2(201, 329)
+
+[node name="work_station3" parent="WorkStations" unique_id=1293477030 instance=ExtResource("13_iwbex")]
+position = Vector2(201.00002, 490.00003)
+
+[node name="Lanes" type="Node2D" parent="." unique_id=2020641110]
+
+[node name="Lane0" type="Node2D" parent="Lanes" unique_id=548938103]
+
+[node name="Lane0DetectionArea" type="Area2D" parent="Lanes/Lane0" unique_id=197892120]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("14_472te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/Lane0/Lane0DetectionArea" unique_id=1819723510]
+position = Vector2(650, 170)
+shape = SubResource("RectangleShape2D_ugck8")
+
+[node name="Lane1" type="Node2D" parent="Lanes" unique_id=1365462117]
+
+[node name="Lane1DetectionArea" type="Area2D" parent="Lanes/Lane1" unique_id=513718085]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("14_472te")
+lane_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/Lane1/Lane1DetectionArea" unique_id=1398689035]
+position = Vector2(650, 330)
+shape = SubResource("RectangleShape2D_uelu8")
+
+[node name="Lane2" type="Node2D" parent="Lanes" unique_id=1014810101]
+
+[node name="Lane2DetectionArea" type="Area2D" parent="Lanes/Lane2" unique_id=974265865]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("14_472te")
+lane_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lanes/Lane2/Lane2DetectionArea" unique_id=1838399309]
+position = Vector2(650, 490)
+shape = SubResource("RectangleShape2D_0vpop")
+
+[node name="ProjectileContainer" type="Node2D" parent="." unique_id=1378252906]
+
+[node name="TutorialUI" parent="." unique_id=566995554 instance=ExtResource("16_7lhta")]

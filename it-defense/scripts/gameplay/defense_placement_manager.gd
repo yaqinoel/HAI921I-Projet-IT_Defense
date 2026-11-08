@@ -8,6 +8,8 @@ const SLOT_MASK: int = 1 << 3 # lot collison layer mask = 4
 
 # signal to inform GameplayUI selection is changed, update action button for defense slot
 signal selection_changed(slot: DefenseSlot)
+signal defense_placed(slot: DefenseSlot)
+signal defense_removed(slot: DefenseSlot)
 
 var source_card: DefenseCard
 var dragged_data: DefenseData
@@ -85,11 +87,13 @@ func remove_selected_defense() -> void:
 		return
 	
 	var defense := selected_slot.placed_defense
+	var removed_slot := selected_slot
 	defense.attack_timer.stop()
 	selected_slot.placed_defense = null
 	
 	clear_selection()
 	defense.queue_free()
+	defense_removed.emit(removed_slot)
 
 
 func start_drag(card: DefenseCard) -> void:
@@ -208,6 +212,7 @@ func place_defense(slot: DefenseSlot) -> void:
 	slot.placed_defense = defense
 	#source_card.set_card(null)
 	source_card.take_one_card(dragged_data)
+	defense_placed.emit(slot)
 	
 	
 	

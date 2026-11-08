@@ -158,6 +158,7 @@ script = ExtResource("1_qf0ps")
 data = ExtResource("2_qf0ps")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1359514599]
+process_mode = 3
 z_index = 2
 position = Vector2(2, -5)
 sprite_frames = SubResource("SpriteFrames_p0730")

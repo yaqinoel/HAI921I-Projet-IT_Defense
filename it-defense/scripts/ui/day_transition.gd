@@ -20,10 +20,10 @@ func _input(_event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-func cover(day_number: int) -> void:
+func cover(day_number: int, custom_title: String = "") -> void:
 	night_overlay.modulate.a = 0.0
 	day_label.modulate.a = 0.0
-	day_label.text = "Jour %d" % day_number
+	day_label.text = custom_title if not custom_title.is_empty() else "Jour %d" % day_number
 	show()
 
 	var tween := create_tween()

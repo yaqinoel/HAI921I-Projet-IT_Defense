@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dhel36oc52p44"]
+
+[ext_resource type="Script" uid="uid://celeoqys8yoq" path="res://scripts/ui/tutorial_ui.gd" id="1_uiqtt"]
+[ext_resource type="Theme" uid="uid://cbx5bgbr0xtl6" path="res://assets/ui/system_ui_theme.tres" id="2_y4w3r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+bg_color = Color(1, 0.8, 0.3, 0.05)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0.3, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="TutorialUI" type="CanvasLayer" unique_id=566995554]
+process_mode = 3
+layer = 26
+script = ExtResource("1_uiqtt")
+
+[node name="Screen" type="Control" parent="." unique_id=2075226455]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shade" type="ColorRect" parent="Screen" unique_id=1484757026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06100855, 0.106126174, 0.20906562, 0.4)
+
+[node name="FocusFrame" type="Panel" parent="Screen" unique_id=1813530456]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_focus")
+
+[node name="HintPanel" type="PanelContainer" parent="Screen" unique_id=705841919]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -399.0
+offset_top = -184.0
+offset_right = -19.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_y4w3r")
+
+[node name="Content" type="VBoxContainer" parent="Screen/HintPanel" unique_id=431375535]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="ProgressLabel" type="Label" parent="Screen/HintPanel/Content" unique_id=371166384]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.28, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+text = "FORMATION · 01 / 15"
+
+[node name="TitleLabel" type="Label" parent="Screen/HintPanel/Content" unique_id=760303662]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Bienvenue au bureau"
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="Screen/HintPanel/Content" unique_id=879078423]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Apprenez à protéger les ordinateurs avant de commencer le premier jour."
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Screen/HintPanel/Content" unique_id=620209740]
+layout_mode = 2
+alignment = 1
+
+[node name="SkipButton" type="Button" parent="Screen/HintPanel/Content/Buttons" unique_id=652449699]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+tooltip_text = "Passer la formation et commencer le Jour 1"
+theme_override_font_sizes/font_size = 16
+text = "Passer"
+
+[node name="NextButton" type="Button" parent="Screen/HintPanel/Content/Buttons" unique_id=1603184402]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Continuer"

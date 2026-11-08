@@ -17,6 +17,7 @@ extends Node2D
 @onready var feedback: StatusFeedback = $StatusFeedback
 
 signal income_generated(amount: int)
+signal work_status_changed(working: bool)
 
 var is_working: bool = true
 
@@ -96,6 +97,8 @@ func set_work_status(work: bool, recovery_time: float = 0.0) -> void:
 			0.7,
 			Color("#9ce88d")
 	)
+	if was_working != is_working:
+		work_status_changed.emit(is_working)
 
 
 func _on_recovery_timer_timeout() -> void:
