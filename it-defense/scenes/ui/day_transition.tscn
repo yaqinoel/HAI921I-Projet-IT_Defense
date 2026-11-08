@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ca0q5o20hwlp2"]
 
 [ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="1_700t3"]
-[ext_resource type="Script" path="res://scripts/ui/day_transition.gd" id="2_transition"]
+[ext_resource type="Script" uid="uid://dkkdluj666hqq" path="res://scripts/ui/day_transition.gd" id="2_transition"]
 
 [node name="DayTransition" type="CanvasLayer" unique_id=955448952]
 process_mode = 3
@@ -15,7 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 
 [node name="NightOverlay" type="ColorRect" parent="Screen" unique_id=318878145]
 layout_mode = 1
@@ -38,7 +37,6 @@ mouse_filter = 2
 
 [node name="DayLabel" type="Label" parent="Screen/CenterContainer" unique_id=2089264491]
 layout_mode = 2
-mouse_filter = 2
 theme = ExtResource("1_700t3")
 theme_override_font_sizes/font_size = 50
 text = "Jour"

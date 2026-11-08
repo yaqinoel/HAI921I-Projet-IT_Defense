@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://blxenuqq7ibmq"]
+
+[ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="1_t8d41"]
+[ext_resource type="Script" uid="uid://cmq5x32gyp2a7" path="res://scripts/ui/danger_journal_panel.gd" id="2_fgy07"]
+[ext_resource type="PackedScene" uid="uid://ejofvli1fhf3" path="res://scenes/ui/danger_journal_item.tscn" id="3_uek6a"]
+[ext_resource type="Texture2D" uid="uid://dm0rt6livockj" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookCover01a.png" id="11_kpox6"]
+[ext_resource type="Texture2D" uid="uid://bhlprto3q5fke" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookPageLeft01a.png" id="12_wdrsm"]
+[ext_resource type="FontFile" uid="uid://c4bssk6o3nkdu" path="res://assets/fonts/PixelifySans-Bold.ttf" id="13_2kch7"]
+[ext_resource type="Texture2D" uid="uid://b55pcu3h2vom6" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_BookPageRight01a.png" id="14_xonbl"]
+[ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="15_6xmq6"]
+[ext_resource type="Texture2D" uid="uid://cf1slrn1op06q" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01a.png" id="16_eltm1"]
+[ext_resource type="Texture2D" uid="uid://ds4afmf08qi8u" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01b.png" id="17_cbkmj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugck8"]
+texture = ExtResource("11_kpox6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3b8rw"]
+texture = ExtResource("12_wdrsm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qecyp"]
+texture = ExtResource("14_xonbl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g0um3"]
+texture = ExtResource("16_eltm1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hpsf"]
+texture = ExtResource("17_cbkmj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bgle"]
+texture = ExtResource("17_cbkmj")
+
+[node name="DangerJournalPanel" type="Control" unique_id=1906245074]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t8d41")
+script = ExtResource("2_fgy07")
+item_scene = ExtResource("3_uek6a")
+
+[node name="Backgroud" type="ColorRect" parent="." unique_id=1671395804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=85760939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WindowPanel" type="PanelContainer" parent="CenterContainer" unique_id=54945644]
+custom_minimum_size = Vector2(720, 460)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ugck8")
+
+[node name="BookPadding" type="MarginContainer" parent="CenterContainer/WindowPanel" unique_id=105227811]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/WindowPanel/BookPadding" unique_id=339780945]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPage" type="PanelContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer" unique_id=1462588224]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_3b8rw")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage" unique_id=1516412030]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 32
+
+[node name="Content" type="VBoxContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer" unique_id=1349247396]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=797118046]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68267375, 0.53505844, 0.53407544, 1)
+theme_override_fonts/font = ExtResource("13_2kch7")
+theme_override_font_sizes/font_size = 32
+text = "Dangers"
+horizontal_alignment = 1
+
+[node name="ProductScroll" type="ScrollContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=1501989225]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ContentPadding" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll" unique_id=1028585158]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DangerGrid" type="GridContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content/ProductScroll/ContentPadding" unique_id=1709276008]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="CountLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/LeftPage/MarginContainer/Content" unique_id=1057172089]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Nombre de défenses de ce type pouvant encore être stockées."
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68267375, 0.53505844, 0.53407544, 1)
+theme_override_fonts/font = ExtResource("13_2kch7")
+theme_override_font_sizes/font_size = 32
+text = "Nombres:"
+horizontal_alignment = 1
+
+[node name="RightPage" type="PanelContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer" unique_id=1997853978]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_qecyp")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage" unique_id=797510759]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 32
+
+[node name="Details" type="VBoxContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer" unique_id=1771035234]
+layout_mode = 2
+
+[node name="DetailsLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details" unique_id=611728654]
+layout_mode = 2
+theme = ExtResource("15_6xmq6")
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68235296, 0.53333336, 0.53333336, 1)
+text = "Informations"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details" unique_id=1916179093]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="DescriptionPadding" type="MarginContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer" unique_id=783211325]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding" unique_id=1780516208]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NameLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=464973485]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("15_6xmq6")
+theme_override_colors/font_color = Color(0.28627452, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.68235296, 0.53333336, 0.53333336, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="DangerIcon" type="TextureRect" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=1178098478]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DescriptionLabel" type="Label" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details/ScrollContainer/DescriptionPadding/VBoxContainer" unique_id=117778710]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="CenterContainer/WindowPanel/BookPadding/HBoxContainer/RightPage/MarginContainer/Details" unique_id=22006050]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("15_6xmq6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g0um3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0hpsf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8bgle")
+text = "Retour"

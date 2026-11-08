@@ -18,6 +18,8 @@ class_name GamePlayUI extends CanvasLayer
 @onready var remove_defense_button: Button = defense_slot_actions.get_node("Padding/ActionButtons/RemoveButton")
 @onready var defense_info_button: Button = defense_slot_actions.get_node("Padding/ActionButtons/InfoButton")
 
+@onready var journal_button: Button = $Root/TopRight/DangerJournalButton
+@onready var danger_journal_panel: DangerJournalPanel = $Root/DangerJournalPanel
 
 signal defense_drag_started(card: DefenseCard)
 signal purchase_requested(defense_data: DefenseData)
@@ -26,6 +28,7 @@ signal settings_requested
 signal defense_remove_requested
 signal shop_requested
 signal message_requested(message: String, title: String)
+signal journal_requested
 
 var interaction_blocked: bool = false
 var content_window_open: bool = false
@@ -43,6 +46,9 @@ func _ready() -> void:
 	shop_panel.try_buy_defense.connect(_on_shop_purchase_requested)
 	shop_panel.selection_changed.connect(_update_shop_capacity)
 	shop_panel.visibility_changed.connect(_update_shop_capacity)
+	
+	danger_journal_panel.hide()
+	journal_button.pressed.connect(_on_journal_button_pressed)
 	
 	defense_slot_actions.hide()
 	remove_defense_button.pressed.connect(defense_remove_requested.emit)
@@ -89,12 +95,21 @@ func _refresh_input_permissions() -> void:
 	grid.process_mode = Node.PROCESS_MODE_DISABLED if gameplay_blocked else Node.PROCESS_MODE_INHERIT
 	shop_button.disabled = gameplay_blocked
 	defense_slot_actions.process_mode = Node.PROCESS_MODE_DISABLED if gameplay_blocked else Node.PROCESS_MODE_INHERIT
+	
 	if gameplay_blocked:
 		defense_slot_actions.hide()
+		
 	pause_button.disabled = interaction_blocked
 	settings_button.disabled = interaction_blocked
 	shop_panel.process_mode = Node.PROCESS_MODE_DISABLED if interaction_blocked else Node.PROCESS_MODE_INHERIT
 	message_popup.process_mode = Node.PROCESS_MODE_DISABLED if interaction_blocked else Node.PROCESS_MODE_ALWAYS
+	
+	journal_button.disabled = gameplay_blocked
+	danger_journal_panel.process_mode = (
+		Node.PROCESS_MODE_DISABLED
+		if interaction_blocked
+		else Node.PROCESS_MODE_INHERIT
+	)
 
 
 func _sync_system_controls_visibility() -> void:
@@ -233,4 +248,9 @@ func _on_defense_info_pressed() -> void:
 		defense.data.description,
 		defense.data.display_name
 	)
-	
+
+
+func _on_journal_button_pressed() -> void:
+	if interaction_blocked or content_window_open:
+		return
+	journal_requested.emit()

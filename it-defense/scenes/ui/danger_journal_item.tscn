@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ejofvli1fhf3"]
+
+[ext_resource type="Texture2D" uid="uid://cf1slrn1op06q" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01a.png" id="1_kne4p"]
+[ext_resource type="Texture2D" uid="uid://ds4afmf08qi8u" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01b.png" id="2_1wctf"]
+[ext_resource type="Texture2D" uid="uid://dibqn4nl2s0o4" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_Slot01c.png" id="3_0vbkn"]
+[ext_resource type="Texture2D" uid="uid://ds6ojsvabtcyf" path="res://assets/ui/TravelBookLite/Sprites Animated/UI_TravelBook_SlotCursor01a_1.png" id="6_mro0o"]
+[ext_resource type="Script" uid="uid://dm3ew0djt7oih" path="res://scripts/ui/danger_journal_item.gd" id="7_item"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vb38a"]
+texture = ExtResource("1_kne4p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obnp4"]
+texture = ExtResource("2_1wctf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jf5in"]
+texture = ExtResource("2_1wctf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qeixu"]
+texture = ExtResource("3_0vbkn")
+
+[node name="DangerJournalItem" type="Button" unique_id=351042847]
+custom_minimum_size = Vector2(80, 80)
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_vb38a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_obnp4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jf5in")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qeixu")
+toggle_mode = true
+script = ExtResource("7_item")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=655099670]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="CenterContainer" unique_id=1543821225]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="SelectionFrame" type="TextureRect" parent="." unique_id=277012687]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_mro0o")
+expand_mode = 1

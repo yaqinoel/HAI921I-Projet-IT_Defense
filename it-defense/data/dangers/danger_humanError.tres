@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://6ud6nop2if03"]
 
+[ext_resource type="Texture2D" uid="uid://cbuflo404wkx5" path="res://assets/sprites/threats/human_error/human_error_icon.png" id="1_842ui"]
 [ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/dangers/danger_data.gd" id="1_wrhhe"]
 
 [resource]
@@ -9,4 +10,6 @@ display_name = "DangerHumanError"
 speed = 35.0
 max_health = 50.0
 attack_damage = 5.0
+icon = ExtResource("1_842ui")
+description = "DangerHumanError"
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

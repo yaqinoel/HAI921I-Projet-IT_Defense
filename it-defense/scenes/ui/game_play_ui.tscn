@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://cox3xqlyja2fm" path="res://data/defenses/defense_systemMaintenance.tres" id="15_ib7tg"]
 [ext_resource type="Resource" uid="uid://cawpigfxs75ww" path="res://data/defenses/defense_save.tres" id="16_cifbm"]
 [ext_resource type="PackedScene" uid="uid://cya1kekbfc4w5" path="res://scenes/ui/toast_message.tscn" id="17_toast"]
+[ext_resource type="PackedScene" uid="uid://blxenuqq7ibmq" path="res://scenes/ui/danger_journal_panel.tscn" id="17_w56si"]
 [ext_resource type="PackedScene" uid="uid://dgruxttri4vx4" path="res://scenes/ui/defense_action_menu.tscn" id="21_ldufu"]
 [ext_resource type="Texture2D" uid="uid://dxpc5b7e5itwb" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconCoin01a.png" id="coin"]
 [ext_resource type="Texture2D" uid="uid://co5a5qhsjjukn" path="res://assets/ui/TravelBookLite/Sprites/UI_TravelBook_IconGear01a.png" id="gear_icon"]
@@ -106,6 +107,10 @@ layout_mode = 1
 shop_item_scene = ExtResource("7_03hkc")
 products = Array[ExtResource("8_taow4")]([ExtResource("9_cifbm"), ExtResource("10_ckbpb"), ExtResource("11_8sw36"), ExtResource("12_ldufu"), ExtResource("13_w56si"), ExtResource("14_r273a"), ExtResource("15_ib7tg"), ExtResource("16_cifbm"), null])
 
+[node name="DangerJournalPanel" parent="Root" unique_id=2067392932 instance=ExtResource("17_w56si")]
+visible = false
+layout_mode = 1
+
 [node name="TopRight" type="HBoxContainer" parent="Root" unique_id=1201742797]
 z_index = 10
 layout_mode = 1
@@ -156,7 +161,13 @@ layout_mode = 2
 tooltip_text = "Acheter des défenses"
 text = "Boutique"
 
-[node name="SystemButtonsSpace" type="Control" parent="Root/TopRight"]
+[node name="DangerJournalButton" type="Button" parent="Root/TopRight" unique_id=1730870100]
+custom_minimum_size = Vector2(124, 44)
+layout_mode = 2
+tooltip_text = "Consulter les menaces rencontrées"
+text = "Journal"
+
+[node name="SystemButtonsSpace" type="Control" parent="Root/TopRight" unique_id=232481753]
 custom_minimum_size = Vector2(96, 44)
 layout_mode = 2
 mouse_filter = 2
@@ -166,11 +177,12 @@ visible = false
 z_index = 15
 layout_mode = 1
 
-[node name="SystemControlsLayer" type="CanvasLayer" parent="."]
+[node name="SystemControlsLayer" type="CanvasLayer" parent="." unique_id=201915241]
 layer = 25
 
-[node name="Root" type="Control" parent="SystemControlsLayer"]
+[node name="Root" type="Control" parent="SystemControlsLayer" unique_id=1400701208]
 texture_filter = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -179,8 +191,9 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("system_theme")
 
-[node name="Buttons" type="HBoxContainer" parent="SystemControlsLayer/Root"]
+[node name="Buttons" type="HBoxContainer" parent="SystemControlsLayer/Root" unique_id=1633804240]
 layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -112.0

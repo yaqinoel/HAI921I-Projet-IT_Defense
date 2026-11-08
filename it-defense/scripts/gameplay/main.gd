@@ -17,6 +17,8 @@ extends Node2D
 
 @onready var day_transition: DayTransition = $DayTransition
 
+@onready var danger_journal: DangerJournal = $DangerJournal
+
 var current_level: Node2D
 
 @export var levels: Array[PackedScene] = []
@@ -73,6 +75,8 @@ func _ready():
 	gameplay_ui.shop_panel.closed.connect(_on_content_window_closed.bind(ContentWindow.SHOP))
 	gameplay_ui.message_popup.closed.connect(_on_content_window_closed.bind(ContentWindow.MESSAGE_POP))
 	gameplay_ui.defense_remove_requested.connect(defense_placement_manager.remove_selected_defense)
+	gameplay_ui.journal_requested.connect(_on_journal_requested)
+	gameplay_ui.danger_journal_panel.closed.connect(_on_content_window_closed.bind(ContentWindow.DANGER_INFO))
 	
 	system_menu.resume_requested.connect(_close_system_menu)
 	system_menu.settings_back_requested.connect(_on_settings_back)
@@ -168,11 +172,15 @@ func _on_quiz_finished(quiz: QuizPopup) -> void:
 func _clear_content_windows() -> void:
 	previous_content_focus = null
 	content_window = ContentWindow.NONE
+	
 	gameplay_ui.shop_panel.close()
 	gameplay_ui.message_popup.close()
+	gameplay_ui.danger_journal_panel.close()
+	
 	if is_instance_valid(current_quiz):
 		current_quiz.dismiss()
 	defense_placement_manager.cancel_drag()
+	
 
 
 # when play button is pressed
@@ -327,6 +335,9 @@ func change_level(scene: PackedScene) -> void:
 	current_quiz.open_requested.connect(_on_quiz_open_requested.bind(current_quiz))
 	current_quiz.quiz_finished.connect(_on_quiz_finished.bind(current_quiz))
 	_update_pause_state()
+	
+	# connect spawner signal to danger journal
+	spawner.danger_spawned.connect(danger_journal.discover)
 	
 	# play level music correspondent
 	AudioManager.play_level_music(current_level_index)
@@ -496,3 +507,8 @@ func _move_camera_to(
 func _update_camera_position(value: Vector2) -> void:
 	camera.global_position = value
 	camera.force_update_scroll()
+
+
+func _on_journal_requested() -> void:
+	if _enter_content_window(ContentWindow.DANGER_INFO):
+		gameplay_ui.danger_journal_panel.open(danger_journal.get_entries())

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://cghkbyydtq55v"]
 
+[ext_resource type="Texture2D" uid="uid://wt8ndnsenffi" path="res://assets/sprites/threats/crash_pc/crach_pc_icon.png" id="1_3xhoc"]
 [ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/dangers/danger_data.gd" id="1_gchau"]
 
 [resource]
@@ -8,4 +9,6 @@ type = &"DangerCrashPC"
 display_name = "DangerCrashPC"
 speed = 35.0
 attack_damage = 5.0
+icon = ExtResource("1_3xhoc")
+description = "DangerCrashPC"
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

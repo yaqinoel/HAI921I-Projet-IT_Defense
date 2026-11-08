@@ -6,3 +6,5 @@ extends Resource
 @export var speed: float = 100.0
 @export var max_health: float = 100.0
 @export var attack_damage: float = 10.0
+@export var icon: Texture2D
+@export_multiline var description: String = ""

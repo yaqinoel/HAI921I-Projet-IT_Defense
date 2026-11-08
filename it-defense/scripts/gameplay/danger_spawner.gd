@@ -21,6 +21,7 @@ var waiting_for_next_wave: bool = false
 
 signal level_won
 signal level_lost
+signal danger_spawned(data: DangerData)
 
 
 func _ready() -> void:
@@ -49,7 +50,7 @@ func get_danger_name(scene: PackedScene) -> String:
 		if state.get_node_property_name(0, i) == &"data":
 			var data := state.get_node_property_value(0, i) as DangerData
 			if data:
-				return data.display_name   # ou data.type
+				return String(data.type)   # ou data.type
 	return ""
 
 func start_wave() -> void:
@@ -149,6 +150,9 @@ func spawn_danger() -> bool:
 	game_session.register_danger(new_danger)
 	danger_container.add_child(new_danger)
 	new_danger.global_position = birth_point.global_position
+	
+	# send to danger journal
+	danger_spawned.emit(new_danger.data)
 	return true
 	
 	

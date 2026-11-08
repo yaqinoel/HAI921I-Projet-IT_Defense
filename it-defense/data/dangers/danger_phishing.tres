@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="DangerData" format=3 uid="uid://eep66jq3nmq8"]
 
+[ext_resource type="Texture2D" uid="uid://22b10jp7of7e" path="res://assets/sprites/threats/phishing/phishing_icon.png" id="1_kgydf"]
 [ext_resource type="Script" uid="uid://cka7rctsu8kr6" path="res://scripts/dangers/danger_data.gd" id="1_rpwmw"]
 
 [resource]
@@ -8,4 +9,6 @@ type = &"DangerPhishing"
 display_name = "DangerPhishing"
 speed = 35.0
 attack_damage = 5.0
+icon = ExtResource("1_kgydf")
+description = "DangerPhishing"
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"
