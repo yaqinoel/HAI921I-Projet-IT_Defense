@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("4_i76vt")
 type = &"DefenseSave"
-display_name = "DefenseSave"
+display_name = "Sauvegarde"
 icon = ExtResource("1_wpeve")
 scene = ExtResource("3_ykcfe")
 projectile_scene = ExtResource("2_wpeve")

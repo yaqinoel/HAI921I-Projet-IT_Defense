@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("4_or2mg")
 type = &"DefenseDNS"
-display_name = "DefenseDNS"
+display_name = "Filtre DNS"
 icon = ExtResource("1_xuuwg")
 scene = ExtResource("3_etq4v")
 projectile_scene = ExtResource("2_xuuwg")

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("4_eb5jk")
 type = &"DefenseSystemMaintenance"
-display_name = "DefenseSystemMaintenance"
+display_name = "Maintenance Système"
 icon = ExtResource("1_m8mxe")
 scene = ExtResource("3_bl63r")
 projectile_scene = ExtResource("2_m8mxe")

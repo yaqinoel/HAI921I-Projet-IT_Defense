@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_1hnby")
 type = &"DefenseDatashield"
-display_name = "DefenseDatashield"
+display_name = "Data Shield"
 icon = ExtResource("1_04do8")
 scene = ExtResource("3_pofed")
 projectile_scene = ExtResource("2_04do8")
