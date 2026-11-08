@@ -112,6 +112,7 @@ func get_random_danger() -> PackedScene:
 
 	for i in range(unlocked_count):
 		var weight := new_danger_weight if i == unlocked_count - 1 else 1.0
+		weight = 1
 		weights.append(weight)
 		total_weight += weight
 

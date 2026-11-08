@@ -12,4 +12,5 @@ display_name = "Maintenance Système"
 icon = ExtResource("1_m8mxe")
 scene = ExtResource("3_bl63r")
 projectile_scene = ExtResource("2_m8mxe")
+cost = 80
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

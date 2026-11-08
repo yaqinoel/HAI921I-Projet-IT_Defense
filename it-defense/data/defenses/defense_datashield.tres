@@ -12,4 +12,5 @@ display_name = "Data Shield"
 icon = ExtResource("1_04do8")
 scene = ExtResource("3_pofed")
 projectile_scene = ExtResource("2_04do8")
+cost = 80
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

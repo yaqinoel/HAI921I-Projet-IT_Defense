@@ -7,4 +7,5 @@ script = ExtResource("1_7mnrs")
 starting_spawns_per_wave = 20
 extra_spawns_per_wave = 5
 starting_danger_count = 4
+target_money = 3500
 metadata/_custom_type_script = "uid://do44l4m6065uq"

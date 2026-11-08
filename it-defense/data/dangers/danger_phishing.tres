@@ -8,7 +8,6 @@ script = ExtResource("1_rpwmw")
 type = &"DangerPhishing"
 display_name = "Phishing"
 speed = 35.0
-attack_damage = 5.0
 icon = ExtResource("1_kgydf")
 description = "DangerPhishing"
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"
