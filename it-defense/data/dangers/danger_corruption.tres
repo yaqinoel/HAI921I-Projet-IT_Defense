@@ -9,5 +9,5 @@ type = &"DangerCorruption"
 display_name = "Corruption"
 speed = 35.0
 icon = ExtResource("1_sd3oo")
-description = "DangerCorruption"
+description = "Altère ou endommage les données informatiques, rendant certains fichiers inutilisables ou incorrects."
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

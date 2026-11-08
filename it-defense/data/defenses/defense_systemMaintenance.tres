@@ -13,4 +13,5 @@ icon = ExtResource("1_m8mxe")
 scene = ExtResource("3_bl63r")
 projectile_scene = ExtResource("2_m8mxe")
 cost = 80
+description = "Entretient et répare les systèmes informatiques. Corrige les dysfonctionnements et réduit les risques liés aux erreurs humaines."
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

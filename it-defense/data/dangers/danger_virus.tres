@@ -9,5 +9,5 @@ type = &"DangerVirus"
 display_name = "Virus"
 speed = 35.0
 icon = ExtResource("1_ilpil")
-description = "DangerVirus"
+description = "Logiciel malveillant qui infecte les fichiers ou les programmes et peut perturber le fonctionnement du système."
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

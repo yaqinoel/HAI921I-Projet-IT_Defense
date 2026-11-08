@@ -13,4 +13,5 @@ icon = ExtResource("1_04do8")
 scene = ExtResource("3_pofed")
 projectile_scene = ExtResource("2_04do8")
 cost = 80
+description = "Protège les données sensibles contre le vol, la corruption et le chiffrement malveillant. Renforce la sécurité des informations."
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

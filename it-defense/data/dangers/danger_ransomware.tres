@@ -9,5 +9,5 @@ type = &"DangerRansomware"
 display_name = "Ransomware"
 speed = 35.0
 icon = ExtResource("1_5ofh0")
-description = "DangerRansomware"
+description = "Chiffre les fichiers d'un système et réclame une rançon pour tenter de rendre les données à nouveau accessibles."
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

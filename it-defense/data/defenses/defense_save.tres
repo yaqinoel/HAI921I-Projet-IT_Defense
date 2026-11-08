@@ -13,4 +13,5 @@ icon = ExtResource("1_wpeve")
 scene = ExtResource("3_ykcfe")
 projectile_scene = ExtResource("2_wpeve")
 cost = 80
+description = "Effectue des sauvegardes régulières des données pour pouvoir les restaurer en cas de corruption, de panne ou de ransomware."
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

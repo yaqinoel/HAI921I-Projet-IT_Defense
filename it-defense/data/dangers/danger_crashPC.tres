@@ -9,5 +9,5 @@ type = &"DangerCrashPC"
 display_name = "Crash PC"
 speed = 35.0
 icon = ExtResource("1_3xhoc")
-description = "DangerCrashPC"
+description = "Provoque des pannes et des dysfonctionnements qui empêchent les ordinateurs de fonctionner correctement."
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

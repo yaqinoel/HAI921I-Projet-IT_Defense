@@ -9,5 +9,5 @@ type = &"DangerHumanError"
 display_name = "Erreur humaine"
 speed = 35.0
 icon = ExtResource("1_842ui")
-description = "DangerHumanError"
+description = "Représente les erreurs humaines : mauvais réglages, mots de passe faibles ou mauvaises manipulations pouvant compromettre la sécurité."
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"

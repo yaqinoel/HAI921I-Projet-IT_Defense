@@ -13,4 +13,5 @@ icon = ExtResource("1_auopa")
 scene = ExtResource("3_r4sp5")
 projectile_scene = ExtResource("2_auopa")
 cost = 80
+description = "Repousse les attaques DDoS en filtrant les requêtes malveillantes qui cherchent à saturer le réseau."
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

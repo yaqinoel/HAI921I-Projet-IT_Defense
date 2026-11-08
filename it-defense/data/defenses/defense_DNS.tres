@@ -13,4 +13,5 @@ icon = ExtResource("1_xuuwg")
 scene = ExtResource("3_etq4v")
 projectile_scene = ExtResource("2_xuuwg")
 cost = 80
+description = "Surveille les requêtes DNS et bloque l'accès aux domaines dangereux ou frauduleux, notamment ceux utilisés pour le phishing."
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

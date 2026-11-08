@@ -9,5 +9,5 @@ type = &"DangerDDOS"
 display_name = "DDOS"
 speed = 35.0
 icon = ExtResource("1_jo8dm")
-description = "DangerDDOS"
+description = "Surcharge un serveur avec un très grand nombre de requêtes afin de ralentir ou rendre un service inaccessible."
 metadata/_custom_type_script = "uid://cka7rctsu8kr6"
