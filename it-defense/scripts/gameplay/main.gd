@@ -466,7 +466,12 @@ func _transition_to_level(target_index: int, reset_inventory: bool, restart_tuto
 	menu_layer.hide()
 	gameplay_ui.show()
 
-	await day_transition.reveal()
+	var target_money: int = -1
+	if not current_level is TutorialLevel:
+		var spawner := current_level.get_node("DangerSpawner")
+		var level_data := spawner.get("level_data") as LevelData
+		target_money = level_data.target_money
+	await day_transition.reveal(target_money)
 
 	day_transitioning = false
 	_start_current_level()
