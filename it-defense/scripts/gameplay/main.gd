@@ -11,6 +11,7 @@ extends Node2D
 
 # main menu references
 @onready var menu_layer: CanvasLayer = $StartMenu
+@onready var menu_ui = $StartMenu/MainMenu
 @onready var menu_panel: Control = $StartMenu/MainMenu/LeftPanel
 @onready var play_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/PlayButton
 @onready var menu_settings_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/SettingsButton
@@ -97,6 +98,7 @@ func _ready():
 	
 	play_button.pressed.connect(_on_play_pressed)
 	menu_settings_button.pressed.connect(_on_settings_requested)
+	menu_ui.about_requested.connect(_on_about_requested)
 	gameplay_ui.hide()	# gameplay ui is hiden by default
 	_update_pause_state()
 	
@@ -214,7 +216,7 @@ func _clear_content_windows() -> void:
 func _on_play_pressed() -> void:
 	if day_transitioning:
 		return
-	if camera_transitioning or overlay_menu != OverlayMenu.NONE or game_session.running:
+	if camera_transitioning or overlay_menu != OverlayMenu.NONE or game_session.running or not menu_ui.home_page.visible:
 		return
 	if not tutorial_completed and tutorial_scene != null:
 		if not current_level is TutorialLevel:
@@ -234,6 +236,14 @@ func _on_play_pressed() -> void:
 	
 	# play level music correspondent
 	_play_current_level_music()
+
+func _on_about_requested() -> void:
+	if day_transitioning or camera_transitioning or overlay_menu != OverlayMenu.NONE:
+		return
+	if game_session.running or not menu_layer.visible:
+		return
+	menu_ui.show_about()
+
 
 # when pause or settings request 
 func _enter_system_menu(target: OverlayMenu) -> void:

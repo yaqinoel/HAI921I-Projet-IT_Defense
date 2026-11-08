@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://bekyir6su0wej" path="res://assets/ui/UI_Theme.tres" id="1_sl1te"]
 [ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="2_fe2o3"]
 [ext_resource type="FontFile" uid="uid://bk0kb4ivbriyk" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_menu_font"]
+[ext_resource type="Script" uid="uid://4bgwuqqo58vi" path="res://scripts/ui/main_menu.gd" id="4_menu_script"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87aya"]
 bg_color = Color(0.153, 0.125, 0.149, 1)
@@ -93,6 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_sl1te")
+script = ExtResource("4_menu_script")
 
 [node name="LeftPanel" type="PanelContainer" parent="." unique_id=62141939]
 custom_minimum_size = Vector2(360, 0)
@@ -176,3 +178,92 @@ text = "Paramètres"
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "À propos"
+
+[node name="AboutPage" type="VBoxContainer" parent="LeftPanel/Padding" unique_id=1438068033]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_menu_buttons")
+theme_override_constants/separation = 16
+
+[node name="AccentLine" type="ColorRect" parent="LeftPanel/Padding/AboutPage" unique_id=1782106777]
+custom_minimum_size = Vector2(44, 3)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.92, 0.68, 0.42, 1)
+
+[node name="TitleLabel" type="Label" parent="LeftPanel/Padding/AboutPage" unique_id=1900523594]
+layout_mode = 2
+theme = ExtResource("2_fe2o3")
+theme_override_colors/font_color = Color(1, 0.92, 0.8, 1)
+theme_override_font_sizes/font_size = 34
+text = "À propos"
+
+[node name="InformationScroll" type="ScrollContainer" parent="LeftPanel/Padding/AboutPage" unique_id=801343897]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="LeftPanel/Padding/AboutPage/InformationScroll" unique_id=1007842321]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="GameTitle" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=1500618772]
+layout_mode = 2
+theme = ExtResource("2_fe2o3")
+theme_override_colors/font_color = Color(0.91, 0.7, 0.49, 1)
+theme_override_font_sizes/font_size = 26
+text = "IT DEFENSE"
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=2062188965]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.77, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "Un jeu sérieux de défense du bureau pour découvrir les menaces informatiques et les moyens de s'en protéger."
+autowrap_mode = 3
+
+[node name="TeamHeading" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=4428901]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.7, 0.49, 1)
+theme_override_font_sizes/font_size = 16
+text = "CONCEPTION ET DÉVELOPPEMENT"
+autowrap_mode = 3
+
+[node name="TeamLabel" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=1910632415]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text = "Yaqi Zhang
+Robin Dejean
+Rémi Bonnafé"
+autowrap_mode = 3
+
+[node name="CourseHeading" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=2029149259]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.7, 0.49, 1)
+theme_override_font_sizes/font_size = 16
+text = "PROJET UNIVERSITAIRE"
+autowrap_mode = 3
+
+[node name="CourseLabel" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=2091855219]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.77, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "HAI921I · Jeux sérieux
+Université de Montpellier
+2026"
+autowrap_mode = 3
+
+[node name="EngineLabel" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=257121129]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.58, 0.53, 1)
+theme_override_font_sizes/font_size = 16
+text = "Réalisé avec Godot Engine"
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="LeftPanel/Padding/AboutPage" unique_id=661645888]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Retour"
