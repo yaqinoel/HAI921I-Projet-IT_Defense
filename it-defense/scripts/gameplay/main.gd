@@ -397,7 +397,7 @@ func load_next_level() -> void:
 	if next_level_index >= levels.size():
 		print("Félicitations ! Tous les niveaux sont terminés.")
 		return
-	await _transition_to_level(next_level_index, false)
+	await _transition_to_level(next_level_index, true)	# clear inventory before change level
 
 
 func _transition_to_level(target_index: int, reset_inventory: bool) -> void:
