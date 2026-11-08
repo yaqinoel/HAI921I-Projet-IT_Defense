@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://u0p6634ia7s1" path="res://scripts/gameplay/game_session.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bu6wrw0qpb87n" path="res://scenes/ui/main_menu.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://6gbcx1k4vwva" path="res://scenes/ui/system_menu.tscn" id="7_system_menu"]
+[ext_resource type="PackedScene" uid="uid://ca0q5o20hwlp2" path="res://scenes/ui/day_transition.tscn" id="9_choun"]
 
 [node name="Main" type="Node2D" unique_id=694191892]
 script = ExtResource("1_sugp2")
@@ -38,5 +39,7 @@ process_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=141917472]
 anchor_mode = 0
+
+[node name="DayTransition" parent="." unique_id=955448952 instance=ExtResource("9_choun")]
 
 [node name="SystemMenu" parent="." unique_id=1897992742 instance=ExtResource("7_system_menu")]

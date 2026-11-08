@@ -15,6 +15,8 @@ extends Node2D
 @onready var play_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/PlayButton
 @onready var menu_settings_button: Button = $StartMenu/MainMenu/LeftPanel/Padding/HomePage/MenuButtons/SettingsButton
 
+@onready var day_transition: DayTransition = $DayTransition
+
 var current_level: Node2D
 
 @export var levels: Array[PackedScene] = []
@@ -49,6 +51,7 @@ var previous_menu_process_mode: ProcessMode
 var previous_content_focus: Control
 var current_quiz: QuizPopup
 var result_won: bool = false
+var day_transitioning: bool = false
 
 
 func _ready():
@@ -94,19 +97,23 @@ func _ready():
 
 func _update_pause_state() -> void:
 	var system_blocked := overlay_menu != OverlayMenu.NONE
+	var ui_blocked := system_blocked or day_transitioning
 	gameplay_ui.set_content_window_open(content_window != ContentWindow.NONE)
-	gameplay_ui.set_gameplay_ui_blocked(system_blocked)
+	gameplay_ui.set_gameplay_ui_blocked(ui_blocked)
 	if is_instance_valid(current_quiz):
-		current_quiz.process_mode = Node.PROCESS_MODE_DISABLED if system_blocked else Node.PROCESS_MODE_ALWAYS
+		current_quiz.process_mode = Node.PROCESS_MODE_DISABLED if ui_blocked else Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = (
 		not game_session.running
 		or camera_transitioning
+		or day_transitioning
 		or content_window != ContentWindow.NONE
 		or system_blocked
 	)
 
 
 func _enter_content_window(target: ContentWindow) -> bool:
+	if day_transitioning:
+		return false
 	if target == ContentWindow.NONE or not game_session.running or camera_transitioning:
 		return false
 	if overlay_menu != OverlayMenu.NONE or content_window != ContentWindow.NONE:
@@ -170,6 +177,8 @@ func _clear_content_windows() -> void:
 
 # when play button is pressed
 func _on_play_pressed() -> void:
+	if day_transitioning:
+		return
 	if camera_transitioning or overlay_menu != OverlayMenu.NONE or game_session.running:
 		return
 	var original_menu_position := menu_panel.position
@@ -205,6 +214,8 @@ func _enter_system_menu(target: OverlayMenu) -> void:
 
 
 func _on_pause_requested() -> void:
+	if day_transitioning:
+		return
 	if camera_transitioning or overlay_menu != OverlayMenu.NONE or not gameplay_ui.visible:
 		return
 	_enter_system_menu(OverlayMenu.PAUSE)
@@ -212,6 +223,8 @@ func _on_pause_requested() -> void:
 
 
 func _on_settings_requested() -> void:
+	if day_transitioning:
+		return
 	if camera_transitioning or overlay_menu in [OverlayMenu.SETTINGS, OverlayMenu.RESULT]:
 		return
 	if not gameplay_ui.visible and not menu_layer.visible:
@@ -221,6 +234,8 @@ func _on_settings_requested() -> void:
 
 
 func _on_settings_back() -> void:
+	if day_transitioning:
+		return
 	if overlay_menu != OverlayMenu.SETTINGS:
 		return
 	_close_system_menu()
@@ -246,7 +261,7 @@ func _close_system_menu() -> void:
 
 # go back to start menu
 func _on_return_to_menu_requested() -> void:
-	if camera_transitioning:
+	if day_transitioning or camera_transitioning:
 		return
 
 	# clean or close everythings
@@ -352,27 +367,17 @@ func _show_level_result(won: bool) -> void:
 
 
 func _on_next_level_requested() -> void:
+	if day_transitioning:
+		return
 	if overlay_menu != OverlayMenu.RESULT or not result_won:
 		return
 	if current_level_index + 1 >= levels.size():
 		return
-	load_next_level()
-	_close_system_menu()
+	await load_next_level()
 
 
 func restart_level() -> void:
-	# clean and reset everythings
-	game_session.reset_session()
-	_clear_content_windows()
-	gameplay_ui.reset_for_new_run()
-	change_level(levels[current_level_index])
-	var gameplay_view := current_level.get_node("CameraViews/GameplayView") as Marker2D
-	camera.global_position = gameplay_view.global_position
-	camera.force_update_scroll()
-	game_session.running = true
-	_close_system_menu()
-	_update_pause_state()
-	current_level.get_node("DangerSpawner").start_game()
+	await _transition_to_level(current_level_index, true)
 
 
 func load_next_level() -> void:
@@ -381,13 +386,43 @@ func load_next_level() -> void:
 	if next_level_index >= levels.size():
 		print("Félicitations ! Tous les niveaux sont terminés.")
 		return
-	current_level_index = next_level_index
-	game_session.reset_session()
-	change_level(levels[current_level_index])
-	var spawner = current_level.get_node("DangerSpawner")
-	game_session.running = true
+	await _transition_to_level(next_level_index, false)
+
+
+func _transition_to_level(target_index: int, reset_inventory: bool) -> void:
+	if day_transitioning or camera_transitioning:
+		return
+	if target_index < 0 or target_index >= levels.size():
+		return
+	if levels[target_index] == null:
+		return
+
+	day_transitioning = true
+	game_session.running = false
 	_update_pause_state()
-	spawner.start_game()
+	_clear_content_windows()
+
+	await day_transition.cover(target_index + 1)
+
+	_close_system_menu()
+	game_session.reset_session()
+	if reset_inventory:
+		gameplay_ui.reset_for_new_run()
+
+	current_level_index = target_index
+	change_level(levels[current_level_index])
+	var gameplay_view := current_level.get_node("CameraViews/GameplayView") as Marker2D
+	camera.global_position = gameplay_view.global_position
+	camera.force_update_scroll()
+	menu_layer.hide()
+	gameplay_ui.show()
+
+	await day_transition.reveal()
+
+	game_session.running = true
+	day_transitioning = false
+	_update_pause_state()
+	current_level.get_node("DangerSpawner").start_game()
 
 
 func _on_purchase_requested(defense_data: DefenseData) -> void:

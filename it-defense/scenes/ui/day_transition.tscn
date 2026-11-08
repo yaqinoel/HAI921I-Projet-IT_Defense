@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ca0q5o20hwlp2"]
+
+[ext_resource type="Theme" uid="uid://cmxb037wl0n5b" path="res://assets/ui/UI_theme_bold.tres" id="1_700t3"]
+[ext_resource type="Script" path="res://scripts/ui/day_transition.gd" id="2_transition"]
+
+[node name="DayTransition" type="CanvasLayer" unique_id=955448952]
+process_mode = 3
+layer = 40
+script = ExtResource("2_transition")
+
+[node name="Screen" type="Control" parent="." unique_id=1607655937]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="NightOverlay" type="ColorRect" parent="Screen" unique_id=318878145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0627451, 0.105882354, 0.20784314, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen" unique_id=1720464381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DayLabel" type="Label" parent="Screen/CenterContainer" unique_id=2089264491]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_700t3")
+theme_override_font_sizes/font_size = 50
+text = "Jour"
