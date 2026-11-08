@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bl5s8c1aecd2e" path="res://scenes/levels/level_02.tscn" id="3_tipki"]
 [ext_resource type="PackedScene" uid="uid://432uncssnbar" path="res://scenes/levels/level_03.tscn" id="4_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dejfob7vlc4f0" path="res://scenes/levels/level_01.tscn" id="4_office"]
+[ext_resource type="PackedScene" uid="uid://2x4pp2w7bo6d" path="res://scenes/levels/tutorial_level.tscn" id="5_eb6dy"]
 [ext_resource type="Script" uid="uid://u0p6634ia7s1" path="res://scripts/gameplay/game_session.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bu6wrw0qpb87n" path="res://scenes/ui/main_menu.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://6gbcx1k4vwva" path="res://scenes/ui/system_menu.tscn" id="7_system_menu"]
@@ -15,6 +16,7 @@
 [node name="Main" type="Node2D" unique_id=694191892]
 script = ExtResource("1_sugp2")
 levels = Array[PackedScene]([ExtResource("4_office"), ExtResource("3_tipki"), ExtResource("4_85g3d")])
+tutorial_scene = ExtResource("5_eb6dy")
 
 [node name="GamePlayUI" parent="." unique_id=1279547943 instance=ExtResource("3_sugp2")]
 

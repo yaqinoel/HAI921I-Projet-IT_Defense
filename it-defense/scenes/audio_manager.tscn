@@ -5,11 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://b2medoahyvlw" path="res://assets/music/level_music_01.wav" id="3_m6ggh"]
 [ext_resource type="AudioStream" uid="uid://c17kp5dbttx73" path="res://assets/music/level_music_02.wav" id="4_aoitu"]
 [ext_resource type="AudioStream" uid="uid://b04buh8g7luey" path="res://assets/music/level_music_03.wav" id="5_njtn3"]
+[ext_resource type="AudioStream" uid="uid://c803jvfjx2aox" path="res://assets/music/tutorial_music.wav" id="6_tutorial"]
 
 [node name="AudioManager" type="Node" unique_id=1531123608]
 process_mode = 3
 script = ExtResource("1_8qd8g")
 menu_music = ExtResource("2_3asnw")
+tutorial_music = ExtResource("6_tutorial")
 level_music = Array[AudioStream]([ExtResource("3_m6ggh"), ExtResource("4_aoitu"), ExtResource("5_njtn3")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=389192394]

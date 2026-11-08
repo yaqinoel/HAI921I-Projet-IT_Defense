@@ -21,7 +21,8 @@ extends Node2D
 
 var current_level: Node2D
 
-@export var levels: Array[PackedScene] = []
+@export var levels: Array[PackedScene] = []	# all levels that we can play
+@export var tutorial_scene: PackedScene	# only tutorial level
 var current_level_index: int = 0
 
 @export var camera_transition_duration: float = 0.9
@@ -55,13 +56,17 @@ var current_quiz: QuizPopup
 var result_won: bool = false
 var day_transitioning: bool = false
 
+var tutorial_reading: bool = false
+var tutorial_completed: bool = false
+
 
 func _ready():
 	if levels.is_empty():
 		push_error("Aucun niveau n'a été ajouté dans la liste levels.")
 		return
 	current_level_index = 0
-	change_level(levels[current_level_index])
+	var initial_scene := tutorial_scene if tutorial_scene != null else levels[current_level_index]
+	change_level(initial_scene)
 	game_session.money_changed.connect(gameplay_ui.update_money)
 
 	gameplay_ui.update_money(game_session.money)
@@ -101,7 +106,7 @@ func _ready():
 
 func _update_pause_state() -> void:
 	var system_blocked := overlay_menu != OverlayMenu.NONE
-	var ui_blocked := system_blocked or day_transitioning
+	var ui_blocked := system_blocked or day_transitioning or tutorial_reading
 	gameplay_ui.set_content_window_open(content_window != ContentWindow.NONE)
 	gameplay_ui.set_gameplay_ui_blocked(ui_blocked)
 	if is_instance_valid(current_quiz):
@@ -110,13 +115,23 @@ func _update_pause_state() -> void:
 		not game_session.running
 		or camera_transitioning
 		or day_transitioning
+		or tutorial_reading
 		or content_window != ContentWindow.NONE
 		or system_blocked
 	)
+	var tutorial := current_level as TutorialLevel
+	if tutorial != null:
+		tutorial.set_instruction_visible(
+			game_session.running
+			and not camera_transitioning
+			and not day_transitioning
+			and not system_blocked
+			and content_window == ContentWindow.NONE
+		)
 
 
 func _enter_content_window(target: ContentWindow) -> bool:
-	if day_transitioning:
+	if day_transitioning or tutorial_reading:
 		return false
 	if target == ContentWindow.NONE or not game_session.running or camera_transitioning:
 		return false
@@ -144,6 +159,14 @@ func _on_content_window_closed(target: ContentWindow) -> void:
 		and focus.can_process()
 	):
 		focus.grab_focus()
+	var tutorial := current_level as TutorialLevel
+	if tutorial != null:
+		var names := {
+			ContentWindow.SHOP: &"shop",
+			ContentWindow.MESSAGE_POP: &"defense_info",
+			ContentWindow.DANGER_INFO: &"journal"
+		}
+		tutorial.notify_content_closed(names.get(target, &""))
 
 
 func _on_shop_requested() -> void:
@@ -155,10 +178,13 @@ func _on_shop_requested() -> void:
 func _on_message_requested(message: String, title: String) -> void:
 	if _enter_content_window(ContentWindow.MESSAGE_POP):
 		gameplay_ui.message_popup.show_message(message, title)
+		var tutorial := current_level as TutorialLevel
+		if tutorial != null:
+			tutorial.notify_content_opened(&"defense_info")
 
 
 func _on_quiz_open_requested(danger_type: String, quiz: QuizPopup) -> void:
-	if quiz != current_quiz:
+	if quiz != current_quiz or current_level is TutorialLevel:
 		return
 	if _enter_content_window(ContentWindow.QUIZZ):
 		quiz.open_question(danger_type)
@@ -170,6 +196,7 @@ func _on_quiz_finished(quiz: QuizPopup) -> void:
 
 
 func _clear_content_windows() -> void:
+	tutorial_reading = false
 	previous_content_focus = null
 	content_window = ContentWindow.NONE
 	
@@ -189,6 +216,11 @@ func _on_play_pressed() -> void:
 		return
 	if camera_transitioning or overlay_menu != OverlayMenu.NONE or game_session.running:
 		return
+	if not tutorial_completed and tutorial_scene != null:
+		if not current_level is TutorialLevel:
+			change_level(tutorial_scene)
+	elif current_level is TutorialLevel:
+		change_level(levels[current_level_index])
 	var original_menu_position := menu_panel.position
 	
 	# move camera to game view
@@ -198,14 +230,10 @@ func _on_play_pressed() -> void:
 	menu_layer.hide()	# hide start menu
 	menu_panel.position = original_menu_position
 	gameplay_ui.show()	# show HUD
-	game_session.running = true
-	_update_pause_state()
-	
-	var spawner = current_level.get_node("DangerSpawner")
-	spawner.start_game()
+	_start_current_level()
 	
 	# play level music correspondent
-	AudioManager.play_level_music(current_level_index)
+	_play_current_level_music()
 
 # when pause or settings request 
 func _enter_system_menu(target: OverlayMenu) -> void:
@@ -321,6 +349,10 @@ func change_level(scene: PackedScene) -> void:
 	current_level = next_level
 	result_won = false
 	level_container.add_child(current_level)
+	var tutorial := current_level as TutorialLevel
+	if tutorial != null:
+		tutorial.reading_changed.connect(_on_tutorial_reading_changed)
+		tutorial.tutorial_finished.connect(_on_tutorial_finished, CONNECT_DEFERRED)
 	
 	# pass defense deplacement slot container and defenses container to  defense_placement_manager
 	defense_placement_manager.setup_container(slots, defenses)
@@ -338,9 +370,11 @@ func change_level(scene: PackedScene) -> void:
 	
 	# connect spawner signal to danger journal
 	spawner.danger_spawned.connect(danger_journal.discover)
+	if tutorial != null:
+		tutorial.setup(gameplay_ui, game_session, defense_placement_manager, danger_journal)
 	
 	# play level music correspondent
-	AudioManager.play_level_music(current_level_index)
+	_play_current_level_music()
 
 
 func _on_level_won() -> void:
@@ -352,7 +386,7 @@ func _on_level_lost() -> void:
 
 
 func _show_level_result(won: bool) -> void:
-	if not game_session.running:
+	if not game_session.running or current_level is TutorialLevel:
 		return
 	result_won = won
 	var spawner := current_level.get_node("DangerSpawner")
@@ -388,7 +422,7 @@ func _on_next_level_requested() -> void:
 
 
 func restart_level() -> void:
-	await _transition_to_level(current_level_index, true)
+	await _transition_to_level(current_level_index, true, current_level is TutorialLevel)
 
 
 func load_next_level() -> void:
@@ -400,12 +434,13 @@ func load_next_level() -> void:
 	await _transition_to_level(next_level_index, true)	# clear inventory before change level
 
 
-func _transition_to_level(target_index: int, reset_inventory: bool) -> void:
+func _transition_to_level(target_index: int, reset_inventory: bool, restart_tutorial: bool = false) -> void:
 	if day_transitioning or camera_transitioning:
 		return
 	if target_index < 0 or target_index >= levels.size():
 		return
-	if levels[target_index] == null:
+	var target_scene: PackedScene = tutorial_scene if restart_tutorial else levels[target_index]
+	if target_scene == null:
 		return
 
 	day_transitioning = true
@@ -413,7 +448,10 @@ func _transition_to_level(target_index: int, reset_inventory: bool) -> void:
 	_update_pause_state()
 	_clear_content_windows()
 
-	await day_transition.cover(target_index + 1)
+	if restart_tutorial:
+		await day_transition.cover(1, "Formation")
+	else:
+		await day_transition.cover(target_index + 1)
 
 	_close_system_menu()
 	game_session.reset_session()
@@ -421,7 +459,7 @@ func _transition_to_level(target_index: int, reset_inventory: bool) -> void:
 		gameplay_ui.reset_for_new_run()
 
 	current_level_index = target_index
-	change_level(levels[current_level_index])
+	change_level(target_scene)
 	var gameplay_view := current_level.get_node("CameraViews/GameplayView") as Marker2D
 	camera.global_position = gameplay_view.global_position
 	camera.force_update_scroll()
@@ -430,10 +468,8 @@ func _transition_to_level(target_index: int, reset_inventory: bool) -> void:
 
 	await day_transition.reveal()
 
-	game_session.running = true
 	day_transitioning = false
-	_update_pause_state()
-	current_level.get_node("DangerSpawner").start_game()
+	_start_current_level()
 
 
 func _on_purchase_requested(defense_data: DefenseData) -> void:
@@ -464,6 +500,9 @@ func _on_purchase_requested(defense_data: DefenseData) -> void:
 		return
 
 	card.add_card(defense_data)
+	var tutorial := current_level as TutorialLevel
+	if tutorial != null:
+		tutorial.notify_purchase_completed()
 
 	print("purchase successed", defense_data.display_name)
 
@@ -512,3 +551,35 @@ func _update_camera_position(value: Vector2) -> void:
 func _on_journal_requested() -> void:
 	if _enter_content_window(ContentWindow.DANGER_INFO):
 		gameplay_ui.danger_journal_panel.open(danger_journal.get_entries())
+		var tutorial := current_level as TutorialLevel
+		if tutorial != null:
+			tutorial.notify_content_opened(&"journal")
+
+
+func _play_current_level_music() -> void:
+	if current_level is TutorialLevel:
+		AudioManager.play_tutorial_music()
+	else:
+		AudioManager.play_level_music(current_level_index)
+
+
+func _start_current_level() -> void:
+	game_session.running = true
+	_update_pause_state()
+	var tutorial := current_level as TutorialLevel
+	if tutorial != null:
+		tutorial.start_tutorial()
+	else:
+		current_level.get_node("DangerSpawner").start_game()
+
+
+func _on_tutorial_reading_changed(reading: bool) -> void:
+	tutorial_reading = reading
+	_update_pause_state()
+
+
+func _on_tutorial_finished() -> void:
+	if not current_level is TutorialLevel or day_transitioning or camera_transitioning:
+		return
+	tutorial_completed = true
+	await _transition_to_level(0, true)
