@@ -263,6 +263,40 @@ theme_override_font_sizes/font_size = 16
 text = "Réalisé avec Godot Engine"
 autowrap_mode = 3
 
+[node name="CreditsHeading" type="Label" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=2060436878]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.7, 0.49, 1)
+theme_override_font_sizes/font_size = 16
+text = "RESSOURCES"
+autowrap_mode = 3
+
+[node name="CreditsLabel" type="RichTextLabel" parent="LeftPanel/Padding/AboutPage/InformationScroll/Content" unique_id=470984916]
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0.85, 0.77, 0.7, 1)
+theme_override_colors/font_selected_color = Color(1, 0.92, 0.8, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[url=https://crusenho.itch.io/complete-ui-book-styles-pack]TravelBook Lite[/url] — Crusenho
+Adaptation : mise en page et redimensionnement dans Godot.
+
+[url=https://cabincircuit.itch.io/framewright-lite]Framewright Lite[/url] — Cabin Circuit
+
+[url=https://denizlabs.itch.io/cozy-harvest-ui]Cozy Harvest UI[/url] — denizlabs, made with Bevelsmith
+
+[url=https://arlantr.itch.io/]Décorations de bureau[/url] — ArlanTR
+
+[url=https://not-jam.itch.io/not-jam-music-pack]Musique[/url] — Not Jam · CC0 1.0
+
+[url=https://github.com/eifetx/Pixelify-Sans]Pixelify Sans[/url]
+Copyright 2021 The Pixelify Sans Project Authors
+[url=https://openfontlicense.org/open-font-license-official-text/]SIL Open Font License 1.1[/url]
+
+[url=https://godotengine.org/license/]Godot Engine · Licence MIT[/url]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
 [node name="BackButton" type="Button" parent="LeftPanel/Padding/AboutPage" unique_id=661645888]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
