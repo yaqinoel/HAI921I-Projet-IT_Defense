@@ -12,5 +12,4 @@ display_name = "Filtre Mail"
 icon = ExtResource("1_b74pa")
 scene = ExtResource("3_xebrr")
 projectile_scene = ExtResource("2_b74pa")
-cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

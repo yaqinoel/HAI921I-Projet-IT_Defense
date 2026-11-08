@@ -12,5 +12,4 @@ display_name = "Firewall"
 icon = ExtResource("1_kqtff")
 scene = ExtResource("3_usg6d")
 projectile_scene = ExtResource("2_kqtff")
-cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"

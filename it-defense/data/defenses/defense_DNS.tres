@@ -12,5 +12,4 @@ display_name = "Filtre DNS"
 icon = ExtResource("1_xuuwg")
 scene = ExtResource("3_etq4v")
 projectile_scene = ExtResource("2_xuuwg")
-cost = 30
 metadata/_custom_type_script = "uid://b6117p70l0j5n"
