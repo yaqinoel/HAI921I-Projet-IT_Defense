@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_wrhhe")
 type = &"DangerHumanError"
-display_name = "DangerHumanError"
+display_name = "Erreur humaine"
 speed = 35.0
 max_health = 50.0
 attack_damage = 5.0

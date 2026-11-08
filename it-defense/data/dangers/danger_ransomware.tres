@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_qbssy")
 type = &"DangerRansomware"
-display_name = "DangerRansomware"
+display_name = "Ransomware"
 speed = 35.0
 attack_damage = 5.0
 icon = ExtResource("1_5ofh0")

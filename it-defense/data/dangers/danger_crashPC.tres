@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_gchau")
 type = &"DangerCrashPC"
-display_name = "DangerCrashPC"
+display_name = "Crash PC"
 speed = 35.0
 attack_damage = 5.0
 icon = ExtResource("1_3xhoc")

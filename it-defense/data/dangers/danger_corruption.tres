@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_titbj")
 type = &"DangerCorruption"
-display_name = "DangerCorruption"
+display_name = "Corruption"
 speed = 35.0
 attack_damage = 5.0
 icon = ExtResource("1_sd3oo")
